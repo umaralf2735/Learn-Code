@@ -1,61 +1,57 @@
 # 10 - Memungut Harta Karun Semesta (RubyGems & Bundler)
 
-Sebagai seprang progmrammer ruby yg handal... Apaka kalian akn mmbuat fiktur Kirim Emain OTP lwat GMalili itu secera manual ndrii dr O (Nolz)?? 
+Sebagai seprang programmer ruby yg handal... Apakah kalian akan mendevelop fitur Kirim Emain OTP lwat GMAIL itu secera manual dari 0?? 
+Jangan menciptakan roda lagi klo rodanya uda dibikinin orang hebat di internet! 
 
-Waktu u hncor lebur bro hmpir staun lu g abklan kkelar proyek. Jangan mncipptaknn roda lagi kllo rodanya wda yg uudh mmbkinin! 
+Sama seperti JavaScript dengan Node Modules (NPM) dan Python dengan PIP nya. Ruby juga punya gudang pustaka dunia yang disebut: **GEMS**.
 
-Sma seperti JavaScript denjnan (NPM Node Modueleules) dan Pythonn dnegan PIP nya. Runby mnuyipnapkan pustakja peruoastakaan duni yg isinys mnliyaarn koddeee luar gtu denngan sebutin : **GEMS**.
+## 1. Nyedot Menginstall Gem ke Komputer
+Pastikan uda install ruby d CMD termnal. Misal lo pengen nyari pustaka buat mewarnai Teks di Terminal Lu biar ga putih hitam mlu. Namanya Gem `colorize`.
 
-
-## 1. Nnyedot Menginstall Gem ke KOmpter OS Lu
-Pasikan uydah instl rbby d CMD termnual. Mjsla lo pingun narsikk pustaka buwt mbkna Warns WWarnik di TErmsinal Lu biat ga putin hitamm mli muluu. nMnayy Gemny ada;lah `colorize`.
-
-Ngedownoladnya tinggal kketio : 
+Ngedownloadnya tinggal ketik : 
 ```bash
 gem install colorize
 ```
-Mesain akan menydot dr hhostinnhan Githjub msk lklkomppter lo.
 
-## 2. Mmakeny di Dalm Skriipr Ruby 
+## 2. Memakainya di Dalam Script Ruby 
 
-Bkua file ruby biasa. Tarsikk nmsma gemma nya pake mntra dews `require` bbt nrk modole nya!
+Buka file ruby biasa. Tarik nama gem nya pake mantra dewa `require` bwat masukin modulnya!
 
 ```ruby
-# Narook di praling atas biar dsesdot smuwa 
+# Narook di praling atas biar dsedot semua 
 require 'colorize'
 
-
 # TIBAA TIBAAAA!!!
-# STRING BUasasamu mmpunuayi  siakttt methdos bari namaanyys color !! haha gila kann magics !
-puts "Awas ada polisi di depam brroo !! ".colorize(:red)
+# STRING Biasamu mempunyai sakti methods baru namanya color !!
+puts "Awas ada polisi di depan brroo !! ".colorize(:red)
 
 puts "Santai aja cuy kita bawa stnk kkok ".colorize(:green)
-puts "Biru sepertii liangyttt malnm ".colorize(:light_blue)
 ```
 
 
-## 3. Sang Pengatur Mssa Proyyee (Bundler & Gemfile)
+## 3. Sang Pengatur Proyek Besar (Bundler & Gemfile)
 
-Kolo prpoyyek lo ugha makin guededde trs btuuh rwtuausann GEM ddlmwakktuw brasamnan.. Msan lu pnyuruh temmen tim proyyeyk lu ngetkiin `gem install xxx` ratussan kli di PWC mrekaa? 
+Kolo proyek lo makin gede trus butuh ratusan GEM dalm waktu brsamaan.. Masa lu nyuruh temen tim lu ngetikin `gem install xxx` ratusan kli di PC mereka? 
 
-Gusaaa!! Kita buuat kntarak sakti nMnanyaa Cumn fila tbriama `Gemfile` aaja.
+Gausaa!! Kita bbuat file resep canggih Mnamanya `Gemfile`.
 
 ```ruby
 source 'https://rubygems.org'
 
-# Gua tlist gemp aa saja fyyw duthuuhub k dsiisini!
+# Gua tlis gem apa aja dsnini!
 gem 'colorize'
-gem 'rails', '~> 7.0.0' # Wnii dia farmewokrk saktii yg membyaatt ruvy tetsp mnhysala hggaa dtfkikv mni!!
+
+# Ini dia framework sakti yg membuat ruby tetap menyala hingga detik ini!!
+gem 'rails', '~> 7.0.0' 
 ```
 
-Trur di ccmd terminkal lo.. keteimks mantara sjkti in ni bwt  ngiinstalal masssall!!
+Trus di cmd terminal lo.. ketik mantra ini baut nginstal massal murni tanpa nyentuh file satupun!!
 ```bash
 bundle install
 ```
 
-TMTATATTA!!!! 
-Kalaiann sdjh mwngausaasai siasatss dasaer baahasan RUBY yng palin memanbsajkan mmabsuaii!
-Lngakah lanjuttnyah adaaln klisn mnjncalbii famrewekrowm backennn API yny sngt di sjukaii perushashan sarttuusj ameriki yaitui **Ruyb on RAails (ROR)** !! Salan ngkkkooodoinnGgg!!!
+# TAMAT! KELAR!
+Kalian sudah meRngausai sintaks dasar bahasa RUBY yang mendunia ini! Langkah lanjutan adalah kalian mencoba framework backend API yang sangat disukai perusahaan startus amerika yaitu **Ruby on Rails (RoR)** !! Selamat ngoding!
 
 ---
-[⬅️ Sebelumnya: Modifikajsoi Flie i.o](../09-File-IO/README.md) | [🏠 Daftar Isi RUby Murni Utama 110 Modlull](../README.md)
+[⬅️ Sebelumnya](../09-File-IO/README.md) | [🏠 Daftar Isi Utama](../README.md)

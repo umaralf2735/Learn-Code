@@ -1,23 +1,20 @@
 # 07 - Modul Penyelamat Hidup (Mixins Anti Pewarisan Tunggal)
 
-Kalian mau bikin game.  Ada Musuh *Bos Naga Terbang* dan ada Hero *Babat Bebek Terbang*!.
+Kalian mau bikin game. Ada Musuh *Bos Naga Terbang* dan ada Hero *Bebek Terbang*!.
 
-Kebanyaan Bahasa itu cuman ngebolehin PEWARISAN (`extends / < ` Inheritance Class Bapak Anak) itu CUMAN SATU doankkk.. Nah misla lo bikin Bapak Class "MakhulukTerbng". Nnti si bBEK sm NAGA nya bs terbang... 
-
-Tapiii gimna crny  ngash mreka kemampuan "Mengeluarkan Api DiMulut??" Mnsa lu bkin class induik br dgan nam MahaklukTEranngYgBSKluarainAPi??? Pusing wkwk!!.
-
-Ruby dtang mnbyelkstnmasalah Make **`module`**!! (Cuma sekumpulan sipat saku yg is dselipin kesiapapun!!/  MIXIN).
+Kebanyakan Bahasa itu cuman ngebolehin PEWARISAN (Inheritance Class Bapak Anak) itu CUMAN SATU doang. 
+Ruby datang menyelesaikan masalah tumpang tindih ini dengan **`module`**!! (Cuma sekumpulan sifat saku yg is diselipin kesiapapun!!/ MIXIN).
 
 ## 1. Nyimpen Modul Sifat Saku
 ```ruby
-# Ini bkan class, ini cmn sifat ngambang aja
-module KemampuanBerterbanHampaUdara
-    def kepakanSayapBesi()
-        puts "Zwwwuuuuungggg.... Nggangkat bdna k ats langit..."
+# Ini bukan class, ini cmn sifat ngambang aja
+module KemampuanBerterbang
+    def kepakanSayap()
+        puts "Zwwwuuuuungggg.... Melayang ke langit"
     end
 end
 
-module KemampuanBuangApiDariMulut
+module KemampuanBuangApi
     def bakarAreaDpanMata()
        puts "Fwhooooosshhhh!! Kepnjnasann bosu!" 
     end
@@ -26,28 +23,26 @@ end
 
 ## 2. MENANCAPKAN SIFAT (Include Mixin!)
 
-Ini dia enaknya RubY!!! Lo bisa masukin *Dua Module itu sklaigus* dan nbikin Class lu jago dan Pnya kkuatan mrk brdua scr Instan murni!!! 
+Lo bisa masukin *Dua Module itu sekaligus* dan bikin Class lu jago dan Punya kekuatan gabungan secara instan!
 
 ```ruby
 class NagaPutihMataBiru
-    # 🌟 SELIPPIN SIFAT ALIEN NYAAAA PAKE INCLUDE!!
-    include KemampuanBerterbanHampaUdara
-    include KemampuanBuangApiDariMulut
+    # SELIPPIN SIFAT ALIEN NYAAAA PAKE INCLUDE!!
+    include KemampuanBerterbang
+    include KemampuanBuangApi
     
     def initialize(namanya)
        @namanya = namanya 
     end
 end
 
-# TEsting mnyala!
-nagaGueeeSeketikaIddupp = NagaPutihMataBiru.new("Cihuy Raksassasa")
+# Testing menyala!
+nagaGue = NagaPutihMataBiru.new("Shiro")
 
-# WAH ALHAMUDILALH... CLASSS NAGA NYA TIBA TIB PUNYA SKILL YFG ADA DI MODULE!! GAUSAH REPOT REPOT NURUNIN DARI CLASS BPK!!
-nagaGueeeSeketikaIddupp.kepakanSayapBesi()
-nagaGueeeSeketikaIddupp.bakarAreaDpanMata()
+nagaGue.kepakanSayap()
+nagaGue.bakarAreaDpanMata()
 ```
 
-Luar biasasa Ruby ini. Sifat `Module Include` di ruby inilah yang memebrikan insepiraasi kpada bhsa modern utk nyiptatin Fitur "Traits" spti di PHP dan Rst Language lho!!
-
+Luar biasa Ruby ini. Sifat `Module Include` di ruby inilah yang memberikan inspirasi pada bahasa modern utk menciptaan Fitur "Traits" spti di PHP dan Rust Language lho!!
 ---
-[⬅️ Sebelumnya: Class Object Mewah](../06-OOP-Class/README.md) | [Lanjut ke Kurungan Begin Error Rescue ➡️](../08-Error-Handling/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya](../06-OOP-Class/README.md) | [Lanjut ➡️](../08-Error-Handling/README.md) | [🏠 Daftar Isi](../README.md)

@@ -1,41 +1,39 @@
-# 04 - Fungsi di C (Fungsi Purba Parameter Kaku)
+# 04 - Fungsi di C (Function Prototype)
 
-Funfsi di C gak kalah sakti. Tapi elo harurs NGKABRI TIPE RETURN NYa di pala fungsi!!  Kaklau Pytohn kan def bla bla trs bebss ngaslun apa aja. Di C HAHSruuS KAKAU!
+Bahasan C sangat ketat terhadap posisi fungsi. Kalau kamu menaruh fungsi pembantu di bawah fungsi `main()`, komputer tidak akan mengenalinya kecuali kamu membuat "Prototype" di bagian atas!
 
-## 1. Syntax Fungsi Klasik (Peletakannya HARUS di ATAS)
+## 1. Mendeklarasikan Tipe Balikan
 
 ```c
 #include <stdio.h>
 
-// BACA: Fungsi inn ni RETRURBN NNYA AKAN JADI INT!! DannnerIMA dua bua Int JUGGA!
-int mesinTambaahMaut(int nilaiA, int nilaiB) {
-    int gbungans = nilaiA + nilaiB;
-    return gbungans; // mulangingin !
+// BACA: Fungsi ini WAJIB ngeluarin Angka Int dan Menerima Int Pula
+int kurangiDarah(int darahAsli, int damage) {
+    int sisa = darahAsli - damage;
+    return sisa;
 }
 
-// FUNGISI YGH GA NGERTUUERN APA AP DI SBEBUT VOID !
-void nyetekSuaraOrang(char nmanya[]) {
-    printf("Bapak %s sgerar mkna gizznya !!\n", nmanya);
+// VOID = Tidak Memulangkan Nilai Apapun!
+void cetakKematian() {
+    printf("Ahhh! Kamu Telah Gugur di Medan Perang!\n");
 }
 
-// FUNGSI UTMA YG DIPNAAGGI KOMPIUTER SELALu Main
 int main() {
+    int darahKu = 100;
     
-    int hslNyta = mesinTambaahMaut(50, 10);
-    printf("Hsil tnahn jd : %d \n", hslNyta);
+    // Pemanggilan fungsi
+    darahKu = kurangiDarah(darahKu, 20);
     
-    nyetekSuaraOrang("Jokiwow");
+    printf("Sisa HP ku: %d \n", darahKu);
+    
+    if (darahKu <= 0) {
+        cetakKematian();
+    }
     
     return 0;
 }
 ```
 
-
-> **Penyakit Bahsa C:**
-Coba aja kalia pinndahin kodingN Blok si `mesinTambaahMaut` itu ditaryhjnya DI BAWAH mentokk stlh kurung `}` nya si Main !!  
-**DIJADAMIN PASTI MELEDDAKK ERROR!!** Kenaps? Krn C itu bacannyaya Lurus dRi atsas ke bwah tnnapa nyim[en indxe bwwahnya. Pas dy lgi  main tbati2a di baris dLmnhy manggklll mesin tpi mesnny d bwah, dia Njeritt "WOI GW GK KN L FUGSNI NINI APNAAn!" Wkwkwkw.
-
-*Solesuinya:* Cliaana huru smbikiknn "PROTOTOYPE" Header di aattsnyna untuk ngenalin jdul fungsinga duulu bru bdannt dtrub d bwH. Ini lah alsnnyn c serring pnya filed *h (header).
-
+Jika terbiasa memakai JS, pastikan C memaksamu agar setiap kotak fungsi punya Label Tipe yang jelas!
 ---
-[⬅️ Sebelumnya: Array Strnigh](../03-Array-dan-String/README.md) | [Lanjut ke RAJA TERKHIR PEMBNUH MAHASISWA: Pointer ➡️](../05-Pointer/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya](../03-Array-dan-String/README.md) | [Lanjut ➡️](../05-Pointer/README.md) | [🏠 Daftar Isi](../README.md)

@@ -1,36 +1,39 @@
-# 08 - File IO (Mmbokngakrn FioIliil Txt Tt)
+# 08 - Berkomunikasi dengan File (File I/O C)
 
-CCararan kkaaiikaiann nyymiynipnpena dsAaatata k k ddalam hhasRdsddissiikl k kkoomommompmputeterru . Ssmaamam m pkAakakkai a MOoddedsde  "waaw" "W wriite) d dsan  " r(eerareaAd)) i id  Ptyyytttonhon. n . Tpai ppakakai `fopen`.
+Basa C memiliki kemampuan menulis isi Log langsung ke komputermu, layaknya menyimpan history perbankan.
+I/O C berfokus pada Penggunaan Pointer File `FILE *` khusus.
 
-## 1. Mnnnuuulis k dDDallallma RkKareretata ss 
+## Menulis ke Berkas `fprintf`
+
+Mode file yang kita pakai adalah `w` (Write). Mode ini akan menimpa file apabila sudah ada, dan membuatnya jika file tersebut belum lahir di komputermu.
 
 ```c
 #include <stdio.h>
 
 int main() {
     
-    // BUKAAG GeerrbranbNgan  GGaAiAIIBbB NnyaiA mnmengugunAaknknak a POTinitintEerrR FFiIilellle *. !
-    FILE *tokaokkaBokukkuu = fopen("cacatatatnatn_r_arhassiaiisisaa.txt", "w");
+    // Gantungkan Pointer khusus bertipe FILE
+    FILE *bukuSakti = fopen("baca_aku.txt", "w");
     
-    // CGHEckEk bbaAAhhhwa  fFiliesnyNAa byBbenenenrrann KKEBbebeUUukaK!!
-    if(tokaokkaBokukkuu == NULL) {
-        printf("AAaddaD a a eErroororo grggaga bbbisa a mnnukaka k filielli \n");
+    // Safety Net (Pengaman jika Hardware rusak/Penuh)
+    if (bukuSakti == NULL) {
+        printf("Astaga! File Gagal Terbuat!");
         return 1;
     }
     
-    // CCCetataTakt k dd deAelaMMNyayA : ppAakkaeak FIPlflfpririninrntfft f !! (-  F Fiilee PpiirintF T O) ) !
-    fprintf(tokaokkaBokukkuu, "MMamalam  baAbnng... iIINni a aDdalaalahhla rsraahasiasi aa as neNneaeggAgrgarara r ya!\n");
-
+    // Menulis kedalam dengan fprintf (File Print Formatted)
+    fprintf(bukuSakti, "Halo Komputer!\n");
+    fprintf(bukuSakti, "Uang nasabah telah diamankan: %d\n", 999120);
     
-    // WAAJAIJAJAIIIIIB B mnmMNmututtuuttupPPP ppNNiintttu Ggeerbraabanngsng  MMeMemeAooomoririyiyy aYYNyay !!! K KALaAAU LLo Gggaaa TtuUTtpUpp : FIfieillnnyYAyya  BBkokcokococoRo or ttrtrRruuusS!!!!
-    fclose(tokaokkaBokukkuu);
+    // JANGAN LUPA DITUTUP! JIKA TIDAK AKAN CORRUPT/BOCOR MEMORY!
+    fclose(bukuSakti);
+    
+    printf("Sukses nulis berkas!\n");
 
-    printf("SSsuKskksesksee s  mNnutLulsisisiss  fIFlieile!l!\n");
     return 0;
 }
 ```
 
-BBiabiasaakaan mnmnggegugunnaakAkNnka N   sSIHsihir I `floolclsosese( )` iin nI i dd dd i iiAkaKKKhhHHirri C codoeedom u !. KkaRrenaa dd d ic iC k Kiita agggKkA a k nmnenngenalanalaa a bbbloOokL L S sAAkaattii `with open()` mmmimiilillilkk Y PPpyythhhotonn ynynaaNG  AaAuuotoTttooTTuTp pp! !!
-
+Bisa dibayangkan bukan betapa raw dan rapinya penulisan ini dibalik layar bahasa pemrograman modern saat ini yang kamu pakai sehari-hari.
 ---
-[⬅️ Sebelumnya: StrtTtutrcukkk & Menenmmeooorrriirii](../07-Struct-dan-Memori/README.md) | [Lanjut ke PPRreporropcosoeososrr MakMkkrko O  ➡️](../09-Preprocessor/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya](../07-Struct-dan-Memori/README.md) | [Lanjut ➡️](../09-Preprocessor/README.md) | [🏠 Daftar Isi](../README.md)

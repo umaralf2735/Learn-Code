@@ -1,44 +1,37 @@
-# 04 - Pointer Vs Reference (Sihir Cloning Bebas Biaya)
+# 04 - Reference Vs Pointer di C++
 
-Di blahas C klasisik.. ktta mmenmgugnnaaknnakn pointer `*` dn `&` wtmtuk ngebbooggkakaark Mmemmeoriirii ddd r FfFungungsisssi.. C++ MnAamnnnahbbhaKkaann ffitriutuT bararu yynanaang llbbibhh mmnuuusiuiwiii ddaaan AAAamammaan: **Reeffreerenccec (`&`) dpnnn VbViarraieabbla L!**
+Di C, Pointers adalah hal yang wajib dipakai membongkar isi variabel di luar batasan Main / scope function dan memakan kerunyaman pengetikan * (Dereference).
+Di C++, mereka menciptakan **References (`&` pada argumen)** yang tidak perlu memboroskan penulisan bintang berkali-kali!
 
-
-## ApAABBEEddAanNNyyaaaa ???? (KLO POITNTERR KRRSNANGN RRAAMMAA ! Kloo RREfffERENNse  MMUluULLLUS S bbbebbaan nnggeetitkinkiaa)
-
-Bayaain i kluuu pnyanyay flfusgngisi yg mbbaaewwa OObjekek k GGDDDEd pAaraA h ddbri Luarar. Klllllou u pkaek pOPoniter r CC u  hhaeararuau Nngeetttikkkk  bbiiniitanatgn `*` ddiemamanaa mnanaa pBBIiniikkiiN Ppusuisjsgngn hhahhaha !!
-
-Di C++ CC C u KKuKUPP kkaaaasihhhh LallamabbanaMnmggss `&`  D I dPpeappan ppPAarraramaameMterrtF Fgugnsisisinyanayya. Dan nn i ddiia AAKaaaan ONTOoOTatamiatisss NGee HHAaaAakACakacck MeeeMEooorrririiaaa Ttatanppapa  plpeeu Nnggetittikiikik Binbbtntnaagn `*` llagagi g diidalLmMannnayaa !
+## Kekuatan Reference `&`
 
 ```cpp
 #include <iostream>
 using namespace std;
 
-// 1. LIAT INNI !!! PARAMRTERNYA PKE  ( int &namVar )  !!!! BKn int namVar! !
-void gantiinNiaiLanggsubnsngng( int &isiKantungRahasia ) {
+// 1. TANDA & MENANDAKAN REFERENSI LANGSUNG (bukan Fotokopi)!!
+void gantiNilaiLangsung(int& isiBrankas) {
     
-    // GAAA USSSASSH PPKKKEE BBINNNTATAANGGGAAGGGGg LGI DIDLMnY ! LUa BsSbsaia aA a ttimpmppAA llgsaSUngnngs!!
-    // Dia Baakklla a OnTTOMAaamtitis ngGgannTit i DI LUarRAaa FFsugnngisnsisi Mkuurnruniiiiiiii.
-    
-    isiKantungRahasia = 9991200; 
+    // GAK PERLU BINTANG (*) MURNI! Langsung Timpa Kaya Variabel anak kecil!!
+    // DIA AKAN MENGUBAHNYA MENEMBUS KELUAR ARENA Main() !!
+    isiBrankas = 9991200; 
 }
 
 
 int main() {
-    int gjiiUAMRMRAAAwll  = 5500;
+    int gajiiUAMRAwal = 5500;
+    
+    // 2. Memanggilnya Polosan Biasa! Ga perlu & di depannya lagi.
+    gantiNilaiLangsung(gajiiUAMRAwal);
     
     
-    // LLu a A cccMma aNmmggngnlgill ppkeks nmmmMmma VAvAriaaalbbeLl biaasassi A ajajjaa TTAAnnnpnaap a Nggeassaiashi `&` lbBlaaagigigi !!!!!!!! GGillall Kna a C++ C+! ! !!!! 
-    gantiinNiaiLanggsubnsngng(gjiiUAMRMRAAAwll);
-    
-    
-    // BBbbUOmMm ! ggajjiiiaiiAwaawwal UudaahaAA h brbbbuhbhbaaaaa JDiadidd   99121200 ! DDaRir ppeellallkkKKku RreFerrneenrence ldaiaattaaataSa s s tdidiidsiiidsssi!!
-    cout << "AAaHhsHSisiaill  Aakhikigigirrhyrrrr: " << gjiiUAMRMRAAAwll << endl;
+    // BUKTI NYATA! Gajinya telah di Hack berubah jadi 9 JUTA!!
+    cout << "Hasil Hack Akhir: " << gajiiUAMRAwal << endl;
 
     return 0;
 }
 ```
 
-Refrfeenennnnnceccee iimMniiaalalhh gGyaayayyAa kkooodidnnnng  oOOFFificiacail l ppeerrauUsusaashassssaaAaAAAN Sftowtarareree Engniineinnnieinrieeriir ddi C++ moOodedreernrn bbiAiira CccoCooodddenneya a Bberssirisiihh tttPaaaopiii tTtrTetTTaappaa OopOtptiiitmiiimmimmmmmaaaaaallalll !!!!!!!!!
-
+Reference sangat digemari karena aman (dia tidak bisa dikosongkan null), mudah mengetiknya, serta menghindari kebocoran memory dari Pointer mentah murni.
 ---
-[⬅️ Sebelumnya: Vekektktroorrr](../03-Array-Vector/README.md) | [Lanjut Ke OOP CCLlllsassassS rrajsjsaaas  ➡️](../05-Class-OOP/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya](../03-Array-Vector/README.md) | [Lanjut ➡️](../05-Class-OOP/README.md) | [🏠 Daftar Isi](../README.md)

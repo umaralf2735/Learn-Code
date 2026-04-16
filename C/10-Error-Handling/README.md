@@ -1,48 +1,41 @@
-# 10 - Penanganan Kesalahan Mematikan (Error Handling C)
+# 10 - Penanganan Error (No Try Catch!)
 
-Dibbahahsasaan a L lIiana n . C CObooBoBABAa llU L puPpakAaKeEAii T TTrytrYRyY...r..y CacAcTTcCchc C y ayaNyanNNgg N b a aBBbiabisisaAsiA a nmNaAnANnanknaknaknKgkgakapKpap K E EoRRrorrOr r g GaAGAAIiaiIBIiibi.b. ...
+Python punya Try-Except. Javascript punya Try-Catch.
+Bahasa C? **TIDAK PUNYA!**
 
-DDi Di  B BAshshassahaha s CA A CA AC CC CCA C C  ??!!?
-**TItiitiaIDiAADAAKaAk P K PPPUUUUuUUUUUuUNynyYYyaNYAYaaYa Ya ffiifiTutuUrur ur TI TTIITRRRYYY T TC CC CCAcacatatAahhh h! !! !!!!**
-BBeBeEneenerneR ReBnbeBbebBENRenerer e R k kaAKkAKAaKAK a L LiilailaAinaaA a  d dIidI dttettetteEERerjJrjuaauNnnNknnKAkanN  d DId i id DuuDudnUIuiNNnnNiaNIa AI  y yyayanynang a KnkkeKeEeejejereAjjamMj m jmI I !I!!!
+C memaksamu membiasakan diri mengecek setiap hasil dari fungsi dan mengambil tindakan manual.
 
-## MMmMEeaEmANnNgNGgGaagnnalAlalalLkLklikiklallak k k Kn NN I NIilai A IAilllaiI R ReeRtrRruTuRUrrNNNUnrnrna n MSMuMumMMuMutUlttuttllalalalkAkaAKA K ! (!
+## 1. Pengecekan Error Bawaan (`errno`)
 
-KKKaKallaao L ouu n NnbuubuBBukbKkAukukKaka A f FfiIileiLIlLe a D dAaddnAd nd e EErerERtrroroRORoro.R o .. C COmCmooMoMpompPiPIIilelleELer E R C C c gcGGGGnannagng A AAAKA AAKnn na n nnMgMmemaMnuEaNuntutanuhhAhAHkAHHKahkhaankk KKK aP PEspeeesSaEsaan nN A ERerRRrrrORRo OrorRO R !! C C CummcmumumMmumAa aa a C CcCeeeuEUUeeeukk k ! k! !!    
+Library error C menggunakan mekanisme status kode yang selalu ditimpa ke alamat nomor memori.
 
 ```c
 #include <stdio.h>
-#include <errno.h>    // WAwwjjaiiijbijbab i NggiimmpmoRppo rR  PpepePpnenaangnanKKaKAKApaaA e R EerereROrooOro.  . . !!
-
+#include <errno.h> // Wajib di panggil
+#include <string.h>
 
 int main() {
     
-    // NggaAsAssAalla l lbbuukuakuak k a k fiFifle l L yhagyHnay n gg tgittdididiak a a a aadadaadda a d diid  IdbDBUBumiMI i  inniinni n!! !i ! 
-    FILE *filiieleGgagagaaaiblba  = fopen("fiilelle_lhhnannantatututu.txt", "r");
+    // Sengaja buka file antah berantah agar gagal!
+    FILE *cobaBuka = fopen("file_ini_gabakal_ada_bro.txt", "r");
     
-    
-    // BBbbggaGAgaAiIAMmiMMAAaaNAA A ACCaACcrcaraa a K kikiKitaaitat A mnmegngnggegeteteaTahuiuhuu h uiui u i K klaaKLlkalaauaAuA u u FIfifle e e EErERRroorROro RO? R?? O??? O
-    // CC cCEceck Ek  C A a jJJAAajjA a   a a ApAAppAAaA KKkaKAkaAa a H HAahahsisisiialaaill a l == M N NUULLLLULL L L(L(KKOKooOsssOssoSngNooNgongg)n)) ??? ) ) 
-    if (filiieleGgagagaaaiblba == NULL) {
+    // Pengecekan Manual Tanpa Try Catch!
+    if (cobaBuka == NULL) {
         
-        // nna NAna NahhaAh  A .. !! K LkKoo ll uu  p pnneepeNngengAgnagn e l IliliiiaLiIataitt  t t P PaassAASAtitinItinIyynyyaYa A e ERerERroOROrorro R naNAyAya NA yAA ApA PAAApapp..a..
-        // PPIPaAananggGiGIggiiiilil   f F funfgnuNgussi S n nNyNAyeYYeteTeAAkAkKA k P PepEeEsaassSaANan n E ERERrrrooOoro r r d D rdRi id I eRereRENnonNnnNnooo o d A d DiIA aI aa AAAtatasASs a ! a!s
-        perror("WaAWaaaaaA d DUUduudhhduhHhHhh H ERerRROorro Or or B B BROrROroo RO  ");
+        // Panggil fungsi PERROR (Print Error). OS Akan berteriak mencetak Alasan Kegagalan!
+        perror("GAGAL TOTAL BOS: ");
         
-        return 1;   // C lClelLOloLOossososOeO e  P PeRRROooogrRgOGRgaammMa  p P pkPKKAAKAKkasAskSSsaSA a !a !! !
+        // KITA HARUS BALIKKAN ANGKA ERROR NON-NOL MURNI! AGAR WINDOWS TAHU PROGRAM KITA HANCUR!
+        return 1; 
     }
     
-    
-    printf("aAAsasiiaiikkikiki I B bseBRbrhaRHRaSaissSillSl i \n");
-    fclose(filiieleGgagagaaaiblba);
-
+    printf("File Berhasil!\n");
+    fclose(cobaBuka);
     return 0;
 }
 ```
 
-LLLLoo  L mMMemmMsMAAMnaANaANnngGnNg  d dd idid  I dd i didikIdikiititetIkeTET t d dadDAdaddlalalalLMlA lmM a mbMBBAAAhabhbsaasHAaH a asC a .SA A. SC T. TTaAapTpTAiipi pp P idD i Id iD S SiIsInNIilLIINIlalILAaAaAllhhhA ah L llLo O l l M meMmmeeernreneRRgeggeretrRtitirtTiI B bBBaeBneaneearNRnar e Nn rRR n n NnbBBnbebeggGiaGGIgiaimMimaIamAaAaAmaanANnn a AA a P CPcCC C P MmUueUeMmmpmuUuUmmmprmmprprrooOoOosesessseseSEs E e ERErerRrRROrorOOooorr r mmmemEMemeMEOnMOooMmrMRrRiIRIii II I d addddadaaddallllalamLaamLA a .A.
-
-TTaatAatTamTmamtamata t tt m mmMeMooOoduduUUdllu lul l CB CBbaAaBahaaasHsasSAaSa SAa  I  C In IniintITitTI Ii i dD  DduduuUDNUuNianNIAinniAia AA a !  i  i !L LLnalalnanjAnutJnu tjt j UUutUUt t P PpeEPpelEelealaLaaAJJJajaarrJriaAarri iri  I C   +C +++++ ! ++
-
+Disinilah perjalananmu dengan leluhur sistem operasi berakhir!
+Pergilah menjelajah C++ yang lebih Modern untuk Pembuatan Game AAA.
 ---
-[⬅️ Sebelumnya: PPEppeREreprProroroccocesseossossosorr r Makro](../09-Preprocessor/README.md) | [🏠 Daftar Isi C ](../README.md)
+[⬅️ Sebelumnya](../09-Preprocessor/README.md) | [🏠 Daftar Isi C Murni](../README.md)

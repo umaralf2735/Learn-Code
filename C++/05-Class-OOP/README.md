@@ -1,56 +1,46 @@
-# 05 - ObjjeCt T OOooOrientetrtn C++ CClAalaLssss Mmuururruruininiiiniin i  (AalalaalsAAsssSAAAann LhAaihirrhnnyyaayyA C ++)
+# 05 - Orientasi Objek Modern (Class)
 
-Bhahsahssa  Javvavav,a ,C C##, , Tyyeypypeeecrircpti,ptPPPHHpHP. S SemeemmuUuuaanya a AAANkAnakknnk a KkKnaanandadundunnungg DDdari r AaaRsiirrteieitktktur ru CLCaalalalsss  PPPuuvvvllilici/i/PrPriivviivaattaaeee nya y bbABBAppappak  C C ++ !
+Semua arsitektur bahasa luar (Ruby, TS, PHP, Java) menuruni Class yang diperkenalkan C++. Inilah fondasi utamanya. Object disembunyikan menggunakan Private dan dibungkus properti public!
 
-Di iBbbbabaab iiiniiniilalalalhh h kkKkkititia aa  MmnemmmebbbAAuauautut  cectaCetatakakana n OOobojbejjejekek hhihididuupp!
-
-## BBiKiIKKinnn CetatakKkannaa A MMaAannsusuiaisias A
-
-Sytytntnaxxa A nyYyyaya as SaammMamma  kkKykky  PPHP P / JT S !
+## 1. Merancang Pabrik Object C++
 
 ```cpp
 #include <iostream>
 using namespace std;
 
-class Ppepkejkrrjraaaa {
-    // bbragGgiaIiaian n ynng g gc mmcnnn bblhsblhls s di diiitnititpmpm dp d riira a adddllammlmaa !
+class PekerjaPabrik {
+    // AREA PRIVAT (Gak bisa dibaca dari jangkauan Luar Class terekspos!)
     private:
-        int guuGaijijiininyyayya_RAahahhassssiaaAiaia;
+        int gajiOrangDalam_Rahasia;
 
-    // bbgaIiaian na yaynagnAgn gg BBBblblollhohhhh di i ssenenetenttuhuh hh ooOoOrrnarnaang gn LLlaulaulaArAr Ar!
+    // AREA LUAS (Area Terbuka Public yang membebaskan Interaksi luar)
     public:
-        string nammNaNmammaAnyaayayaa;
+        string namaAktePegawai;
         
-        // CCnoOSOTostrsrturcutcorotr! (( NAmAmAmAnya a WAwaiiajajajbib b smSAaAAMAMmAa M kmKkEKkE N NMAnaAMA  C CLALALaassssssnNnyNyaAa! ) 
-        Ppepkejkrrjraaaa(string inputNamamam, int inuOOutgajiiji) {
-            nammNaNmammaAnyaayayaa = inputNamamam;
-            guuGaijijiininyyayya_RAahahhassssiaaAiaia = inuOOutgajiiji;
+        // CONSTRUCTOR: Dipanggil otomatis pertama menunggangi New Class Baru!
+        PekerjaPabrik(string inputNama, int inputGaji) {
+            namaAktePegawai = inputNama;
+            gajiOrangDalam_Rahasia = inputGaji;
         }
 
-
-        // mmemeetetethtohododd d aAakkkssisiisisi!i i !
-        void ngenGnggoceoceCchh() {
-            cout << "HHHHHAlooalol o s sasyayyyayyyyaa a " << nammNaNmammaAnyaayayaa << " ssSSsyaya ggaGGjgijii  i bbebrsrbrapaapa rraaahasiasiisa s .." << endl;
+        // METHOD: Aksi 
+        void unjukBicara() {
+            cout << "Halo saya " << namaAktePegawai << " lagi ngumpetin gaji Rp." << gajiOrangDalam_Rahasia << endl;
         }
-
 };
 
-
 int main() {
-    // MmmCeecceCEtetttaaaaakakk OboBOojbejbejkej k k kAAsssllsliLiliyIIniyinyyaa a! ( gGG GGag AAAAADUDA dA K AAktAkAtata 'NNEWEEwwe'  dI i D IIC+C++   bIiibIBiaaasssiassi S lSLSGlslglsssugungng P PPPppnapnnangigil g N M mnmMNAManananmaC A CCLalslalaslsla ) ! ) !!!!!
-    Ppepkejkrrjraaaa bbBaabapppApApakkaUddUdiiidnidii = Ppepkejkrrjraaaa("PaPkak Uudinni n MSnaSnnnsnsntsttaapP", 999120000);
+    
+    // Cara panggil tidak butuh Tembelan Teks (new) lagi!
+    PekerjaPabrik bapakUdin = PekerjaPabrik("Pak Udin Security", 99120000);
 
-    // MmemamMananaggggnggigiggLill il FFiugugungnngsSssisinsisNYNAYYAA!! (PpPAaApaaakKaKkkae ei ddotot.o.tt  ttittitikikiikk   k  sSPseepeprerrttttii J JS SS !!!)
-    bbBaabapppApApakkaUddUdiiidnidii.ngenGnggoceoceCchh();
+    bapakUdin.unjukBicara();
 
-    // ERROR !!! D D II LLllllaulurarr aa AArenarnenanan  GAA a A bbBOobooblOolheel le e g ngagANAGNGNANknkeklsleessese ess s guuGaijijiininyyayya_RAahahhassssiaaAiaiaa !!!!!!!!!!!!!!!!!!K K Kkrarrenaneanna a Prirvvviiivaattaaee eeeeeeeeeeeee !!!!!!
-    // bbBaabapppApApakkaUddUdiiidnidii.guuGaijijiininyyayya_RAahahhassssiaaAiaia = 1; 
+    // ERROR Murni!! Krn Gaji privat gak bsa dijebol
+    // bapakUdin.gajiOrangDalam_Rahasia = 999; 
 
     return 0;
 }
 ```
-
-SeseSsejejaajaaatatitinyinyNYyyyaa,  , ssSaSssaata a L L lulu nNngegeGegeggetetkttiikkiki i   `sStrSttrtrrniniiinng n`  a a t ttOa a O  `vveceVVcectoototoorr<rr<rr< iinnitit>> > ` d  iid i C++ +. ..  Lulu  iiitititut U SSEsebssEsebBbeBeneennnanannanarranarnyrynyyayYyyaAa yyYAya as SedseDdSdeeedaadangannanag n M MEemenmgenGGnunNnNUuugugnnnaknKAKnAKaNKAnNN CCclLalslasss s oObbojjeOjkejejKKk  ! ! M MAaMamannaatpatpspp jJIIjiwJIwwaawwwawaaw!
-
 ---
-[⬅️ Sebelumnya: PoPooiinnntttnr e DDDAna n Referefreenncencenee](../04-Pointer-dan-Ref/README.md) | [🏠 Daftar Isi C++ Utama](../README.md)
+[⬅️ Sebelumnya](../04-Pointer-dan-Ref/README.md) | [Lanjut ➡️](../06-OOP-Lanjut/README.md) | [🏠 Daftar Isi](../README.md)

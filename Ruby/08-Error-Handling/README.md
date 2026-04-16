@@ -1,44 +1,40 @@
-# 08 - Penjara Kehancuran (*Error Handling* Penyelamat Darurat) 
+# 08 - Penjara Kehancuran (*Error Handling*) 
 
-Pasti kesel kalo lo bikin Bot Scraper pengambil harga TIKET Traveloka tiap mlama.. Terus jm 3 Pagi web travelokanya mati down.. Si Script Ruby mu ini ikuttan NGE HANG dan KELUAR MERAH FORCE CLOSE dari layat Server VPS!! Wkwkwkw.
+Pasti kesel kalo lo bikin Bot Scraper pengambil harga TIKET Traveloka tiap malam.. Terus jam 3 Pagi web sana mati down.. Si Script Ruby mu ini ikuttan NGE HANG dan KELUAR MERAH FORCE CLOSE dari layar Server VPS!!
 
-Biar Programu pantasng menyerah wlwpun ngelihat erorr.. Kurung dalem *Begin & Rescue*. (Klo d bahasa lain sebutannnya itu try sm catch).
+Biar Programmu pantang menyerah nge-bypass error, kurung dalem *Begin & Rescue*. (Klo di bahasa lain sebutannnya itu try sm catch).
 
 ## Kurungan Tameng `begin` ... `rescue`
 
-Sperti biasaya.. gdda kurung kriting. 
+Sperti biasaya.. gada kurung kurawal. 
 
 ```ruby
-puts "--- Sistim Pemantau Hraga Dimuai ---"
+puts "--- Sistem Pemantau  Dimuai ---"
 
 begin
-    puts "Otww mbkbobila server tiktt mrk..."
+    puts "Otw nembak server tiket mereka..."
     
-    # ❌ NGESAJAAIN BKIN ERROR MURNI BIAR MLDBDAK! 
-    # (Mana isa membagi anggak 10 murni sm nol cuy pc akn error)
+    # NGESENGAJAIN BIKIN ERROR MURNI BIAR MELEDAK! 
+    # (Mana bisa membagi angka di dunia ini sama 0)
     uangMngktill = 10 / 0 
     
-    # BRS IINI GAK BKLAN MNUNGKNI DIBCACAA ! Krn diatas uda ptud tewas melekdkaa
-    puts "Yess brhsil bbokl!!!"
+    puts "Baris ini ga kan kecetak!"
 
-# 🌟 KURUNGAN PERETAK PENEYLAMMMAT !! BGTU MLDAKA DIA JLNNKSNI !
+# KURUNGAN PERETAK PENYELAMAT! BEGITU MELEDAK DIA JALAN KESINI:
 rescue ZeroDivisionError => bungksCrahnya    
-    # Klo eerrornya spesfks zero di vison dia mnkpp!  
+    
     puts "Waduh gile lu bro lu blih mbyagi ngaka nol yak??"
     
 rescue StandardError => bungkusUmum
-    # Klo errornya luap bkan msih krna diivison , dia msk ksini gblk blk !!
-    puts "Ada error laen nhh gw ctt ye ke file LOG: #{bungkusUmum.message}"
+    # Error global lainnya akan jatuh ke jaring ini:
+    puts "Ada error laen nhh: #{bungkusUmum.message}"
 
-# 🌟 PENUTUP RUTNITASI WAJIB APPUAYNG TSDJAADI!
+# PENUTUP RUTINITAs WAJIB APAPUN YANG TERJADI!
 ensure
-    puts "-- Udh yah mski td ada yg ptud meledak ak ttp nge brishiin meemoriny trkrn di file!! ---"
+    puts "-- Udh yah, aku selesai dan gak jd nge-Crash! ---"
 end
-
-puts "Lht kan?? Apliaksiki blmmm cRash mti dan aku msih idupp bs jln nctkk innn!! MantuLL!"
 ```
 
-Dgn ngertipola mnteng begin-rescue... App API Ruby on Ralis lo di server Linux bkl tegr brtaahan brblan bulam tnpa takut force closed lg .
-
+Dengan ngerti pola maut begin-rescue... App API Ruby on Rails lo di server Linux bakal tegar bertahan berbulan bulan tanpa takut force closed lg .
 ---
-[⬅️ Sebelumnya: Mixin Sifat Alien](../07-Modul-dan-Mixin/README.md) | [Lanjut Mengorek FIle Daleman I/O Berkss ➡️](../09-File-IO/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya](../07-Modul-dan-Mixin/README.md) | [Lanjut ➡️](../09-File-IO/README.md) | [🏠 Daftar Isi](../README.md)

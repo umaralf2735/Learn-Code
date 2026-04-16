@@ -1,9 +1,8 @@
-# 02 - Konstruksi Kaku Kontrol (Sama Plek Ama C)
+# 02 - Konstruksi Kaku Kontrol C++
 
-Kalau lu udahan baaca Bab 2 di Bahasa C, Skip aja bab ni. G ada yang berubaah sama sekali struktur dasarnya.
+Dalam C++, sintaks if-else dan looping murni menuruni kakek buyutnya (C dan Java). Tidak ada yang mengejutkan jika kamu telah fasih dalam blok dasar perulangan JS / PHP. Segala parameter tetap diapit didalam kurung `( )` dan body kurung kurawal `{ }`.
 
-## 1. IF dan Else
-Di C++ tetap membbutuhkan kuRung biASaaa dan kuruwalll yg ngikeket!.
+## 1. IF dan Else Logic Block
 
 ```cpp
 #include <iostream>
@@ -13,20 +12,20 @@ int main() {
     int darahKu = 0;
     
     if (darahKu > 50) {
-        cout << "GaaSss seRRnngag ngBOSOO!!\n";
+        cout << "Gasss Serangg Boss!!\n";
     } else if (darahKu > 0) {
-        cout << "Waassaapsda srekarraratrt !!\n";
+        cout << "Waspada sekarat bro panggil medic!!\n";
     } else {
-        cout << "YOU RREEEE DEDDDD AMTTETTETE!!\n"; 
+        cout << "YOU ARE DEAD!!\n"; 
     }
     
     return 0;
 }
 ```
 
-## 2. Looping (Harta Klasik)
+## 2. Looping For 3 Babak Klasik
 
-Tetep pakaio  for 3 babkaakk klasikk!! 
+Digunakan berulang untuk memutar hitungan logika matematika atau menelusuri array polosan lama.
 
 ```cpp
 #include <iostream>
@@ -34,16 +33,13 @@ using namespace std;
 
 int main() {
     
-    // Putetr tnrssuss
-    for (int it = 1; it <= 5; it++) {
-        cout << "NGsocoouggok telueer kr : " << it << endl;
+    // Putar index dari 1...
+    for (int iter = 1; iter <= 5; iter++) {
+        cout << "Menetaskan telor naga ke : " << iter << endl;
     }
 
     return 0;
 }
 ```
-
-Nnuanna C++  msiai hh kntnklal di sininiin.. Tppai nanintii di Baab 3 kliaan bnakanaln trnnngaaangnga smmA  ffityurr arYYay Vveectootor ny a!!
-
 ---
-[⬅️ Sebelumnya: DsaAAsassR VarrbLel](../01-Dasar-Dasar/README.md) | [Lanjut ke DeWa VeCTCTtOR c++  ➡️](../03-Array-Vector/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya](../01-Dasar-Dasar/README.md) | [Lanjut ➡️](../03-Array-Vector/README.md) | [🏠 Daftar Isi](../README.md)

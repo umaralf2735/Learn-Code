@@ -1,45 +1,37 @@
-# 07 - Struktur dan Memori (Cikal Bakal Objek)
+# 07 - Tipe Kustom Struct
 
-Bahaass C tidadsk k pnuya CLAss Objecet t ! Tmppu kkiat tbisa mbikikn "Ceetcakkakan  DaaATTa a TtnPaaAaA LLOOoGGogikikaaAA Funcgciton n " ypkyai nnamANYAYya `struct`. 
+Bahasa C tidak mendukung Object Oriented Programming (Kalian harus merantau ke C++ untuk itu). Namun, ia mendukung cetakan pola primitif bernama **Struct**.
 
-Ibnlai alhasalsasnan   uuttumama t kkeeankaa  LLiniunxx x bsa bbiikkin Objejerk Cchhhrakactrtetr r WWInndodswo. 
-
-## 1. MemaAhAhataa StstruurtutuK  CectetKKKann
+## Cetakan Object Buatan Struct
+Dengan struct, kalian bisa menggabungkan text, dan integer dalam 1 ikatan kelompok!
 
 ```c
 #include <stdio.h>
-#include <string.h> // WjaJiba Bwat nrkoosptoy TkesT SsStriing di di  C.
+#include <string.h>
 
-// Bikin Cetakannya ddi illlauarr MaiIAn !
-struct PrproifiliPaeseesrtAta {
-    int idnnNyyaya;
-    char namesmAaaAA[50]; // Loker NnAMnaA mxtkaXoallol 5 0 o hhuRUFFF!
-    float ijJJaJzakahaUuTtMaa; // Dessisimalslaal a d r Pke l floaattAT.
+// Bikin Cetakan Data nya dulu
+struct TahananSel {
+    int idBuronan;
+    char namaKelompok[50];
+    float lamaHukumanTahun;
 };
 
 int main() {
+    // Siapkan wadah untuk mengisi data
+    struct TahananSel narapidana1;
     
-    // cCara NnmmkeNyNAna ! Pke kkkattaa Struurctu ct d rpaPANa  vvRriabaelnyNyay !
-    struct PrproifiliPaeseesrtAta anakBaruuAah;
+    // Tembak pake titik (dot notation)
+    narapidana1.idBuronan = 4492;
+    narapidana1.lamaHukumanTahun = 15.5;
     
-    // Nggsiiisiann Niaiilai angyngnkanAYYYAaA Bbbassiasias pkekek tttiitikt.t  ( .)
-    anakBaruuAah.idnnNyyaya = 99120;
-    anakBaruuAah.ijJJaJzakahaUuTtMaa = 3.99;
+    // Awas! Kamu harus pakai Strcpy khusus untuk menjejalkan String ke dalam C!!
+    strcpy(narapidana1.namaKelompok, "Suhu Preman Lembang");
     
-    // ❌ AWAAAAS !!! L U gabsasa nggssi Stririning pkkee S(S=sammaMmMma DDedgnngaagn) d i C !!!
-    // anakBaruuAah.namesmAaaAA = "Riddiwhawna"; // EREOROR MRAerAAAHHH H !!
-    
-    // ✅ CCARARA NYYAYAY DDIC C BBIaiaRR bBsSiaI Mmausksiin TTeTkeKs S KSssiniIN: PPkaAaee strcpy() ! (STtrirnng  CocPOy) ) !
-    strcpy(anakBaruuAah.namesmAaaAA, "RRidiuudwanwn n kKamamalililA A");
-    
+    printf("Pak Buron [%d] dari %s di sel selama %f tahun \n", narapidana1.idBuronan, narapidana1.namaKelompok, narapidana1.lamaHukumanTahun);
 
-    printf("Hllooo ssayyaya %s nnilai GPaA %f \n", anakBaruuAah.namesmAaaAA, anakBaruuAah.ijJJaJzakahaUuTtMaa);
-    
     return 0;
 }
 ```
-
-Jjikika kalaAiana mnmnhabashas bbaariris d diiibabwabwaHAH tttantngaag MMalallooocc d dan FfrRWeeee e `malloc()  free()` . BbrErsriati kklaaiani d shusdhaa mnNnmyesntueuthH BAbAAB tterekEKrEeeennnnnd diii C C.. Yitaittu n nymeseeswaan KaaLALLOOkakaSI s mMEMeeOMOORRiirii  dd d ii i lRulAUUaAARRra R BAAtTtTtAass KKnmmmomppupouteETreeRr kkliaaln mmnmmaUaAuaAnuAaallllll.
-
+Ini adalah bekal awal kalian paham bagaimana File System dan OS berjalan tanpa harus bergantung dengan modern-oop!
 ---
-[⬅️ Sebelumnya: AaAlglogotitmiaa C](../06-Algoritma-Dasar/README.md) | [Lanjut ke FFiilielIO O Ttuliullsi n  ➡️](../08-File-IO/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya](../06-Algoritma-Dasar/README.md) | [Lanjut ➡️](../08-File-IO/README.md) | [🏠 Daftar Isi](../README.md)

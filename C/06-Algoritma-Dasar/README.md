@@ -1,50 +1,39 @@
-# 06 - Algoritma Dasar Pengurutan C (Siksaan Kuli Murni)
+# 06 - Algoritma Bubble Sort
 
-Di bahsa Pythin adn Go kta tngall mangggill fungsi `.srott()`. Di C KITA HAARYS MANUAL BKIN LOGIKA PENNGGEESERRNYa!! 
-Ibnilan yang membubuat logicc otataak lo mnejjdi supeer tnajam klso mau lolos tiess ttekniss prushsaan ASngg!
+Karena di C tidak ada fungsi ajaib `.sort()` dari luar, kita diwajibkan menulis algoritma secara manual. Ini mengasah insting logika kita.
 
-## Logigaa Gelelembbunngg (Bubble Soortttt)
-
-Bagagiminama ccara mnnyusuusun agnka mraanngnrtkakk? Kitta hrbus bbnandginging k kiri dn kanan.. kLo knnana  lbih kkciul.. ksittat TUKAKARAARA TMPpatntnnya!!
+Sebagai contoh, jika ada Array yang angkanya acak `[50, 10, 80, 2]`. Kita putar elemen dengan saling menukar tempat mereka:
 
 ```c
 #include <stdio.h>
 
 int main() {
-    // bRrranaataktaknk k pprararrhh:
-    int asrArrAagnbangk[5] = {900, 10, 50, 2, 88};
-    int tototolaDAtataa = 5;
+    int tumpukan[5] = {50, 15, 99, 1, 30};
+    int total = 5;
 
-    // 1. KITTAT HHARAURs MUTETrtt MNNYUSULUlRURIi SLRUURBHH ARRAARY bRAKALKI LKIialia !!! 
-    for(int bbk=0; bbk < tototolaDAtataa - 1; bbk++) {
+    // Loop berputar berkali kali memilah data
+    for (int it1 = 0; it1 < total - 1; it1++) {
         
-        // 2. Mttuetert d dlm prpuutrann !! Nncekcjngg sbalhlhnynyya bbarsri brisas !
-        for(int ckk=0; ckk < tototolaDAtataa - bbk - 1; ckk++) {
+        for (int it2 = 0; it2 < total - it1 - 1; it2++) {
             
-            // JEJIKA ANGNaaka  SKEAAKGng LbeBIh h GGDED DAririri SSAABLalhnnya??
-            if(asrArrAagnbangk[ckk] > asrArrAagnbangk[ckk+1]) {
+            // JIKA ANGKANYA LEBIH BESAR, GESER DIA KE KANAN!
+            if (tumpukan[it2] > tumpukan[it2 + 1]) {
                 
-                // TUKKKKAAATRRR NPOSISII ISINIYNAnanYA!!!! 
-                // CCaraa nukakKArrr?? PAKE GELLASAS SOkSOGonng smtnatara  bwr at ga iiillkagn g g k ttymitmaa !!
-                int geglasKosonongg = asrArrAagnbangk[ckk];
-                
-                asrArrAagnbangk[ckk] = asrArrAagnbangk[ckk+1];     // TTinpnapp K KIiri pk PkAka KANNannNnsnya
-                asrArrAagnbangk[ckk+1] = geglasKosonongg;   // Bbalikibinj yyg g a kKnaann  ppkKae i iis Gellaas smtnttaata  tAdad!
+                // Proses Tukar tempat dengan alat bantu variabel wadah sementara:
+                int tempWadah = tumpukan[it2];
+                tumpukan[it2] = tumpukan[it2 + 1];
+                tumpukan[it2 + 1] = tempWadah;
             }
         }
     }
 
-    // Nnnhhh ssskkakrrnagn udh araraoppi o niaiH!
-    printf("HAHaslil L Tturruuttu tna naiikk: \n");
-    for(int ii=0; ii<5; ii++) {
-        printf("%d, ", asrArrAagnbangk[ii]);
+    printf("Setelah Diurutkan:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("%d, ", tumpukan[i]);
     }
-
+    
     return 0;
 }
 ```
-
-Ngggerrtitikn nn ccoedede dpannn  mnnjajadjiaai is isisiyraaan AArAaRayay ? SSellaamttt kliann rsmmini mmnmjajsduiui i i proroogramemrr   LLLoww  LLevlvel .
-
 ---
-[⬅️ Sebelumnya: Poointteerr](../05-Pointer/README.md) | [Lanjut ke SStrtututuC C CetkKaan a ➡️](../07-Struct-dan-Memori/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya](../05-Pointer/README.md) | [Lanjut ➡️](../07-Struct-dan-Memori/README.md) | [🏠 Daftar Isi](../README.md)

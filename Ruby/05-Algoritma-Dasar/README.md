@@ -1,54 +1,48 @@
-# 05 - Algoritma Dasar Sakti Tembus Batas (*Enumerable*)
+# 05 - Algoritma Dasar Sakti (*Enumerable*)
 
 Ini alasan Startup Web Amerika thn 2012an nyari Ruby Dev gede gedean gajinya! **ENUMERABLE**.
-Lo gak perlu algrotime Looping For-while gkjls untuk misain data, motong text trkecil dll ke k dlam array milih 1-1 kek di bahasa C.
+Lo gak perlu algrotime Looping For-while gak jelas untuk misain data. Ruby punya blok ajaib!
 
-Sama Kerenya sperti Map dan Filter (*JS List Comprehension Python*). Ruy puny Block Yield Maut!!
+## 1. Perputaran `.each` (Sang Pengganti LOOP FOR)
 
-## 1. Perputaran `.each` (Sang Pengganti LOOP FOR Tuhannn)
-
-Cukup Pake `.each do |variableSmentara|`. Loop C murni lo bakal tamat mati dikubur selamnaya!
+Cukup Pake `.each do |variableSementara|`. Loop For klasik bakal kalah saing!
 
 ```ruby
 karyawanPabrik = ["Robby", "Ganteng", "Makmur"]
 
-# Mutar Muterin Semuany: Baca: Setaipp isi karywn pbrik masukin tmpung ke dlam var orang! 
 karyawanPabrik.each do |orang|
-    puts "Mandor mukulin bngung anak ini: #{orang}"
+    puts "Anak ini namanya: #{orang}"
 end
 ```
 
-## 2. Memetakan Metamorfosis Array Baru `.map`
-Sama ke JS persisssssss!!! Ngubah smeua isi data mentah 1-1 dikalilin 2 tanpa numburk ram utamnnya jdilah array anyar!
+## 2. Memetakan Array Baru `.map`
+Sama kaya JS persis!! Ngubah smeua isi data mentah 1-1 dikali 2, lalu dilempar jadi Array Baru!
 
 ```ruby
 isiDebit = [500, 10, 50, 2]
 
-# Bikin bnsgts lgsung Array bru!! 
-# BACA MUDAHNYA DR BWAH INI : Lakukan map dr isidibit sboagi 'ongok' lalu returkan hasil onkkok di kali serbii!!
+# Bikin langsung Array baru!! 
 uangMeledakMega = isiDebit.map do |ongkok|
-    ongkok * 1000  # Inget kn gaprulu dksih rturn2 lg auto kpsg diRuby!
+    ongkok * 1000  # Inget otomatis return Ruby
 end
 
-puts uangMeledakMega.inspect # Print array mode liat siku [] # hsl: 500ribu, 10ribu, 50rbuu
+puts uangMeledakMega.inspect # Print mode Array asli
 ```
 
-## 3. Hakim Pemilah Hukuman Mati `.select`  (Sama kaya JS FILTER)
+## 3. Hakim Pemilah Data `.select` (Sama dengan Filter di JS)
 
-Misahin misal ada ratusan Object Data Pendudk , lo mau nangkep Org berumu di atas 18 taun buat dpilih jd pmiilu!
+Misal ada ratusan data, lo mau nangkep Orang berumur di atas 18 tau buat dpilih jadi pemilih! Atau mencari angka genap doang:
 
 ```ruby
-nomorKeramatSakti = [1, 5, 2, 8, 10, 99, 11]
+nomorSakti = [1, 5, 2, 8, 10, 99, 11]
 
-# Ambil dan tarik ke araray luarr cmn bst angkat GENAP (even?) aja doang cuy!! 
-ganjilanDoankNih = nomorKeramatSakti.select do |n|
-    n.even?  # ADA FINGSI BAWAANN NAMANy (.even?) tanyak : euy lui genap yakk bos?? (Returtntrue)
+ganjilanDoankNih = nomorSakti.select do |n|
+    n.even?  # ADA FUNGSI BAWAANN NAMANYA (.even?) Nanya: Apakah genap?
 end
 
-puts ganjilanDoankNih.inspect # Output -> Haa cuman [2, 8, 10] yg lolos keangkut genap smua!!
+puts ganjilanDoankNih.inspect # Output -> [2, 8, 10]
 ```
 
-Ini adalah kempuan pamungkas dari Rails untuk menyaring Ratusan Ribu baris Query Datatbese PstgerSQL mu taroan ActiveRcorsd tnpa PC server lu angsu meledak keabisan Ram mnddak. Semuany krn efesiensinya block Enumerable init ! Mantab !!
-
+Ini adalah kempuan pamungkas dari `ActiveRecord Rails` untuk menyaring Ratusan Ribu baris  Database tnpa membebani Server lo.
 ---
-[⬅️ Sebelumnya: Fungsi Func Def ](../04-Metode-dan-Blok/README.md) | [Lanjut ke Blueprnt Class OOP Ruby Bneran ➡️](../06-OOP-Class/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya](../04-Metode-dan-Blok/README.md) | [Lanjut ➡️](../06-OOP-Class/README.md) | [🏠 Daftar Isi](../README.md)
