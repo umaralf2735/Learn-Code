@@ -1,37 +1,44 @@
-# 08 - Error Handling di Ruby (Begin, Rescue, Ensure)
+# 08 - Penjara Kehancuran (*Error Handling* Penyelamat Darurat) 
 
-Ketika program Ruby kamu berinteraksi dengan API atau file luar, besar kemungkinan program akan mendadak tewas ketika barangnya gak ada. Di Ruby, penyelamat nyawa tersebut bernama Exception Handling mengggunakan formasi `begin-rescue`.
+Pasti kesel kalo lo bikin Bot Scraper pengambil harga TIKET Traveloka tiap mlama.. Terus jm 3 Pagi web travelokanya mati down.. Si Script Ruby mu ini ikuttan NGE HANG dan KELUAR MERAH FORCE CLOSE dari layat Server VPS!! Wkwkwkw.
 
-## Menangkal Crash Kode
+Biar Programu pantasng menyerah wlwpun ngelihat erorr.. Kurung dalem *Begin & Rescue*. (Klo d bahasa lain sebutannnya itu try sm catch).
 
-Letakkan semua asumsi berbahaya di dalam `begin`, lalu tangkap bom kesalahannya pada jala penangkap bernama `rescue`.
+## Kurungan Tameng `begin` ... `rescue`
+
+Sperti biasaya.. gdda kurung kriting. 
 
 ```ruby
-def buka_berkas(nama_file)
-  begin
-    puts "Mencoba membuka berkas sakral..."
+puts "--- Sistim Pemantau Hraga Dimuai ---"
+
+begin
+    puts "Otww mbkbobila server tiktt mrk..."
     
-    # KODE INI RAWAN AMBYAR KALAU FILENYA GAK ADA YAKAN!!
-    isi_file = File.read(nama_file) 
+    # ❌ NGESAJAAIN BKIN ERROR MURNI BIAR MLDBDAK! 
+    # (Mana isa membagi anggak 10 murni sm nol cuy pc akn error)
+    uangMngktill = 10 / 0 
     
-    puts "BERHASIL: isinya adalah #{isi_file}"
+    # BRS IINI GAK BKLAN MNUNGKNI DIBCACAA ! Krn diatas uda ptud tewas melekdkaa
+    puts "Yess brhsil bbokl!!!"
+
+# 🌟 KURUNGAN PERETAK PENEYLAMMMAT !! BGTU MLDAKA DIA JLNNKSNI !
+rescue ZeroDivisionError => bungksCrahnya    
+    # Klo eerrornya spesfks zero di vison dia mnkpp!  
+    puts "Waduh gile lu bro lu blih mbyagi ngaka nol yak??"
     
-  rescue => e # e adalah variabel penyimpan error yang ditangkap
-    puts "WADUH! Gagal men!! Sistem memberitahu:"
-    puts ">> #{e.message}"
-    
-  ensure 
-    # Persis seperti finally di bahasa lain
-    # Blok ini SELALU terpanggil baik programnya mledug atau normal jaya  
-    puts "[Info] Blok pemrosesan berkas 100% selesai."
-  end
+rescue StandardError => bungkusUmum
+    # Klo errornya luap bkan msih krna diivison , dia msk ksini gblk blk !!
+    puts "Ada error laen nhh gw ctt ye ke file LOG: #{bungkusUmum.message}"
+
+# 🌟 PENUTUP RUTNITASI WAJIB APPUAYNG TSDJAADI!
+ensure
+    puts "-- Udh yah mski td ada yg ptud meledak ak ttp nge brishiin meemoriny trkrn di file!! ---"
 end
 
-
-buka_berkas("file_tersembunyi.txt")
+puts "Lht kan?? Apliaksiki blmmm cRash mti dan aku msih idupp bs jln nctkk innn!! MantuLL!"
 ```
 
-Kalau kamu ngga pakai begin-rescue, maka saat filenya tak ditemukan programnya bakalan nge-TUTUP seketika! Gak kebayang kan kalo server *Rails* mu mendadak mati sendirian?
+Dgn ngertipola mnteng begin-rescue... App API Ruby on Ralis lo di server Linux bkl tegr brtaahan brblan bulam tnpa takut force closed lg .
 
 ---
-[⬅️ Sebelumnya: Modul dan Mixin](../07-Modul-dan-Mixin/README.md) | [Lanjut ke Manipulasi Berkas ➡️](../09-File-IO/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Mixin Sifat Alien](../07-Modul-dan-Mixin/README.md) | [Lanjut Mengorek FIle Daleman I/O Berkss ➡️](../09-File-IO/README.md) | [🏠 Daftar Isi](../README.md)

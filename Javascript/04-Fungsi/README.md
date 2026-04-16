@@ -1,48 +1,73 @@
-# 04 - Fungsi di JavaScript
+# 04 - Fungsi di JavaScript (Pabrik Mini Andalan Kalian)
 
-Penting untuk membungkus perintah yang sering dipakai ke dalam "Fungsi", supaya bisa dipakai ulang dengan gampang tanpa *copy-paste* berulang.
+Masa kalian rela *copy-paste* kode ngitung Diskon Tokopedia 50 baris berkali-kali buat 10 barang terpisah? Tentu hal itu merusak tatanan surga kodingan. 
 
-## 1. Syntax Fungsi Tradisional (Sama seperti bahasa lain)
+Disinilah hadir **Fungsi (Function)**. Fungsi adalah Pabrik Mesin Kecil yang kalian bikin sekali, dan bebas kalian pencet panggil (Call) jalankan jutaan kali.
 
-Mirip seperti di C/Java, ini cara *classic* membuat fungsi di Javascript pakai awalan `function`.
+## 1. Syntax Tradisional Tua Murni
+
+Fungsi butuh "Corong Masukan (Parameter)" dan "Lobang Keluaran (Return)". Walau kadang juga ngk perlu.
 
 ```javascript
-// Mendeklarasikan fungsi dan parameter
-function hitungTotalBelanja(harga, diskon) {
-    let potong = harga * (diskon/100);
-    let totalBayar = harga - potong;
+// 1. Memahat Fungsi Mesinnya
+function kalkulatorDiskonNyepi(hargaAsli, diskonPersen) {
+    let potongannya = hargaAsli * (diskonPersen / 100);
+    let totalBayar = hargaAsli - potongannya;
     
-    // Memberikan uang kembalian atau hasil dari proses!
+    // RETURN SANGAT PENTING! 
+    // Mengembalikan Uang Kembalian (Hasil) ke tangan pemanggil!!
     return totalBayar;
 }
 
-// Memanggil fungsinya
-let totalSaya = hitungTotalBelanja(50000, 20); // 50 ribu, diskon 20%
-console.log("Yang harus saya bayar:", totalSaya); 
+// 2. Memencet / Menghidupkan Fungsinya dgn menyetor Value ke Parameter
+let tagihanAndi = kalkulatorDiskonNyepi(500000, 50); // Beli baju setengah juta, disc 50%
+let tagihanTini = kalkulatorDiskonNyepi(10000, 10);  // Beli jajan wkwk
+
+console.log("Si Andi ksuruh trnsfer: Rp." + tagihanAndi);
+// Bayangkan kalian memanggil nama fungsinya doang 2 kali ga perlu ngetik kali bagi persentase lagi kan!!
 ```
 
-## 2. Sintaks Modern: Arrow Function `=>`
+> **Catatan Darurat Pemula**: Apa yang ada (variable) di dalam pagar perbatasan `{ }` tubuh sebuah fungsi, MAKA DIA HANYA HIDUP DISITU (`Local Scope`). Lo gaboleh iseng ngeconsole.log sebuah variable let buatan dalem fungsi dari luar fungsinya. Error karena diluar ga kenal.
 
-Di JavaScript versi baru (ES6), kita diberikan fitur keren untuk bikin fungsi sangat-sangat **pendek**, yang dinotasikan dengan bentuk tanda panah `=>`. Biasanya selalu disimpan ke dalam variabel tipikal konstan (`const`).
+## 2. Nilai Darurat Default (Menyelamatkan Website)
+
+Sering banget *user* goblok gak masukin nilai waktu manggil fungsi (Kosong/Undefined). Supaya function mu gak memakan NaN (Not A Number) dan Error hancur, beri dia Nilai Asuransi!
+
+```javascript
+// Perhatikan namaPemesan = "Hamba Allah" (Ini nilai Backup klo kosong!)
+function cetakTiketKonser(namaPemesan = "Hamba Allah", kelas = "Ekonomi") {
+    console.log(`===== TIKET KONSER =====`);
+    console.log(`Nama : ${namaPemesan} | VIP: ${kelas}`);
+}
+
+cetakTiketKonser("Reza Rahadian", "VVIP"); // Normal jalan normal!
+
+// KOK DIPANGGIL KOSONG GA NGIRIM APAPA?! 
+cetakTiketKonser(); // Bakal keluar output nyetak aman: Nama : Hamba Allah | VIP: Ekonomi !!!
+```
+
+
+## 3. Era Sintaks Modern (GGS: Ganteng Ganteng Serigala) -> *Arrow Function `=>`*
+
+Kultur zaman NodeJS ES6 masa kini melarang penggunaan tulisan kuno `function`. Merasa kepanjangan.
+Gantilah memakai simbol Panah `=>` dan disimpang dalam const.
 
 ```javascript
 // Function classic:
-function tambahDuaAngka(a, b) {
-    return a + b;
+// function pangkatDua(angka) { return angka * angka; }
+
+// ARROW FUNCTION (Super Pendek)
+const pangkatDua = (angka) => { 
+    return angka * angka;
 }
 
-// ARROW FUNCTION (Tulisannya jauh lebih singkat):
-const tambahPanah = (a, b) => { // tanda function dibuang, diganti panah
-    return a + b;
-}
+// LEVEL DEWA: Kalau isi kurung kurawalnya CUMA SATU BARIS DOANG DAN ITU RETURN...
+// BOLEH ILANGIN SEMUA KURUNGNYA DAN KATA RETURN NYA!
+const kalikanDewa = (a, b) => a * b;
 
-// BAHKAN JIKA isinya cuma SATU baris mengembalikan nilai, bisa disingkat lagi jadi seperti ini:
-const tambahPalingPanah = (a, b) => a + b;
-
-console.log(tambahPalingPanah(5, 5)); // Output: 10
+console.log( kalikanDewa(5, 5) ); // 25. AJAIB KAN?
 ```
-
-Arrow function seringkali bikin programmer bahasa lain kaget pertama kali liat, tapi lama-lama akan ketagihan dan ngga mau balik nulis secara tradisional!
+Itulah kenapa kalian klo magang dikantor ngeliat react isinya kode beranak panah `=>` semua! 
 
 ---
-[⬅️ Sebelumnya: Array dan Object](../03-Array-dan-Object/README.md) | [Lanjut ke Materi Algoritma Dasar ➡️](../05-Algoritma-Dasar/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Array dan Object](../03-Array-dan-Object/README.md) | [Lanjut ke Algoritma Ghaib ➡️](../05-Algoritma-Dasar/README.md) | [🏠 Daftar Isi](../README.md)

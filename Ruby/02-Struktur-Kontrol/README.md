@@ -1,66 +1,62 @@
-# 02 - Struktur Kontrol dan Perulangan (Ruby Style!)
+# 02 - Struktur Kontrol (If, Else, dan Magis `unless`)
 
-Logika `if` di Ruby ditutup dengan kata ganti `end` (Bukan pakai `{}` layaknya bahasa pemograman umum).
+Mari kita bahas IF ELSE nya. Ingt yg diawal kubilang, ngga ada Kurung Kurawal `{ }` pusing lagi. 
+Sebagai gantinya. Kalian diwajibkan Mengunci gerbang Logikanya Pukul Rata Pakai Tulisan **`end`** dibawahnnya!!
 
-## 1. If / Elsif / Else
+## 1. Percabangan dengan `if` dan `elsif`
 
-Penulisan standar untuk mengecek suatu kondisi : 
+Perhatikan! bukan Else If yak, TAPI disingkat mnjd **`elsif`**!!
 
 ```ruby
-nilai = 85
+darahMusuh = 25
 
-if nilai >= 90
-  puts "Sangat Memuaskan!"
-elsif nilai >= 75
-  puts "Lulus!"
-else
-  puts "Uji perbaikan (Remedial)."
+if darahMusuh >= 50
+    puts "Maju teruss tank nya tbbel bosque!"
+    # LU BEBAS ngetik sepanjang aappapun ksini turun kdwbah trsu gapapa .
+
+elsif darahMusuh >= 15
+    puts "Sikat udah Sekarat nanggung!"
+else 
+    puts "Hit sekliklagi mati!!!"
+end # INI WAJIB! SBGAI PENGGANTI KURUNG PENUTUP } MURNI!!
+```
+
+## 2. Sang Pelawan Arus Sakti (`unless`) 
+
+Kalo di bahasa C lu nulis syarat tidak sama dengan kayak gni "Kalo GAK Ujan" : `if ( !hujanAman )`. Ngetik TANDA SERU `(!)` kadang suka sliut nyempil g gampang diliat mata org.
+
+Ruby nyiptain kata *"KECUALI KALAU..."* (`unless`). 
+**Dia bakal Njalanin bloknya KETIKA SYARATNYA BOHONG/FALSE!!!**
+
+```ruby
+uangKantin = 500
+
+# Baca: Kecuali Coki punya Uang di atas Seribu, Mending dia Plih Gausah Jajan!!
+# (Karena Uang cman 500... Berarti FALSE (Bohong gda sribu).. MAKA PROGRAM INI YG MAALh Di JalANIN!)
+unless uangKantin > 1000
+    puts "Sabar coki.. lo kaga usah jajan dlu hrini!"
 end
 ```
 
-### Statement satu baris (Mantap!)
-Kalau yang kamu suruh cuma pendek, kamu bisa mundurin posisinya ke belakang :
+## 3. Looping Times (Mengulang Kayak Manusia)
+
+Kamu mau nulis kata Halo 5 kali? 
+Kalo di C `for(int i=0... dsb.`. Di JS `for(let i=0....)`
+
+**DI RUBY CUMA KAYA GINI!!**
 ```ruby
-uang = 1000
-
-# Bakal cetak "Lapar" KALAU uangnya kurang dari 5000
-puts "Lapar" if uang < 5000 
-```
-
-## 2. Keyword *UNLESS* (Kecuali Kalau)
-
-Ruby punya keyword unik bahasa Inggris: `unless`. Ini sama aja kayak nulis `if tidak / if !=`. Buat yang malas pakai tanda seru `!`.
-
-```ruby
-apakah_hujan = false
-
-# Bacanya: Jalan-jalan ke taman KECUALI KALAU hujan. 
-puts "Jalan-jalan ke taman" unless apakah_hujan
-```
-
-## 3. Perulangan Ruby yang Super Elegan
-
-Jujur saja, di Ruby orang SANGAT JARANG menggunakan `for i=0; i<x; i++`. Kenapa? Karena kita punya bahasa yang lebih natural.
-
-### `.times` (Ulang sekian kali aja)
-```ruby
-5.times do |i|
-  puts "Ayo semangat yang ke-#{i} kalinya!"
-end
-# Catatan: nilai `i` selalu dimulai dari angka 0, bukan 1.
-```
-
-### `while` standar
-```ruby
-baterai = 3
-
-while baterai > 0
-  puts "Senter Menyala!"
-  baterai -= 1 # Kurangi 1
+# Panggil agnkannya.. Suruh dia ngulang sndiri TIMES ! haha
+5.times do
+    puts "Halo bos syang!!" 
 end
 
-puts "Senter Mati."
+# Mau ngabari putarannya udayampe mna?? 
+3.times do |indeksTugas|
+    puts "Lari ngelinging tugu ke- #{indeksTugas}" # Index mlai Dr 0 ingt
+end
 ```
+
+Wow wow!! Mulai kelihatan kan seberapa "Human-Friendly" bgt si Ruby inj? Pantek aja Framework RAILS itu dipuji puji kecepatan *Devolopment* dan Codingnya di Amerika thn 2010n !! 
 
 ---
-[⬅️ Sebelumnya: Dasar-Dasar](../01-Dasar-Dasar/README.md) | [Lanjut ke Array dan Hash ➡️](../03-Array-dan-Hash/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Dasar Print Output](../01-Dasar-Dasar/README.md) | [Lanjut ke Harta Karun Hash ➡️](../03-Array-dan-Hash/README.md) | [🏠 Daftar Isi](../README.md)

@@ -1,37 +1,48 @@
-# 04 - Array Bertipe dan Tuple
+# 04 - Menyucikan Array dan Merakit Tuple
 
-Memasukkan data berseri. Kalau di JS kan array bisa dicampur telor+terigu+besi. Disini haram, laci besi ya laci besi, telur ya di array telur!
+Array (kardus Laci data) di Javascript sangat kotor nyampur ga jleas. Lo bisa nyimpen Baju, Garpu, sama Ban Mobil di Array Loker yang sama kan di JS. Itu rentan merusak perhitungan di loop nanti loh.
 
-## 1. Array Bertipe Tunggal
+TS memaksa lu: Rak Buku ya Rak Buku! Harus murni String smua!
 
-Gunakan akhiran Kurung Siku Kosong `[]` diujung nama Tipenya. 
+## 1. Array Bertipe Murni Tunggal
 
-```typescript
-// Aku mau membikin keranjang, TAPI KHUSUS STRING
-let rakNama: string[] = ["Budi", "Andi", "Tono"];
-
-// rakNama.push(500); // ❌ ERROR TERIAK MERAH! HARUS STRING!
-rakNama.push("Joko"); // ✔️ Berhasil 
-
-// Gimana klo array campur? Pakai Operator OR |
-let laciCampur: (string | number)[] = ["Kaca", 99, 1000, "Batu"];
-```
-
-## 2. Sang Wadah Super Kaku: Tuple
-
-Apa bedanya Tuple dan Array? Tuple itu mengatur JUMLAH SLOTNYA sekalian TIPE DATANYA BERURUTAN!
-Biasanya dibuat kalau kita pengen membungkus balikan GPS (Latitude, Longitude), atau kembalian Nilai kembar.
+Supaya Suci murni, Berikan Label tipe dikuit kurung siku kosong `[]`.
 
 ```typescript
-// BACA: Slot 0 Wajib String, Slot 1 Wajib Number, SLOTNYA MAX 2 GA LEBIH!
-let KTPku: [string, number]; 
+// Laci ini HARAM hukumnya kemasukan angka!!!
+let rakSenapanList: string[] = ["Sniper", "Pistol", "Senapan Angin"];
 
-KTPku = ["Joko Ribowo", 99120];  // ✔️ Sah!
+// rakSenapanList.push(5000); 
+// ❌ ERROR TERIAK MERAH! HARUS STRING BOS WALAUPUN LU PUSH!
 
-// KTPku = [99120, "Joko Ribowo"]; // ❌ ERROR!! KEBALIK URUTANNYA WEY!
-// KTPku = ["Joko", 123, "Lainnya"]; // ❌ ERROR KEBABLASAN INDEX
+rakSenapanList.push("Pelontar Rocket"); // ✔️ Berhasil 
+
+// ❓ Gimana bang kalo gue kepaksa nyampur? (Gunakan Kurung | Or Pipa Panjang Lgi)
+let laciPasarGila: (string | number)[] = ["Kaca", 99, 1000, "Baju Bekas", 0];
 ```
-Sangat keren dalam mengelola kembalian API yang bentuk kodenya sudah kita janjikan!
+
+## 2. Sang Wadah Super Kaku & Mutlak: Tuple
+
+Apa bedanya Tuple dan Array? Array itu Jumlah panjang lsicnya bisa namba melar dari 3 barang ke sejuta barang.
+Tuple itu **MENGUNCI JUMLAH SLOTNYANG TERSEDIA** DAN **TIPE NYA HARUS BERURURAN MURNI!!** 
+
+Kapan hal alien ini dipake?
+Coba Inget Google MAPS Kordinat, cuman btuh DUA SLOT kan? Satu String, satu Angka!
+
+```typescript
+// BACA ALUR TS INI: Slot ke-0 nya WAJIB String, Slot ke-1 WAJIB Number, SLOTNYA MAXIMAL CUMAN 2 GA LEBIH!
+let kordinatPetaGPS: [string, number]; 
+
+// Masukin data pake array biasa
+kordinatPetaGPS = ["Ujung Kutub Utara", 99120];  // ✔️ Sah!
+
+kordinatPetaGPS = [99120, "Kutub"]; 
+// ❌ ERROR!! KEBALIK URUTANNYA WEY HARUS STRING DLU TRS ANGKA WKWK!
+
+kordinatPetaGPS = ["Ujung", 123, "Lainnya"]; 
+// ❌ ERROR KEBABLASAN !! SLOT KAMU MNTA NYA MNTOK 2 DOANG !!
+```
+Tuple adalah tameng paling tebal bagi programer untuk membaca kembalian Data API Sensor yg sudah mutlak urutannya misal `[ "Suhu 32C", true, 90 ]` ga bsa diganggu gugat ukurannya.
 
 ---
-[⬅️ Sebelumnya: Struktur Kontrol](../03-Struktur-Kontrol/README.md) | [Lanjut ke Fungsi ➡️](../05-Fungsi-Type/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Struktur Kontrol Basic](../03-Struktur-Kontrol/README.md) | [Lanjut ke Fungsi Sakral ➡️](../05-Fungsi-Type/README.md) | [🏠 Daftar Isi](../README.md)

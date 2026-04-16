@@ -1,37 +1,43 @@
-# 05 - Fungsi Berkelas (Return Value Strict)
+# 05 - Fungsi Berkelas Golang (Return Value Strict)
 
-Semakin membabi-buta sebuah fungsi di JS, kalian tak bisa melacak apa yang di-Return. Entah yang *dipulangin* itu Data atau Error Text. Disini kita ikat hasil keluarannya!
+Semakin membabi-buta sebuah fungsi di JS, kamu ngga akan pernah bisa melacak sebenarnya hasil muntahan akhirnya (Yg di-*return*) itu berbentuk Teks Merah, atau Data JSON?
+Jangan bikin orang yang narik fingsimu ntar pusing, BATESIN Hasil Buangannya!
 
 ## 1. Menjanjikan Hasil Return Mutlak
 
-Berikan Type setelah kurung parameter `): tipe {` !
-Maka dengan ini Fungsi JS mu auto menjadi sakti laiknya Golang.
+Berkat TS, kita kunci Tipe Data tepat setelah kurung tutup paramter! `( ... ): tipeKuncian {` !!
 
 ```typescript
-// Fungsi ini DIWAJIBKAN mereturn Number gak boleh text!
-const kalkulasiKeuntungan = (modal: number, jual: number) : number => {
-    let untung = jual - modal;
+// WAJIBKAN paramternya INT, dan RETtURN NYA WAjib Int!
+const itungHargaKancingan = (modals: number, pajaks: number) : number => {
+    let untungnyaBrp = modals * pajaks;
     
-    // Kalau dibaris ini gue return "Lima Puluh"; TS Bakal Error Merah!
-    return untung; 
+    // Kalau dibaris ini gue murtad (return "Lima Puluh Text"); TS Bakal Error Merah!
+    return untungnyaBrp; 
 }
 
-console.log( kalkulasiKeuntungan(50, 100) ); // 50
+console.log( "Hasil Untung Rp.", itungHargaKancingan(500, 100) ); // 500000 murni tanpa typo var!
 ```
+Karena VSCODE udah nge-labelin ini hasil `number`. Kamu bisa langsung ngetik `.toFixed()` dst diblakng punggung pemnanggulannya! Itu sangat memanjakan developer ga perlu buang waktu debug 1 jam.
 
-## 2. Type Void Hampa
+## 2. Type Void Hampa (Fungsi Mandul Beraksi Saja)
 
-Sama ibarat bahasa C dan Java. Kalau lu cuman nge-print *console.log* dan ga pake statement `return` di dalemnya... tandain tuh Fungsi pakai `: void` !
+Apa bida JS murni sm C++ dan Java? Yap, disana klo Funsi cuma nyetak konsol ga punya hasil kembalian, Ditulisnya `Void`.
+TS nerapin ini jg loh!!
 
 ```typescript
-const siramTanaman = (namaGeng: string): void => {
-    console.log(`Menyiram geng nya ${namaGeng} siang ini bosku..💦`);
+// Funciton Mandul ga ngasilin balikan
+const menyiramTanamanMekar = (namaGeng: string): void => {
+    console.log(`Menyiram kebun warga nya pak ${namaGeng} siang ini bosku..🌿`);
     
-    // Disini lu dilarang keras return "Selesai" , harus dibiarin Hampa!
+    // Disini lu dilarang keras NGETIK:  return "Selesai",
+    // Kalau u iseng nge-return suatu benda, Vscode lngsung marah merah.
 }
+
+menyiramTanamanMekar("Ridwan Kamil");
 ```
 
-Disadari tidak sadar, semakin TS ditegakkan, semakin JS mu rasanya "Bau OOP Kental" kaya Java haha. Emang tujuannya ngerubah orang FrontEnd liar menjadi *Software Engineer* terstruktur!
+Disadari atau tidak, TS mengubah kultur bar-bar anak Javascript menjadi ke arah *Software Maintenance* yang rapi. Orang yang pro main TypeScrpit pasti kalau belajarn **React** ato **Next.js** bakal ketagihan gara2 semua Propery Object ketebak Autocompltenya dengan lancar!!
 
 ---
-[⬅️ Sebelumnya: Array dan Tuple](../04-Array-Serta-Tuple/README.md) | [Lanjut ke Tahap Lanjut (Interface) ➡️](../06-Interface-dan-Type/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Laci Array dan Tuple](../04-Array-Serta-Tuple/README.md) | [Lanjut ke Tahap Lanjut: Struct Interface ➡️](../06-Interface-dan-Type/README.md) | [🏠 Daftar Isi](../README.md)

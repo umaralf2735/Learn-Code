@@ -1,61 +1,41 @@
-# 04 - Fungsi di C (Functions)
+# 04 - Fungsi di C (Fungsi Purba Parameter Kaku)
 
-Ketika baris koding di `main()` mu sudah sangat tebal dan ribet (Spaghetti Code), itu pertanda mutlak kamu harus men-subsidi rutinitasnya manjadi suatu blok "Fungsi".
+Funfsi di C gak kalah sakti. Tapi elo harurs NGKABRI TIPE RETURN NYa di pala fungsi!!  Kaklau Pytohn kan def bla bla trs bebss ngaslun apa aja. Di C HAHSruuS KAKAU!
 
-## 1. Merancang Fungsi Sendiri
-
-Fungsi harus diset "Kembaliannya" tipe apa. Kalau tidak mengembalikan apa-apa (hanya nyetak di layar murni), beri tulisan tipe data `void` (Bahasa Inggrisnya hampa).
+## 1. Syntax Fungsi Klasik (Peletakannya HARUS di ATAS)
 
 ```c
 #include <stdio.h>
 
-// Fungsi Hampa / Tidak Punya Kembalian Hasil Buat diolah
-void sapa_penonton() {
-    printf("Halo selamat mencoba!\n");
+// BACA: Fungsi inn ni RETRURBN NNYA AKAN JADI INT!! DannnerIMA dua bua Int JUGGA!
+int mesinTambaahMaut(int nilaiA, int nilaiB) {
+    int gbungans = nilaiA + nilaiB;
+    return gbungans; // mulangingin !
 }
 
-// Fungsi yang Mempunyai Kembalian Integer
-int tambahkanDua(int a, int b) {
-    int total = a + b;
-    return total;
+// FUNGISI YGH GA NGERTUUERN APA AP DI SBEBUT VOID !
+void nyetekSuaraOrang(char nmanya[]) {
+    printf("Bapak %s sgerar mkna gizznya !!\n", nmanya);
 }
 
+// FUNGSI UTMA YG DIPNAAGGI KOMPIUTER SELALu Main
 int main() {
-    sapa_penonton(); // Cara Manggil Fungsi Void
     
-    // Cara Manggil Fungsi yang ada Return Vallenya (Bisa dimasukin variabel)
-    int hasil_nambah = tambahkanDua(5, 5);
+    int hslNyta = mesinTambaahMaut(50, 10);
+    printf("Hsil tnahn jd : %d \n", hslNyta);
     
-    printf("Nambah hasil dpt %d", hasil_nambah);
+    nyetekSuaraOrang("Jokiwow");
+    
     return 0;
 }
 ```
 
-## 2. Penyakit Utama Fungsi: Deklarasi Susunan Bawah!
 
-Compiler bahasa C itu membaca dari baris paling Atas ke Bawah. 
-Artinya kalau fungsi `main()` nya di atas, dan fungsi buatanmu `tambahkanDua()` di taruh di bawah **SETELAH** main, Compiler bakal nangis ngeluarin Error marah-marah ("Aku ga kenal siapa tambahkanDua, belum pernah liat!").
+> **Penyakit Bahsa C:**
+Coba aja kalia pinndahin kodingN Blok si `mesinTambaahMaut` itu ditaryhjnya DI BAWAH mentokk stlh kurung `}` nya si Main !!  
+**DIJADAMIN PASTI MELEDDAKK ERROR!!** Kenaps? Krn C itu bacannyaya Lurus dRi atsas ke bwah tnnapa nyim[en indxe bwwahnya. Pas dy lgi  main tbati2a di baris dLmnhy manggklll mesin tpi mesnny d bwah, dia Njeritt "WOI GW GK KN L FUGSNI NINI APNAAn!" Wkwkwkw.
 
-Solusinya: Gunakan teknik **Function Prototype**. (Nyebur namanya duluan).
-
-```c
-#include <stdio.h>
-
-// Kasih bocoran dulu ke C bahwa fungsi ini ADA, definisinya nanti dibawah belakangan boss
-int kurangiMundur(int a, int b);
-
-int main() {
-    // Karena udah dikasih bocoran, si main() ga bakal protes pas make!
-    int ans = kurangiMundur(10, 2); 
-    printf("Ans = %d", ans);
-    return 0;
-}
-
-// Baru dijabarin komplit di bawah!
-int kurangiMundur(int a, int b) {
-    return a - b;
-}
-```
+*Solesuinya:* Cliaana huru smbikiknn "PROTOTOYPE" Header di aattsnyna untuk ngenalin jdul fungsinga duulu bru bdannt dtrub d bwH. Ini lah alsnnyn c serring pnya filed *h (header).
 
 ---
-[⬅️ Sebelumnya: Array dan String](../03-Array-dan-String/README.md) | [Lanjut ke Pointer (WAJIB BACA!) ➡️](../05-Pointer/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Array Strnigh](../03-Array-dan-String/README.md) | [Lanjut ke RAJA TERKHIR PEMBNUH MAHASISWA: Pointer ➡️](../05-Pointer/README.md) | [🏠 Daftar Isi](../README.md)

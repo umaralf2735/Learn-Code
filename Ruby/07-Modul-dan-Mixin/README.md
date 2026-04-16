@@ -1,64 +1,53 @@
-# 07 - Modul dan Mixin
+# 07 - Modul Penyelamat Hidup (Mixins Anti Pewarisan Tunggal)
 
-Bab terakhir dari pondasi Ruby adalah Module. Modul itu mirip sekali dengan Class, hanya saja punya pantangan: **kamu tidak bisa mencetak Objek baru (gitar.new) dari sebuah Module!**
+Kalian mau bikin game.  Ada Musuh *Bos Naga Terbang* dan ada Hero *Babat Bebek Terbang*!.
 
-Terus buat apa ada modul? Dia hadir untuk **Ngumpulin Method** yang bertemakan sama, biar nggak campur aduk di kerangka global.
+Kebanyaan Bahasa itu cuman ngebolehin PEWARISAN (`extends / < ` Inheritance Class Bapak Anak) itu CUMAN SATU doankkk.. Nah misla lo bikin Bapak Class "MakhulukTerbng". Nnti si bBEK sm NAGA nya bs terbang... 
 
-## 1. Pembuatan Modul (Namespace)
+Tapiii gimna crny  ngash mreka kemampuan "Mengeluarkan Api DiMulut??" Mnsa lu bkin class induik br dgan nam MahaklukTEranngYgBSKluarainAPi??? Pusing wkwk!!.
 
-Kamu punya 2 cara mencetak sapaan yang namanya mirip. Gampang! Masukin ke dalam folder Modul masing-masing.
+Ruby dtang mnbyelkstnmasalah Make **`module`**!! (Cuma sekumpulan sipat saku yg is dselipin kesiapapun!!/  MIXIN).
 
+## 1. Nyimpen Modul Sifat Saku
 ```ruby
-module SapaanRamah
-  def self.pagi
-    "Selamat Pagi Boskuuuhhhh"
-  end
+# Ini bkan class, ini cmn sifat ngambang aja
+module KemampuanBerterbanHampaUdara
+    def kepakanSayapBesi()
+        puts "Zwwwuuuuungggg.... Nggangkat bdna k ats langit..."
+    end
 end
 
-module SapaanGalak
-  def self.pagi
-    "Woi bangun lu pemalas!"
-  end
+module KemampuanBuangApiDariMulut
+    def bakarAreaDpanMata()
+       puts "Fwhooooosshhhh!! Kepnjnasann bosu!" 
+    end
 end
-
-# Karena mereka Modul beda folder, manggil fungsinya ga bakal bentrok:
-puts SapaanRamah.pagi
-puts SapaanGalak.pagi
 ```
 
-## 2. Mixin (Mencampurkan)
+## 2. MENANCAPKAN SIFAT (Include Mixin!)
 
-Nah, ini dia jurus andalannya. Modul ini bisa ditempel / di-injek ke dalam Class buatan kamu menggunakan sakratul `include`. 
-
-Ini persis jika kamu bermain Game: 
-Hero kamu dari Class biasa-biasa aja, tiba-tiba ngambil Armor Terbang dari modul luar, langsung bisa sakti!
+Ini dia enaknya RubY!!! Lo bisa masukin *Dua Module itu sklaigus* dan nbikin Class lu jago dan Pnya kkuatan mrk brdua scr Instan murni!!! 
 
 ```ruby
-module KemampuanTerbang
-  def terbang
-    "Akuuuuu Tttteeerrrrbanngggg!!! Wusssss!!"
-  end
+class NagaPutihMataBiru
+    # 🌟 SELIPPIN SIFAT ALIEN NYAAAA PAKE INCLUDE!!
+    include KemampuanBerterbanHampaUdara
+    include KemampuanBuangApiDariMulut
+    
+    def initialize(namanya)
+       @namanya = namanya 
+    end
 end
 
-class Burung
-  # Masukin Modul Terbannya (Diserap, di-include-kan)
-  include KemampuanTerbang 
-end
+# TEsting mnyala!
+nagaGueeeSeketikaIddupp = NagaPutihMataBiru.new("Cihuy Raksassasa")
 
-class Pesawat
-  # Sama, pesat juga include!
-  include KemampuanTerbang
-end
-
-class Kucing
-  # Kucing tidak terbang, jadi gak usah masukin Modul Terbang
-end
-
-burungKu = Burung.new
-puts burungKu.terbang # => Akuuuuu Tttteeerrrrbanngggg!!! Wusssss!!
+# WAH ALHAMUDILALH... CLASSS NAGA NYA TIBA TIB PUNYA SKILL YFG ADA DI MODULE!! GAUSAH REPOT REPOT NURUNIN DARI CLASS BPK!!
+nagaGueeeSeketikaIddupp.kepakanSayapBesi()
+nagaGueeeSeketikaIddupp.bakarAreaDpanMata()
 ```
 
-Kalian nggak perlu bikin fungsi `terbang` berulang-ulang di burung dan pesawat. Cukup taro di Modul lalu *include* ! Sangat efisien dalam menata program raksasa (Ini sering terjadi di dalam Ruby on Rails Controllers!).
+Luar biasasa Ruby ini. Sifat `Module Include` di ruby inilah yang memebrikan insepiraasi kpada bhsa modern utk nyiptatin Fitur "Traits" spti di PHP dan Rst Language lho!!
 
 ---
-[⬅️ Sebelumnya: OOP Class](../06-OOP-Class/README.md) | [🏠 Daftar Isi Utama](../README.md)
+[⬅️ Sebelumnya: Class Object Mewah](../06-OOP-Class/README.md) | [Lanjut ke Kurungan Begin Error Rescue ➡️](../08-Error-Handling/README.md) | [🏠 Daftar Isi](../README.md)

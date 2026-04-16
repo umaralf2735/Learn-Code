@@ -1,36 +1,62 @@
-# 06 - Cetakan Objek (Interface & Type)
+# 06 - Interface dan Type (Memborgol Objek Ghaib JSON)
 
-Saat kita menarik data panjang JSON dari Internet (`fetch`), si Javascript cuma nerima buta anggap itu Object mentah. Tapi TS gak mau nerima kalau kamu tidak menyediakan "Struct / Structur Blueprint" buat wadah tangkapannya!
+Bila di Arrays kita udah diajarin ngeborgolnya pake `string[]`. Gimana ceritanya klo ada OBJEK BESAR NYA JAVASCRIPT kaya misal data `Response API Profil Pasien RS`?
 
-Kita gunakan **Interface** (atau `type`).
+Kan isi object nya campur aduk: Ada yang angkanya umur, ada String untuk namaPasien, daan boolean untuk idupMati nya!
+Disinilah senjata terpadu **`Interface`** dan **`Type`** beraksi. Lu bisa nyetak "Cetakan Template" ghoib pelindungnya TS!
 
-## Mendeportasi Dosa ke Interface!
+## 1. Cetakan `interface`
 
-Bila C punya Struct, TS murni menyebutnya Interface (Antarmuka Kontrak). 
+Sangat bagus digunakan saat merancang Objek di Aplikasi gede yang banyak turunannya kayak Angular.
 
 ```typescript
-// Bikin kontrak mati bahwa setiap 'Senjata' wajib punya hal berikut:
-interface Senjata {
-    namaBenda: string;
-    dayaHancur: number;
-    // Pake tanda tanya '?' artinya Boleh Ada Boleh KOSONG (Optional/Undefined)
-    punyaRacun?: boolean; 
+// Bikin Cetakan Pintu Masuk! 
+//(HURUF DEPAN WAJIB BESAR YA SOALNY INI TEMPLATE, BKN VARIABEL!)
+interface WargaNegara {
+    noIdentitas: number;
+    namaResmi: string;
+    sudahMenikah: boolean;
+    // Tnda Tanya '?' berarti Opsional: (Kalo dia ga ngisiin umur ga bkalan Error TS nya!!)
+    umur?: number; 
 }
 
-// Bikin satu buah objek js Murni, tapi di "CAP / DIKUNCI" kedalam interface Senjata
-const pedangSakti: Senjata = {
-    namaBenda: "Excalibur",
-    dayaHancur: 999
-    // Gapapa aku ga nulis punyaRacun, soalnya ada tanda ? 
+
+// SAATNYA MENGGUNAKAN BAJU ZIRAH INI KE VARIABLE OBJECT KITA:
+// Perhtikan tnda titikduahnya WargaNegara :
+let pakDidi: WargaNegara = {
+    noIdentitas: 1234567,
+    namaResmi: "Raden Didi Sucipto",
+    sudahMenikah: true
+    // Uumur gak di cantumin gpp soalna ada tnda (?:)
 };
 
-// KALAU KITA ISI NGASAL GINI AUTO ERROR SEBELUM DI COMPILER!
-// const tameng: Senjata = {
-//     pertahanan: 100 // ❌ ERRROR!! GAADA DI KONTRAK INTERFACE SENJATA TAHU!
-// }
+// PAKSAAN TS MURNI!:
+// Kalo eelo iseng ngeganti pakDidi.sudahMenikah = "Belum Mas Bngttt"; (STRING). ERROR PASTI!! Krn mintanay boolean!
 ```
 
-Inilah rahasia Developer Frontend React.js selalu bebas bug error typo. Karena begitu mereka ngetik `pedangSakti.` , si VSCODE langsung nampilin Autocomplete `namaBenda` persis hasil bacaan Interfacenya! Gak mungkin Typo huruf haha hihi.
+## 2. Cetakan `type` Alias (Jurus Kembar Pilihan)
+
+Apa bedan intferface sm type? Kalo Type biasnaya lebih "Fleksibel Custom" untuk pilihan yg mutlak cuman bbrp kata aja!
+
+```typescript
+// Memahta cumn nrima dua buah kata inin MURNI GBOLEH KATA LAENN!!
+type StatusKawin = "Jomblo" | "Menikah Sejahtera";
+
+type PasienRS = {
+    nama: string;
+    // BORGOL MENGANDELKAN TYPE ALLIAS DIATTAS!
+    statusRanjang: StatusKawin; 
+}
+
+// Implementatnsio :
+let pasien1: PasienRS = {
+    nama: "Udin Sedung",
+    statusRanjang: "Jomblo"   // ✔️ Berhasi AMN!
+    // statussRanjang: "TdkDiketahui"   // ❌ ERROR! Kata "TdkDIkatahi" kaga kedafr dsalah statu pilhn Type ALias StatusKwn!!
+}
+```
+
+Inhilah asalan kenapa Developer Frontend Modern bs ngerun Ratusan ribu baris kode Front End React tanpa Takut Crash ditengah Jalan krna Typo Mleset Key Objekc nya! Gila kan!
 
 ---
-[⬅️ Sebelumnya: Fungsi](../05-Fungsi-Type/README.md) | [Lanjut ke Class OOP ➡️](../07-Class-OOP-Strict/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Fungsi Tpe Return](../05-Fungsi-Type/README.md) | [Lanjut ke Hak CIpta OOP Class Biasa ➡️](../07-Class-OOP-Strict/README.md) | [🏠 Daftar Isi](../README.md)

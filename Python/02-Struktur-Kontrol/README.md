@@ -1,34 +1,56 @@
-# 02 - Struktur Kontrol dengan Indentasi
+# 02 - Struktur Kontrol & Kengerian Makna Spasi (Indent)
 
-DIBAHAS DI SINI BAHWA PYTHON BENCI KURUNG KURAWAL `{}` !
-Kalau C pake itu, Python mewajibkan kamu menggeser spasi dengan rapi (Indent / Titik Dua ` : `).
+PYTHON SANGAT MEMBENCI KURUNG KURAWAL `{ }`. 
 
-## 1. Percabangan Bikin Merinding
+Di bahasa Javascript/C++, lu bebas nulis kode ngacak spasi berantakan kedalem karena pembatas wilayah kodenya dilindungi kurung kurawal. 
 
-Lihatlah betapa anggun kodenya :
+**DI PYTHON TAB SPASI ADALAH HUKUM MURNI!!** Kalau geser lu ga lurus masuk se-tab.. MATI ERROR PROGRAM LU!!
+
+## 1. Percabangan dengan `if`, `elif`, dan `else`
+
+Kata ganti `else if` di-singkat manja jadi murni 4 huruf: `elif`. Dan gerbangnya dibuka pake TITIK DUA `:`.
 
 ```python
-nyawa_game = 40
+saldoku = 0
 
-if nyawa_game > 50:
-    print("Wah aman dong broo, santai")
-elif nyawa_game > 20: 
-    print("Oke lumayan")
+# Pintu pembuka pake ( : ), dan isinya WAJIB MASUK MENDORONG KE KANAN 1 TAB!
+if saldoku > 50000:
+    print("Sikat, makan mekdi mas brok!!")
+elif saldoku > 15000:
+    # Lihat menjorok masuknya? Jika kmu iseng ngetik Print di ujung kiri... Error!
+    print("Warkop indomie aja gan, aman.")
 else:
-    print("Sekarat gais! Minum Potion!")
-```
-Penting! Kalau tulisan `print` nya ga dikasih **1 buah Tab spasi alias nggak dimajukan ke kanan**, program mu akan ERROR sintax!!!
+    print("Haduh... mending nelen ludah lu bro...")
 
-## 2. Looping For dengan Range
-Untuk ngulang angka ga pake i++.
+print("Woy aku di ujung kiri nih! Aku selalu kepanggil meskipun IF nya ga ada yg cocok karena aku bebas dr penjara TAB d atas!")
+```
+
+## 2. Looping For dengan sihir `range()`
+
+Buang jauh-jauh angan nulis perulangan C murni kayak ngetik batas `for (int i= 0; i<5; i++)` njlimet! Di python kalian pakai pendaftar ajaib bernama `range(BatasAngka)`.
 
 ```python
-# Berhenti di angka 5 (tapi ga masuk limanya) => [0,1,2,3,4]
+# BACANYA: Ulangin i, sediain daftar list ngantri dari 0 berenti di LIMA (Tapii ga masuk limanya).
 for angka in range(5):
-    print("Tarik napas ke", angka)
+    print(f"Mengocok telur putaran ke: {angka}") 
+
+# OUTPUT DI TERMINAL: Mngocok tlur ke 0, 1, 2, 3, 4! (ingat kan index komputer mulai hitngan Dr 0?)
 ```
 
-Sip, asalkan ingat "Indentasi Geseran Spasi Tab", Python mu akan tenang berjalan mulus.
+## 3. Looping While (Tunggu sampai miskin)
+
+Kalo kondsinya gk ketauan angka batesnnya, while jawra nya!
+```python
+bensinMobil = 5
+
+while bensinMobil > 0:
+    print(f"Jalan-jalan sore asik bawa pajero. Bensin tinggal {bensinMobil}")
+    bensinMobil -= 2 # Boros coy skali ngegas abis 2 liter
+    
+print("Udah, mati mongok ditengah jalan.") 
+```
+
+**Satu Pesan Sponsor:** Berhati hatilah pakai Text Editor, pastikan mode *Tab=4 Space* mu nyala. Jutaan Programmer luar frustasi ngurus kode Python orang lain gara gara beda cara ngetik Tab spasi nya (ada yg pke tab Keyboard nyata, ada yg di teken Spasi 4x). Python Benci ketidaksamaan ini!
 
 ---
-[⬅️ Sebelumnya: Dasar-Dasar](../01-Dasar-Dasar/README.md) | [Lanjut ke Koleksi Data ➡️](../03-Koleksi-Data/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Dasar-Dasar](../01-Dasar-Dasar/README.md) | [Lanjut ke Koleksi Data List ➡️](../03-Koleksi-Data/README.md) | [🏠 Daftar Isi](../README.md)

@@ -1,34 +1,49 @@
-# 07 - Class OOP Strict (Private / Public)
+# 07 - Class OOP Super Strict (Kempesin JS Yang Lemah)
 
-Sama kek ES6 Class Javascript modern, TAPI sekarang TS memasukkan unsur Mutlak dari Java C#, yaitu Security Key: `private`, `protected`, dan `public`!!
+JS modern punya Class. Tapi boong boongan doank. Di JS, semua Variabel/Porperti dalam Class itu Otomatis bisa diintip dan ditusuk orang luar dari luar gembok (Public Murni).
 
-## Membungkam Variabel Rahasia
+TS datang memmbawa aliran Java: Memperkenalkan `public`, `private`, `protected`.
+
+## 1. Menyegel Pintu Brankas Class
 
 ```typescript
-class RekeningBank {
-    public namaPemilik: string; // Bisa diintip dicode luar pake .namaPemilik
-    private saldoRahasia: number; // 🔒 DIKUNCI RAPAT GABISA DILIHAT DARI LUAR CLASS!!
+class PahlawanSuper {
+    // 1. PUBLIC = Siapapun dri file mana aja boleh nrk ngedit isiny (Secara Default sbnernya JS bgini)
+    public namaAktor: string;
+    
+    // 2. PRIVATE = HANYA BOLEH DI UBAH/DIBACA DARI DALEM PERUT FUNGUNGS CLASS INI SENDIRI! Diluar dsana gabsa ngntip.
+    private tabunganUang: number;
+    
+    // 3. PROTECTED = Mirpi privat. Tp ngbolehin anak asuhnya (Yg di Extends/Warisan ) bsa ikut nmkmati ngerbahnya!!
+    protected skillSakti: string;
 
-    constructor(namaPemilik: string, saldoAwal: number) {
-        this.namaPemilik = namaPemilik;
-        this.saldoRahasia = saldoAwal;
+    constructor(nama: string, uang: number, skill: string) {
+        this.namaAktor = nama;
+        this.tabunganUang = uang;
+        this.skillSakti = skill;
     }
 
-    // Tapi didalam Class yang sama, fungsi ini bisa mengakses Private tsb
-    public getSaldo() {
-        return `Ssstt... Uangmu sisa Rp.${this.saldoRahasia}`;
+    // Karena gw di dalem pnhg class ini, gw bsa numbuk dan bca kktin si private !!
+    public intipIsiDompetGueBrapaCuy(): void {
+        console.log(`Gua sisa duat Rp. ${this.tabunganUang} aja.`);
     }
 }
 
-const rekAndi = new RekeningBank("Andi Setiawan", 500000000);
 
-console.log(rekAndi.namaPemilik); // ✔️ BISA DIBACA
-// console.log(rekAndi.saldoRahasia);  // ❌ MERAH ERROR!! VARIABLE PRIVATE TERTUTUP!
+// --- PENGUJIANNYA DI LUAR ARENA ---
 
-console.log(rekAndi.getSaldo()); // ✔️ JALAN BELAKANG AMAN!
+let theFlash = new PahlawanSuper("Barry Allens", 50000, "Lari Cpat Kilat");
+
+// Murni bisa ngganti namnya Krn PUBLUBC !
+theFlash.namaAktor = "Bang Flash"; 
+
+// ❌ TS LANGSUNG TERRAK NGAMUK : ERROR KILAT! : Private Property "tabnngan Uang" gbisa diakses darilaUr bungkus!!"
+// theFlash.tabunganUang = 99999999; 
+
+theFlash.intipIsiDompetGueBrapaCuy() // Ini bisa mnjalan krena fungsi intpNy bbrbentuk PUBLIC ! Mantaanf!
 ```
 
-Disinilah Typescript beneran membuat Javascript layak dipakai di sistem Perbankan / Backend Nest.JS Super Secure!
+Liat kan skrg kenapa anak Backend Java sering mutasi belot ke *NestJS/TypeScript* bwat msukkin lamaran krja Nodejs? Karma bener bener sama PLEK! Gada rsa ngoding kek org blingsatan ngelag. Semuaya ke segel strict Object Oriented di TS!
 
 ---
-[⬅️ Sebelumnya: Interface](../06-Interface-dan-Type/README.md) | [Lanjut ke Enum ➡️](../08-Enum/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Inaterface Tye Alias](../06-Interface-dan-Type/README.md) | [Lanjut ke Enum Si Pemegang Pilihan Mutlak ➡️](../08-Enum/README.md) | [🏠 Daftar Isi](../README.md)

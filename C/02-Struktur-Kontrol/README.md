@@ -1,71 +1,58 @@
-# 02 - Struktur Kontrol C
+# 02 - Logika Struktur Kontrol C (Kaku Tapi Pasti)
 
-Logika percabangan sangat generik dan mirip dengan bahasa mana pun saat ini (karena pada dasarnya C yang menjadi acuan sintaks mereka semua).
+Bahasa PHP sm Javascript itu NGOPU COPY PASTE ALUR PERULANGAN INI PLEK KETIPLEK! Jdibkalau klian ngudasin For Looop nya C, kalian bsa idup di bhasa apaanpun dengan mntap!
 
-## 1. If / Else
+## 1. Percabangan Basi `if` 
 
-Dungkus syarat-nya dengan kurung biasa dan kurung kurawal untuk area kodenya.
+Tetap harus dikurung pake KUrung Biasa dan kurawawl.
 
 ```c
 #include <stdio.h>
 
 int main() {
-    int kkm = 75;
-    int nilai;
+    int saldoRekening = 15; // Ribu
 
-    printf("Masukkan nilaimu: ");
-    scanf("%d", &nilai);
-
-    if (nilai >= 90) {
-        printf("A (Sangat Bagus)\n");
-    } else if (nilai >= kkm) {
-        printf("B (Lulus)\n");
+    if (saldoRekening >= 50) {
+        printf("Aman bli ayam grprk!!\n");
+        // Eifnya smbung lgsn dsinii aja
+    } else if (saldoRekening >= 10) {
+        printf("Makan baso aci dpn kosn aja bg\n");
     } else {
-        printf("C (Gagal, silahkan remedial!)\n");
+        printf("Nangess utangg bapak ks\n");
     }
 
     return 0;
 }
 ```
 
-## 2. Looping (Perulangan)
+## 2. Looping For (Akar Smua Bahssa C/c++/java)
 
-### For Loop
-Cocok apabila kita sudah tau akan ngulang berapa kali dengan pasti.
-
-```c
-#include <stdio.h>
-
-int main() {
-    // Pada standar C lawas, variabel i kadang harus dideklarasikan diluar for. 
-    // Tapi di C modern bisa langsung int i=1;
-    for (int i = 1; i <= 5; i++) {
-        printf("Baris cetakan ke-%d\n", i);
-    }
-    return 0;
-}
-```
-
-### While Loop
-Cocok jika kamu tidak tahu pasti batas perulangannya, melainkan menunggui suatu kondisi berubah/ditolak.
+Ini nih penulisa klasik maut 3 babak `(inisaiaisi;  Batas_akhir;  Lompatan)`.
 
 ```c
 #include <stdio.h>
 
 int main() {
-    int uang = 5000;
-    int tebusan = 2000;
+    
+    // Diputar dr 0. Brneti d 5. Dan i nekkny satud stau (++).
+    for (int itrg = 0; itrg < 5; itrg++) {
+        
+        printf("Putara muter lari k- %d !!\n", itrg);
 
-    while(uang >= tebusan) {
-        printf("Sisa uang: Rp%d. Bisa jajan lagi!\n", uang);
-        uang = uang - tebusan; // uang berkurang
     }
     
-    printf("Uang habis/kurang buat jajan. (Sisa: %d)\n", uang);
+    // --- WHILE --
+    int bensin = 2;
+    while(bensin > 0) {
+        printf("Masi bs jlan cuy : %d \n", bensin);
+        bensin--;
+    }
 
     return 0;
 }
 ```
+Tidak ada  trik  for-each ajaib js di sini ya kawan-jwan! Semuanha harus ditullis kaku dari inidiek nol hggnga ujung array mual!!!
+
 
 ---
-[⬅️ Sebelumnya: Dasar-Dasar](../01-Dasar-Dasar/README.md) | [Lanjut ke Array dan String ➡️](../03-Array-dan-String/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Variabels](../01-Dasar-Dasar/README.md) | [Lanjut ke Teks Paking Array ➡️](../03-Array-dan-String/README.md) | [🏠 Daftar Isi](../README.md)

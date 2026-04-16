@@ -1,62 +1,71 @@
-# 09 - Pemrograman Berorientasi Objek (Class)
+# 09 - Cetakan Pabrik Modern (Class OOP Javascript)
 
-Sebenarnya JS terlahir bukan bahasa yang menganut OOP semurni C++ atau Java. Dulu untuk membuat Class di JS itu rumit sekali. Namun untungnya di **(ES6)** dilahirkan sebuah sistem `class` terstruktur yang enak dibaca.
+Di Bab 3 kalian udah belajar bikin data pakai *Object Mentah `{ }`*. Tapi gimana kalau kalian mau bikin *1000 Kucing* beda beda namanya? Masa ngulang nulis object literal `{ }` 1000 biji file. Kacau.
 
-## Membuat Blueprint
+Sejak Tahun 2015, Javascript membikin fitur **Class Blueprint**. 
+(Ini ilmu standar Java & C++, dipungut dan diadopsi ke Javascript modern agar kode perusahaan raksasa bisa dirapikan struktur hirarkinya).
 
-Bentuknya sekarang nyaris 100% sama dengan Java.
-
-```javascript
-class Mahasiswa {
-    // Dipanggil saat Class ditiupkan menjadi Objek hidup
-    constructor(namaAwal, jurusan) {
-        this.nama = namaAwal;
-        this.jurusan = jurusan;
-    }
-
-    // Metode internal (Function di dalam struktur Class gaboleh pake kata function)
-    belajarDong() {
-        console.log(`${this.nama} anak ${this.jurusan} lagi serius baca modul!`);
-    }
-}
-
-// Mari cetak blueprintnya:
-let mhsOki = new Mahasiswa("Oki Setiawan", "Sistem Informasi");
-
-mhsOki.belajarDong(); 
-```
-
-## Pewarisan (Inheritance) - Extend
-
-Bayangkan mau membedakan Dosen Sama Mahasiswa. Ya dua-duanya tetep Manusia toh? Maka `class Manusia` bia diturunin sifatnya ke kelas bawahnya.
+## 1. Memahat Cetakan Utamanya
 
 ```javascript
-// KELAS INDUK
-class Manusia {
-    constructor(nama) {
-        this.nama = nama;
+// Nama cetakannya biasa pakeawalan huruf KAPITAL bos
+class AnggotaSekte {
+    // Method Sakral constructor! (Otomatis jalan PERTAMA KALI setiap Lo Cetak Umat Baru)
+    constructor(nm, levelGali) {
+        this.namaUmat = nm;               // This = miliknya anak yg baru tercetak ini
+        this.pangkatLevel = levelGali;
+        this.masihIdihup = true;
     }
-    tidur() {
-        console.log(this.nama + " sedang zzzzzz..");
-    }
-}
-
-// KELAS ANAK (Mewarisi sifat manusia)
-class Dosen extends Manusia {
-    constructor(nama, gelar) {
-        super(nama); // Manggil constructor manusia! Wajib!
-        this.gelar = gelar;
-    }
-
-    ngajar() {
-        console.log(`Pak ${this.nama}, ${this.gelar} lagi nerangkan.`);
+    
+    // Nempel method khusus yg cm bs dipuntain si anak Umat
+    lakukanTapa() {
+        console.log(`Ahhh... Pukulan naga, dari master ${this.namaUmat} level ke ${this.pangkatLevel}`);
     }
 }
-
-const pakDosen = new Dosen("Agus", "M.Kom");
-pakDosen.tidur(); // Dia mewarisi kemampuan tidur padahal ga punya method tidur!
-pakDosen.ngajar();
 ```
+
+## 2. Melt & Mangkuk Cetakannya Mnjadi Objek Hidup!
+
+Gunakan alat pemanas penuangan logam `new` diikuti pameanggilan cetakannya.
+
+```javascript
+// Bikin anak!
+let anakPertama = new AnggotaSekte("Jaka Petir", 55);
+let anakMuda = new AnggotaSekte("Siti Sakti", 1000);
+
+// Mereka punya sifat mandiri tanpa nyenggol orang sebelahnya
+anakPertama.lakukanTapa(); // ngeluarin Pukulan .. master Jaka Petir
+anakMuda.lakukanTapa();    // ngluearin Pukulan master Siti.
+```
+
+## 3. Pewarisan Ilmu Genetik (`extends`)
+
+Males ga tuh kalo di game, Musuh Biasa beda tipiiiis doang sama Boss, tp elo harus buat Blueprint dari 0 lgi bener bener panjang?
+Bisa numpang Waris Gen dari bapaknya!!
+
+```javascript
+// Dia mewarisi 100% darah daging si AnggotaSekte!! (Gaperlu nulis lg dalemnya!!)
+class MahaDewa extends AnggotaSekte {
+    constructor(nm, levelGali, sayapLebar) {
+        // SUPER() WAJIB ADA BUAT MANGGIL DARAH CONSTRUCTOR PUNYA INDUKNYA (lempar nam dan levl ke ats!)
+        super(nm, levelGali); 
+        this.panjangSayap = sayapLebar;
+    }
+    
+    // Skill Eksklusif cuman ada d ras Dewa
+    terbangKencang() {
+        console.log("Whooosh... Kepak sayap " + this.panjangSayap + " m terbang lgsg menembus awann!");
+    }
+}
+
+let zeusJS = new MahaDewa("Zeus Dewa Langit", 9999, 50);
+
+// HEBAT!! BISA MAKE SKILL BAPAKNYA DAN SKILL SENDIRINYA!
+zeusJS.lakukanTapa(); 
+zeusJS.terbangKencang(); 
+```
+
+Selamat, kalian resmi menjadi *Software Engineer* Backend beraliran Object Oriented murni layaknya sepuh-sepuh Java di luar sana!
 
 ---
-[⬅️ Sebelumnya: Error Handling](../08-Error-Handling/README.md) | [Lanjut ke Modul NPM ➡️](../10-NPM-dan-Modul/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Tangkap Error](../08-Error-Handling/README.md) | [Lanjut ke NPM Package ➡️](../10-NPM-dan-Modul/README.md) | [🏠 Daftar Isi](../README.md)

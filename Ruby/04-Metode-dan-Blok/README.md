@@ -1,58 +1,59 @@
-# 04 - Metode (Method) dan Blok (Block)
+# 04 - Metode dan Hal Gaib Return (`def`)
 
-## 1. Metode (`def`)
+Panggil aku *Method*. Kalau Python pke `def` ngawalan membkin kuli fungsi baru. Ruby jg identik bgt! Sama sama anti kurung leher!
 
-Metode di Ruby sangat magis. Kita mendefinisikannya dengan keyword `def`...`end`.
-
-Dan tahukah kamu bagian terkerennya? **Kamu tidak perlu nulis "return"!** Ruby secara otomatis akan menganggap baris terakhir dari sebuah metode sebagai hasil yang dikembalikan.
+## 1. Syntax Dasar (Diiket pake `end`)
 
 ```ruby
-# Membuat Metode
-def hitung_perkalian(a, b)
-  hasil = a * b
-  hasil # ini baris terakhir, otomatis jadi nilai yang dikembalikan (return)
+# Mendefinisika func pemanggilan
+def mesinSuaraLantang(teksTrieriak)
+    puts "WOOOOY NGOMOMGG: #{teksTrieriak.upcase()} !!!"
 end
 
-# Memanggilnya
-angka = hitung_perkalian(5, 4)
-puts "Hasil: #{angka}"
+# Kalau mau Manggil/Nge-Eksekusi:
+mesinSuaraLantang("ayam kampung nngkrng")
 ```
 
-Ajaibnya lagi, kalau parameternya jelas, kamu gak perlu nulis tanda kurung loh saat memanggil!
-```ruby
-def sapa_orang(nama)
-  puts "Halo, #{nama}!"
-end
+## 2. Default Argument Sakti (Asuransi Variabel)
 
-# Lebih natural dibaca!
-sapa_orang "Raditya" 
-```
-
-## 2. Blok dan `yield` (Nyawa aslinya Ruby)
-
-Blok adalah serpihan kode yang dikepung oleh `do ... end`. Ini sering banget diculik sama Method untuk dijalanin. Method menggunakan keyword `yield` untuk mengeksekusi blok!
+Kalau Pemanggil kelupaan naruh isian string di dalm kurungnya.. kasih Backup Value Asruansi kyk js sm php yg klisn peljrin.
 
 ```ruby
-def panggil_blok_dong
-  puts "1. Method dimulai"
-  
-  yield # DI SINI METHOD TERJEDA, DIA MELEMPAR EKSEKUSI KE BLOK DI BAWAH
-
-  puts "3. Kembali ke dalam Method dan Selesai!"
+# Misal harganya g dmasukin, ksih backup 10 rubu dah!
+def hitungPajakToko(uangMentah = 10000)
+    rahasia = uangMentah * 0.1
+    puts "Ssini setorin dlu prjak nya ya #{rahasia} !!"
 end
 
-# Kita panggil methodnya, sekalian kita sumpal pakai blok kode:
-panggil_blok_dong do
-  puts "2. (Ini tulisan blok yang disisipkan!)"
-end
-
-# Output: 
-# 1. Method dimulai
-# 2. (Ini tulisan blok yang disisipkan!)
-# 3. Kembali ke dalam Method dan Selesai!
+hitungPajakToko()  # Akan aman dan ngolah angak 10rbu!!
 ```
 
-Konsep `yield` dan blok inilah yang akan sangat amat sering kamu temui di Framework Ruby on Rails!
+
+## 3. SIHIR MEMBINGUNGKAN PEMULA (Implicit Return !!)
+
+Di smeua bahsa program... Untuk membngkm fungsi itu selesia dan MELEMPAR KMBALIAN HASIL, lu waJib Fardu Aiin MENGETIK TULISAN `return ...` di ujubng bwah kan?
+
+**Di RUBY... LU GAUSAH NGETIK RETURN!!!!!!!!**
+Benda Apapun variabel akhir yang ada terketik di paling bawah baris sblum "End" di sbuah fungsi, MAKA DIA OTOMATINYS TERE-RETURN DIOPER KELUAR MENJADI HASILNYA!! GILE BNERRR!!
+
+```ruby
+def mesinPengaliUangGaib(saldoAwal)
+    # Lgi mngitung pajak diskon pusing blabalala....
+    hasilGanda = saldoAwal * 2
+    
+    # 🌟 GAK ADA KATA RETURN DSINI 🌟
+    # TAPI KRN INI BENDA TERAKHHIR YG ADA DISINI SBLM END. DIA AUTO JADI "SANG PENERUS HASIL VALUE"!
+    hasilGanda
+end
+
+
+# TANGKAP HASILNYYA TARA!!
+uangMisteriHsilan = mesinPengaliUangGaib(500)
+
+puts "Jreeeng!!! Angknya jd Rp. #{uangMisteriHsilan}" 
+```
+
+Bagi yg msi katrok pake Java, pasti teriak "Woi Mana Returnnya njir gda varbal yg balik!". Tenang bosque, Programmer Ruby males ngetik byank byakn. Mereka tau baris trkhiir pst rReturn result nya kwkw!!
 
 ---
-[⬅️ Sebelumnya: Array dan Hash](../03-Array-dan-Hash/README.md) | [Lanjut ke Algoritma Enumerable ➡️](../05-Algoritma-Dasar/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Modifikasi Hash & Array](../03-Array-dan-Hash/README.md) | [Lanjut ke Enumerable Ajaib Pusingin Data ➡️](../05-Algoritma-Dasar/README.md) | [🏠 Daftar Isi](../README.md)

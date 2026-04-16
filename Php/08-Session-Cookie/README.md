@@ -1,53 +1,70 @@
-# 08 - Menjaga Ingatan Identitas (Session Server)
+# 08 - Menjaga Ingatan Identitas Login (Session Server)
 
-Website itu sifatnya pelupa gais. (Amnesia/Stateless).
-Jadi kalau kamu Login di halaman A. Waktu kamu masuk ke Link ke halaman B, dia udah gak ngenalin kamu lagi, lu disuruh login ulang. Konyol kan?
+Ada cacat fatal dalam teknologi Website (HTTP Protocol). Website itu punya penyakit Dementia Alzhaimer permanen alias Murni Pelupa (Stateless).
 
-Itulah kenapa diciptakan **SESSION** (Penyimpanan nyawa sementara di RAM Server khusus orang tsb).
+Kalau kamu naruh logic ngecek Login Pake `$_POST` Password di halaman **PROSES**. Dan kamu berhasil Login masuk ke dalem Website. 
+BOOM... BEGITU KAMU KLIK MENU "*Ubah Profil*" (Artinya Browser mu memuat File ke -3 (`profil.php`). Si file php ke-3 iku TERNYATA GAK NGENAL KAMU! WKWK! Die nnya "Loh Lu siapa anjir.. Login dlu Sono!" . Koplak kan?! Lah padahal lu udah Login wkwk.
 
-## Menyiapkan Koper Ingatan
+Itulah gunanya Diciptakan **SESSION** *(Menitipkan data ke gembok Memori RAM Server untuk ngantongin Tanda Pengenal khusus Punya Kamu Doang slama browser itu belom nyilang Tabnya)*. 
 
-Setiap halaman PHP yang pengen ada sistem "Ingatan Akun / Keranjang Belanja". Baris paling atas dari atasnya PHP *HARUS ADA MANTRA* `session_start();`.
+## 1. Menyiapkan Koper Ingatan
 
-**File `login_berhasil.php` :**
+Setiap lembar halaman file PHP yang didalemnya pengen mengecek Login akun tersebut, Tetes pertama airnya di Baris 1 Mentok **HARUS SESAJENKAN MANTRA:** `session_start();`.
+
+**File ke 1: `login_berhasil.php` (Server naruh Gelang Tiket Dufan ke tangan mu)** :
 ```php
 <?php
-    session_start(); // Tancap gass buka RAM Server untuk user ini
+    // Tancap gass bilang k Mesin Nginx/Apache buat mmbka jatah RAM tuk 1 User ID ini
+    session_start(); 
     
-    // Anggap lu baru kelar cek password di Database
-    // Simpan kunci rahasianya buat dia keliling halaman!! (Kek gelang tiket wahana Dufan)
-    $_SESSION['username'] = "udinsuper";
-    $_SESSION['peran'] = "ADMIN_RAHASIA";
+    // Anggap lu baru kelar ngetik $Post Password DB dan berhasil Valid...
     
-    echo "Login Sukses!!";
+    // Gantungin Tiket Rahasiany!! Simpan datanya di Global Variabel SUPER INI:
+    $_SESSION['usernameku'] = "bang_toyib";
+    $_SESSION['hakAkses'] = "ADMIN_RAHASIA_NEGARA";
+    
+    echo "Horee Login Bener dan Sukses Terverifikasi!!";
 ?>
 ```
 
-**LALU USER BUKA HALAMAN DASHBOARD RAHASIA (`dashboard.php`) :**
+## 2. Membongsai Tiket Di Halaman File Lain (Cek Login Penjagaan Ghaib)
+
+**User Membuka Link LOMPAT FILE ke `dashboard_rahasia.php` :**
 ```php
 <?php
-    session_start(); // Mulai lagi biar gelangnya ke tracking lagi
+    session_start(); // Mulai lagi biar radar satelit nya Nangkep Gelang diTangan Lu lagi dr Coki nya
 
-    if (isset($_SESSION['username'])) { 
-        // Apakah gelangnya valid nempel?
-        echo "Wah.. admin agung " . $_SESSION['username'] . " Tiba! Menundukk!!";
+    // ISSET adalah fungsi Cek: (Apakah kunci array ini TERISSI BUKAN KOSONG / Udah dibikin)?
+    if (isset($_SESSION['usernameku'])) { 
+        
+        // Wah beneran ada isinya! Die Belom nutup Browser! OKE LAYANI!
+        echo "Selamat datang yang mulia Baginda " . $_SESSION['usernameku'] . " Owh.. Anda jabatan: " . $_SESSION['hakAkses'] . "! ";
+        
     } else {
-        echo "MAAF LU SIAPA? HALAMAN DITOLAK!! BELOM LOGIN LU!";
+        // MAALIN MALING!! BELOM LOGIN MAEN BYPAs NGETIK URL!
+        echo "MAAF MINGGGGGGIR, GAK PUNYA TIKET! MUKA LU BELOM DIKENAL! HALAMAN DITOLAK BINGGO!!";
     }
 ?>
 ```
 
-**Bagaimana Menghancurkan Identitasnya (Bila Pencet Tombol Logout?)**
-Tinggal panggil di file baru:
+## 3. Berpulang dan Membakar Memori Ingatan (Tombol LOGOUT)
+
+Kalo kamu ga neken fungsi Logout, Akun kamu bisa kecolonga bocah lain yg maken PC warnet mu dan langsung ngebuka Seession nya lg!!
+Bikin 1 file kusus buat diteken pas misalny di Klik Tombol Logot:
 ```php
 <?php
-    session_start();
-    session_destroy();   // Membakar ingatan user ini dari server!
-    header("Location: index.html"); // Nendang dia balik ke luar
+    session_start(); // Harus mulai dlu radarnya
+    
+    // INILAH PERONTOK BONGKAHAN CACHE INGATAN SERVER MURNI SEAKAR-AKARNYA! Gelang Gelang di hancukan!
+    session_destroy();   
+    
+    // TRus fungsi header buat nendang nge-Redirect layar dia secara paksa mental pindah ke Halaman Login Awl.
+    header("Location: hlaman_login_awal.html"); 
+    exit;
 ?>
 ```
 
-Sip, kalian sudah sah menguasai sistem pintu akses Keamanan Website tingkat pertama!
+Ajaib bangett!! Dengan pemahaman Array Session dan Form HTTP dari Bab sebla, kamu skrng sdh tau tulang punggung dan otot geraj utama Pemrograman Web Fullstack dinamis!! Tinggal 1 langkah lagi: (DATABASE).
 
 ---
-[⬅️ Sebelumnya: Form Get Post](../07-Form-Method/README.md) | [Lanjut ke Menyadap Database ➡️](../09-Koneksi-Database/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: HTML Post Form](../07-Form-Method/README.md) | [Lanjut ke Membobol Database ➡️](../09-Koneksi-Database/README.md) | [🏠 Daftar Isi](../README.md)

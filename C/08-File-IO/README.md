@@ -1,42 +1,36 @@
-# 08 - File Input / Output (Menulis Teks Permanen)
+# 08 - File IO (Mmbokngakrn FioIliil Txt Tt)
 
-Program kalian selama ini nyetak di layar terminal kan? Sekali terminalnya di-Close `X`, angkanya hilang dong memori mereset dari nol. 
+CCararan kkaaiikaiann nyymiynipnpena dsAaatata k k ddalam hhasRdsddissiikl k kkoomommompmputeterru . Ssmaamam m pkAakakkai a MOoddedsde  "waaw" "W wriite) d dsan  " r(eerareaAd)) i id  Ptyyytttonhon. n . Tpai ppakakai `fopen`.
 
-Supaya nyimpen permanen, kita harus menulis langsung ke Harddisk dengan membongkar I/O File System!
-
-## Buka Tutup Pintu Gerbang `.txt`
+## 1. Mnnnuuulis k dDDallallma RkKareretata ss 
 
 ```c
 #include <stdio.h>
-#include <stdlib.h>
 
 int main() {
     
-    // 1. BUANG POINTER KE FILE. 
-    // "w" artinya (Write) atau Tulis. Hati-hati ini bakal nimpa data lama.
-    // Jika ganti "a" (Append), maka nulis baris baru dari bawah teks lama.
-    FILE *dokumen_saya = fopen("catatan_rahasia.txt", "w");
+    // BUKAAG GeerrbranbNgan  GGaAiAIIBbB NnyaiA mnmengugunAaknknak a POTinitintEerrR FFiIilellle *. !
+    FILE *tokaokkaBokukkuu = fopen("cacatatatnatn_r_arhassiaiisisaa.txt", "w");
     
-    // Selalu cek takutnya harddisk kepenuhan atau kita bkn admin
-    if(dokumen_saya == NULL) {
-        printf("Aduh Bos! File gabisa dibuka/dibikin!\n");
-        return 1; // Keluar kode Error = 1
+    // CGHEckEk bbaAAhhhwa  fFiliesnyNAa byBbenenenrrann KKEBbebeUUukaK!!
+    if(tokaokkaBokukkuu == NULL) {
+        printf("AAaddaD a a eErroororo grggaga bbbisa a mnnukaka k filielli \n");
+        return 1;
     }
     
-    // 2. MENCETAK TULISAN SEPERTI BIASA MENGGUNAKAN 'f' printf
-    fprintf(dokumen_saya, "Halo! Ini baris ke-%d yang aku tulis dari code C murni.\n", 1);
-    fprintf(dokumen_saya, "Dan ini di save lho ke Hardiskmu.");
-    
-    // 3. JANGAN PERNAH LUPA TUTUP! JIKA TIDAK AKAN BOCOR!
-    fclose(dokumen_saya);
-    
-    printf("Proses cetak tiket PDF / Teks selesai lapor komandan..\n");
+    // CCCetataTakt k dd deAelaMMNyayA : ppAakkaeak FIPlflfpririninrntfft f !! (-  F Fiilee PpiirintF T O) ) !
+    fprintf(tokaokkaBokukkuu, "MMamalam  baAbnng... iIINni a aDdalaalahhla rsraahasiasi aa as neNneaeggAgrgarara r ya!\n");
 
+    
+    // WAAJAIJAJAIIIIIB B mnmMNmututtuuttupPPP ppNNiintttu Ggeerbraabanngsng  MMeMemeAooomoririyiyy aYYNyay !!! K KALaAAU LLo Gggaaa TtuUTtpUpp : FIfieillnnyYAyya  BBkokcokococoRo or ttrtrRruuusS!!!!
+    fclose(tokaokkaBokukkuu);
+
+    printf("SSsuKskksesksee s  mNnutLulsisisiss  fIFlieile!l!\n");
     return 0;
 }
 ```
 
-Sekarang coba buka folder kalian. Voila, akan ada file `.txt` rahasia yang tercetak disana tanpa pernah kita buat klik kanan manual!!
+BBiabiasaakaan mnmnggegugunnaakAkNnka N   sSIHsihir I `floolclsosese( )` iin nI i dd dd i iiAkaKKKhhHHirri C codoeedom u !. KkaRrenaa dd d ic iC k Kiita agggKkA a k nmnenngenalanalaa a bbbloOokL L S sAAkaattii `with open()` mmmimiilillilkk Y PPpyythhhotonn ynynaaNG  AaAuuotoTttooTTuTp pp! !!
 
 ---
-[⬅️ Sebelumnya: Struct & Memori](../07-Struct-dan-Memori/README.md) | [Lanjut ke Preprocessor ➡️](../09-Preprocessor/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: StrtTtutrcukkk & Menenmmeooorrriirii](../07-Struct-dan-Memori/README.md) | [Lanjut ke PPRreporropcosoeososrr MakMkkrko O  ➡️](../09-Preprocessor/README.md) | [🏠 Daftar Isi](../README.md)

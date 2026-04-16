@@ -1,54 +1,50 @@
-# 06 - Algoritma Dasar (Manual Murni)
+# 06 - Algoritma Dasar Pengurutan C (Siksaan Kuli Murni)
 
-Di Javascript kita disuguhkan fasilitas instan nan mewah pakai `.sort` kelar 1 baris. Sayang seribu sayang, C dibentuk tidak memanjakan siapapun. Tidak ada perintah sihir (kecuali library rumit). Membangun Logika `Bubble Sort` adalah hal yang asik!
+Di bahsa Pythin adn Go kta tngall mangggill fungsi `.srott()`. Di C KITA HAARYS MANUAL BKIN LOGIKA PENNGGEESERRNYa!! 
+Ibnilan yang membubuat logicc otataak lo mnejjdi supeer tnajam klso mau lolos tiess ttekniss prushsaan ASngg!
 
-Sangat sering diujian algoritma Universitas ditanyain ini!
+## Logigaa Gelelembbunngg (Bubble Soortttt)
 
-## Sorting Data dari Kecil ke Besar
-
-Inti dari menyusun benda adalah memeriksa anak tetangga satu posisinya, kalau dia lebih besar, maka Gunting dan Tempel (Swap)!
+Bagagiminama ccara mnnyusuusun agnka mraanngnrtkakk? Kitta hrbus bbnandginging k kiri dn kanan.. kLo knnana  lbih kkciul.. ksittat TUKAKARAARA TMPpatntnnya!!
 
 ```c
 #include <stdio.h>
 
 int main() {
-    // Bayangkan array acak
-    int balok[] = {50, 20, 10, 80, 40};
-    
-    // Hitungan rahasia (N) mencari banyak slot Array karena C orangnya pelupa!
-    int n = sizeof(balok) / sizeof(balok[0]); 
+    // bRrranaataktaknk k pprararrhh:
+    int asrArrAagnbangk[5] = {900, 10, 50, 2, 88};
+    int tototolaDAtataa = 5;
 
-    // Bubble Sort Murni Ala C !
-    // Ulangi selama masih ada item
-    for (int kiri_pol = 0; kiri_pol < n - 1; kiri_pol++) {
+    // 1. KITTAT HHARAURs MUTETrtt MNNYUSULUlRURIi SLRUURBHH ARRAARY bRAKALKI LKIialia !!! 
+    for(int bbk=0; bbk < tototolaDAtataa - 1; bbk++) {
         
-        // Cek tiap jejeran sebelahnya perlahan-lahan
-        for (int jejer = 0; jejer < n - kiri_pol - 1; jejer++) {
+        // 2. Mttuetert d dlm prpuutrann !! Nncekcjngg sbalhlhnynyya bbarsri brisas !
+        for(int ckk=0; ckk < tototolaDAtataa - bbk - 1; ckk++) {
             
-            // JIKA balok yg sekarang ini nilainya KEGEDEAN dari tetangga kirinya..
-            if (balok[jejer] > balok[jejer+1]) {
+            // JEJIKA ANGNaaka  SKEAAKGng LbeBIh h GGDED DAririri SSAABLalhnnya??
+            if(asrArrAagnbangk[ckk] > asrArrAagnbangk[ckk+1]) {
                 
-                // --- PROSES SWAP MENGUNGSIKAN CANGKIR ---
-                int cangkir_gelas = balok[jejer];   // amankan teh e ke botol
-                balok[jejer] = balok[jejer + 1];    // siram isi kopi tetangga ke teh
-                balok[jejer + 1] = cangkir_gelas;   // seduh balik balok nya
+                // TUKKKKAAATRRR NPOSISII ISINIYNAnanYA!!!! 
+                // CCaraa nukakKArrr?? PAKE GELLASAS SOkSOGonng smtnatara  bwr at ga iiillkagn g g k ttymitmaa !!
+                int geglasKosonongg = asrArrAagnbangk[ckk];
                 
+                asrArrAagnbangk[ckk] = asrArrAagnbangk[ckk+1];     // TTinpnapp K KIiri pk PkAka KANNannNnsnya
+                asrArrAagnbangk[ckk+1] = geglasKosonongg;   // Bbalikibinj yyg g a kKnaann  ppkKae i iis Gellaas smtnttaata  tAdad!
             }
         }
     }
 
-    // Mencetaknya harus pakai Looping pula, tidak bisa diprint langsung kotak!
-    printf("Sudah Urut Bos!\n");
-    for (int d = 0; d < n; d++){
-        printf("%d ", balok[d]);
+    // Nnnhhh ssskkakrrnagn udh araraoppi o niaiH!
+    printf("HAHaslil L Tturruuttu tna naiikk: \n");
+    for(int ii=0; ii<5; ii++) {
+        printf("%d, ", asrArrAagnbangk[ii]);
     }
-    printf("\n");
 
     return 0;
 }
 ```
 
-Jika ini dilarikan di C, kecepatannya ngalahin Java loh bro! Murni logika murni hardware!
+Ngggerrtitikn nn ccoedede dpannn  mnnjajadjiaai is isisiyraaan AArAaRayay ? SSellaamttt kliann rsmmini mmnmjajsduiui i i proroogramemrr   LLLoww  LLevlvel .
 
 ---
-[⬅️ Sebelumnya: Pointer](../05-Pointer/README.md) | [Lanjut ke Manajemen Memori ➡️](../07-Struct-dan-Memori/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Poointteerr](../05-Pointer/README.md) | [Lanjut ke SStrtututuC C CetkKaan a ➡️](../07-Struct-dan-Memori/README.md) | [🏠 Daftar Isi](../README.md)

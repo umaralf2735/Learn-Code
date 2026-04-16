@@ -1,36 +1,44 @@
-# 03 - Struktur Kontrol (Sama dengan Induk JS Semangnya)
+# 03 - Struktur Kontrol dan Perulangan  (Kembaran Javascript Murni)
 
-Tidak pantas kami menyuguhkan modul beda di sini, karena pada dasarnya TypeScript (TS) mewarisi 100% gaya peredaman kendali dari Javascript ES6 aslinya.
+Materi disini beneran identik sama JS ES6 tanpa basa basi. Tentu dong, karena TypeScript ya Javascript jg sbenrnya tapi di strict in.
 
-## 1. Percabangan Bawaan
+## 1. Percabangan Bawaan Strict
 
-Sama persis!
+Bedany, kalian gak usah takut klo ada org gila ngirimin Angka Umur tapi bentuknya String `"21"`. Gak usah repot ngetik sama-dgn-3 (`===`) lagi buat bedain String sm Number. Di Tipe Annotation TypeSript sejak var diciptain udh dibatesin Type number pastinya.
 
 ```typescript
-let umur: number = 21;
+// Aman mutlak krn ini brrrti cumn Nrima Angka asli
+let umurKlienTamu: number = 21;
 
-if (umur >= 18) {
-    console.log("Diijinkan nonton bioskop malam!");
+if (umurKlienTamu >= 18) {
+    console.log("Kasih pesenan Kopi Hitam Dewasa!");
 } else {
-    console.log("Anak anak dilarang!");
+    console.log("Kasih adeknya sirup coco pandan!!");
 }
 ```
 
-## 2. Looping (for .. of)
+## 2. Looping (Harta Karun `for .. of`)
 
-Ada trik perulangan array jaman ES6 khusus Array yang lebih mentereng: `for...of` .
+Kalian mau muterin sebuah Array? Daripda mumet nulis indeks `[0], [1]` mending pake jalan pinter `for of`. Ini jalan yang sangaaaaaat bnyk dipake d Frontend.
 
 ```typescript
-let kota_raksasa: string[] = ["Jakarta", "Tokyo", "London"];
+// Memaht array kudu paje Kurung Siku Kosong blkngnya!
+let kota_raksasa_indo: string[] = ["Jakarta", "Surabaya", "Medan"];
 
-for(let kota of kota_raksasa) {
-    console.log(`Turis mendarat di kota: ${kota}`);
+// KITA CARI TAU ISINYA SEMUA!! ("Puterin bro! Pindahin masing2 ke var xkota sementara!")
+for(let xkota of kota_raksasa_indo) {
+    
+    // xkota langsung isisnya "Surbaya!" Bukn 0 atatu 1 indexnya!!
+    console.log(`Turis mendarat di kota: ${xkota}`);
 }
 
-// Beda ama 'in' yang mana malah ngeluarin Indeks (0,1,2, dst)
+/* 
+AWAS JANGAN KETUKER AMA JS KUNO PUNYA YA (for .. IN). 
+Kalau lu tulis IN: Lu malah dapetin index angkanya (0, 1, 2) BUKAN NAMA KOTANYA! wkwk.
+*/
 ```
 
-Gitu aja! Lanjut belajar aslinya yuk!
+Itu aja! Gampang bgt kan ngendalin alurnya di TS.
 
 ---
-[⬅️ Sebelumnya: Annotation](../02-Type-Annotation/README.md) | [Lanjut ke Susunan Array Tuple ➡️](../04-Array-Serta-Tuple/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Type Annotation Cap Label](../02-Type-Annotation/README.md) | [Lanjut ke Susunan Array Tuple Sakti ➡️](../04-Array-Serta-Tuple/README.md) | [🏠 Daftar Isi](../README.md)

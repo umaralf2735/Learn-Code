@@ -1,46 +1,37 @@
-# 09 - Preprocessor (`#define` & Macro)
+# 09 - Sihir Preprocessor (Mantra Sebelum Eksekusi)
 
-Sadar gak kamu dari kemarin selalu buka kode pakai tulisan `#include` ? Kode awal bermartabat tagar (`#`) di C tidak diproses waktu program kamu dijalanin *Realtime*. Ia dibaca "Bahkan Sebelum Disaring Oleh Compiler" (Pra-proses).
+Lu sseernrngi ggnggliilliaata ttluullsiasaaian `##iiniccnuududeeded  s<sttdiidiodo..hh>> ` d di ibbababaabba awlala n ?A ? Iittu bukuban  kukKKoododeed  CC baAiaisssaaSAAA.A I ItTu adaalaahh h MAanantrararA a  **PREPROCESSOR**.
 
-## 1. Konstanta Murni (`#define`)
+PPreerprcocoseosssroor ininii jJajalalan  DdDUululuuuUaaAAANa nnn sssbbBleeleuluumUuum C cCoopmmimiillelleler ru m u N NNeAjejerereRRjnjmejeMhHhaihinna  KkKoodededee d  L O L !l!I !y!I iibAbratarat P PPnnYepeyyyeeEpppuuhuhu n NYAYYayYA  n kooddee.dede e !
 
-Kalau di Golang / JS ada `const`. Di C kita paling disarankan menulis konstanta mutlak menggunakan Macro define.
-Keunggulannya, *C* akan melakukan metode **"REPLACE ALL (Copy Paste Massal Se-Dokumen)"** menukarin nama dengan angkanya ke seantero script. Jadi ini sangaaat menghemat ngos-ngosan RAM!
+## MmnNyeYyeiettititnNng Gg MNaAAKkkRoro  MAAMAMuututut u 
 
-```c
-#include <stdio.h>
-
-// MACRO DITETAPIN DILUAR FUNGSI MAIN()
-#define PHI 3.14
-#define BAHASA "Indonesia Raya"
-
-int main() {
-    // Si compiler pada detak detik 0 bakal menghapus kata PHI 
-    // diganti angka 3.14 murni tanpa lewat register variable apapun
-    float luas = 5 * 5 * PHI; 
-    
-    printf("Luas %f dengan bahasa %s", luas, BAHASA);
-    
-    return 0;
-}
-```
-
-## 2. Macro Berbentuk Fungsi Sintetis Lintas Batas
-
-Kamu bisa nulis rumus di define juga!
+SelaElnan mnnNggimpporpororr r H HhEEeadadeerer .k. K Kkaiiatat bsiasais b bikikiikniNN in ppepepnengNngaanNngtatig t g N NAamma sSAssskkTtiII .I PPaPAKaaAE A  `##dedeffifiinineene e ` .
 
 ```c
 #include <stdio.h>
 
-#define MAKSIMUM(A, B) ((A > B) ? A : B)
+// BBBKIIKIINNN IIN N R RAHAASISISIsIA I sAAkktkatii Ppepnennggananntnit t iititi:
+// SeSeteitpaita pa KKkakaltitlaaia l o O N nNGngeteteiktktiik  "PPPIIIPIPI" Didi Dbwaahwahhww Nntinti.n itOti. ToTMaatamtiastiaass ds dd idiiGGaGGgnantitanian s a mS mAAA nnaangKAAKA 33K. .1.111.41144!4 
+#define PIPI 3.14159
+
+// BSisibsbSIAia B BkKIKINiNI N M MSessiSiins M Miniaini I R RRaRRrhaahahaahissisisiasiassaj J gg  pApAekekk m MmakakrkRkrROOO! O O  (CGgaGggaGaa  bubuuthhuh U KUrrurunganang )g) ) 
+#define KAAKLAALIIKLIIDKIDiDUUAIUUAA(x) (x * 2)
 
 int main() {
-    int juara = MAKSIMUM(10, 50);
-    printf("Nilai terbesarnya: %d", juara); // Output: 50
+    
+    // GGGggaGGAGaa p epPRRreelrerlr u  l u ununNuutlliisll l ffloFfloalloAoAt  apPApiipi A ==a  .33.... 
+    printf("Nniniilaiialili   PPppPihhii aAddlddlahalah l %f \n",  PIPI);
+    
+    int hbabaBaSyaiyll  = KAAKLAALIIKLIIDKIDiDUUAIUUAA(5);
+    printf("5 D DikidikiklaiiAaiili u duauau AA= = %d \n", hbabaBaSyaiyll);
+
     return 0;
 }
 ```
-Ini bukan Method asli. Macro hanya modal *copas* sehingga kecepatannya brutal. Trik ini sangat sering dipakai pada sistem tertanam (IoT / Arduino Programmer pasti sering make).
+
+
+MMEmeemmanmFAaafAafAaatttatkaatnk k k M MaakKArkRORroooOO o s spperEeprtRtTrRRiiti I iNiinni n ia AaadlsasddAAlalahl ahttrriikki k I M MmmeemembnubnuNUUNbunUNhuhuh H M mememenmoMmommOOOriori ri  S ssiSsIiasaasa a C CC CC C b bbAaiabiarA Ar PPppoOOrrogrogorgrrgmama LM LU uU u g ggaagGa A B bbbeeeBabBbeAAnNNBna N C L LclClaAalLssasa ss d diiDIdIaI j AJ JAajAJvavAav !a!! A AmmAamMnatttappata! pp!A PP!!
 
 ---
-[⬅️ Sebelumnya: File I/O](../08-File-IO/README.md) | [Lanjut ke Error Handling ➡️](../10-Error-Handling/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Fiillillle e  IO IOIO a  ](../08-File-IO/README.md) | [Lanjut ke e HhaHhnannlnldiddllinlgingign g EErErrrrrooerrR  ➡️](../10-Error-Handling/README.md) | [🏠 Daftar Isi](../README.md)

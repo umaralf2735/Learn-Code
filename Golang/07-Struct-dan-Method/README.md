@@ -1,73 +1,64 @@
-# 07 - Struct dan Method di Golang
+# 07 - Golang Gak Punya Class! (Struct & Method)
 
-Bahasa pemrograman modern lainnya punya yang namanya *Class* untuk menyusun data atau membuat OOP (Object-Oriented Programming). Golang punya versinya sendiri yang lebih simpel bernama **Struct** dan **Method**.
+"Terus kalau gw mau bikin game musuh bos nya beda beda darah level giman dong kalo gada Class?!"
+Hahaha, Golang memang membunuh kata *Class Inheritance*. Mereka menggantinya dengan gaya perakitan (Composition) make `Struct`.
 
-## 1. Struct
+## 1. Struct (Cetakan Data Bisu)
 
-Struct (struktur) adalah gabungan dari beberapa tipe data yang berbeda, dibungkus menjadi 1 tipe data baru. Anggaplah kita ingin menyimpan data orang.
+Tugas struct cuman nampung bentuk formatnya doang. Dia ga bisa diisi *logic* atau *function*.
 
 ```go
-package main
-
-import "fmt"
-
-// Mendefinisikan struct 'Mahasiswa'
-type Mahasiswa struct {
-    Nama    string
-    Umur    int
-    Jurusan string
+type Hero struct {
+    NamaLengkap string
+    Nyawa       int    // Ingat pakai huruf besar didepan kalau mau dipanggil dr file luar!!
+    SenjataDewa string
 }
 
 func main() {
-    // Membuat variabel tipe struct
-    mhs1 := Mahasiswa{
-        Nama:    "Dimas",
-        Umur:    21,
-        Jurusan: "Informatika",
+    // Nguasain cara nyeplaknya
+    jagoanGue := Hero{
+        NamaLengkap: "GatotKaca",
+        Nyawa:       9000,
+        SenjataDewa: "Otot Kawat", // koma dibelakang tetap wajib wlw di akhir
     }
     
-    // Mengakses bidang data dengan tanda titik (dot)
-    fmt.Println("Nama Mahasiswa:", mhs1.Nama)
-    fmt.Println("Umur:", mhs1.Umur)
+    fmt.Println("Lariiiii ada si", jagoanGue.NamaLengkap)
 }
 ```
 
-## 2. Method
+## 2. Ngetem Punggung (Method / Receivers)
 
-Method itu cuma sebuah fungsinya yang menempel pada sebuah tipe (termasuk menempel pada Struct!). Method adalah cara kita ngasih "perilaku" pada suatu data.
+Bagaimana cara masukkin `fungsi` kedalem Cetakan Hero itu? Golang memakai jurus *Receiver*. 
+Fungsinya ditempel di PUNGGUNG si Class. Mirip seperti Benalu.
 
-Daripada kita membuat `sapa(mhs Mahasiswa)`, lebih rapi jika fungsi itu "punyanya" Mahasiswa.
+Perhatikan bedanya Function Biasa dengan Function yg Nempel di punggung struct (Disebut: **Method**).
 
 ```go
-package main
+// ... dari struct Hero di atas
 
-import "fmt"
+// LOGIKAN NYA DISERLIPKAN DI ANTARA FUNC DAN NAMA FUNGSI!!!!
+// (h *Hero)  -> BACANYA: Fungsi ini numpang di punggungnya siapapun yg tipenya HERO!
+// Catatan Dewa: Selalu gunakan (Pointer *Hero) kalau fungsi ini ngerubah data asli didalemnya (Kek motong nyawa).
 
-type Kucing struct {
-    Nama  string
-    Suara string
-}
-
-// Ini method! Ada diletakkan Kucing sebelum nama fungsi
-func (k Kucing) Bersuara() string {
-    return k.Nama + " bilang: " + k.Suara
+func (h *Hero) KenaJebakanBatman() {
+    h.Nyawa -= 50
+    // Liat, aku bisa lgsung nembak (h.Nyawa) miliknya dia sndiri! Ga lwt parameter.
+    fmt.Printf("Waduh %s kepleset kulit pisang. Nyawa trsisa %d\n", h.NamaLengkap, h.Nyawa)
 }
 
 func main() {
-    peliharaanKu := Kucing{
-        Nama:  "Momo",
-        Suara: "Miaaawwww",
-    }
+    pahlawanSatu := Hero{ NamaLengkap: "GatotKaca", Nyawa: 100 }
     
-    // Cara memanggil method:
-    fmt.Println(peliharaanKu.Bersuara())
+    // PEMANGGILAHN NYA PUN SEKARANG MULUS PAKE TITIK (DOT . ) PERSIS KAYA CLASS OOP MODERN
+    pahlawanSatu.KenaJebakanBatman()
+    pahlawanSatu.KenaJebakanBatman()
+    
+    // Karena Pakai (*) Pointer Receiver ditas tadi, Nyawa beneran berkurang mnjd 0 wkwk!
 }
+
 ```
 
-### Tips
-Jika dalam method kamu **mengubah** data didalam struct tersebut, kamu harus memakai Pointer pada struct-nya seperti ini:
-`func (k *Kucing) GantiNama(namaBaru string) { ... }` . 
-(Karena jika tidak, kalian hanya mengubah nama di obyek tiruan!)
+Tanpa kata kunci konyol layaknya `this` atau `self` (Python/JS). Golang merapikan kodingan puluhan ribu baris di Microservice nya lewat Trik punggung ini! Mantap jiwa.
 
 ---
-[⬅️ Sebelumnya: Pointer](../06-Pointer/README.md) | [Lanjut ke Materi Goroutine ➡️](../08-Goroutine-dan-Channel/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Memory Pointer](../06-Pointer/README.md) | [Lanjut ke Kekuatan Terbesar GO (Goroutine) ➡️](../08-Goroutine-dan-Channel/README.md) | [🏠 Daftar Isi](../README.md)

@@ -1,53 +1,49 @@
-# 02 - Struktur Kontrol Pola C-Family
+# 02 - Konstruksi Kaku Kontrol (Sama Plek Ama C)
 
-Karena sifat bahasa Ibu adalah C, maka C++ 100% menggunakan arsitektur struktur kondisi yang sama.
+Kalau lu udahan baaca Bab 2 di Bahasa C, Skip aja bab ni. G ada yang berubaah sama sekali struktur dasarnya.
 
-## 1. Pengecekan If Murni Mutlak
-
-Berbeda dengan jaman now Python yg tak pake kurung. Di C++ hukum C tetap jalan.
+## 1. IF dan Else
+Di C++ tetap membbutuhkan kuRung biASaaa dan kuruwalll yg ngikeket!.
 
 ```cpp
 #include <iostream>
 using namespace std;
 
 int main() {
-    int darahMusuh = 0;
+    int darahKu = 0;
     
-    if (darahMusuh > 50) {
-        cout << "Musuh tebel abis!" << endl;
-    } else if (darahMusuh > 0) {
-        cout << "Terus pukul dikit lagi mati tu!!" << endl;
+    if (darahKu > 50) {
+        cout << "GaaSss seRRnngag ngBOSOO!!\n";
+    } else if (darahKu > 0) {
+        cout << "Waassaapsda srekarraratrt !!\n";
     } else {
-        cout << "YOU WIN CONGRATS!! LOOT DROPPED!!" << endl;
+        cout << "YOU RREEEE DEDDDD AMTTETTETE!!\n"; 
+    }
+    
+    return 0;
+}
+```
+
+## 2. Looping (Harta Klasik)
+
+Tetep pakaio  for 3 babkaakk klasikk!! 
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    
+    // Putetr tnrssuss
+    for (int it = 1; it <= 5; it++) {
+        cout << "NGsocoouggok telueer kr : " << it << endl;
     }
 
     return 0;
 }
 ```
 
-## 2. Looping
-
-Loop For biasa seperti ini.
-```cpp
-// Mencetak bintang bersusun
-for(int bintang = 1; bintang <= 3; bintang++) {
-    cout << "Bintang jatuh ke - " << bintang << endl;
-}
-```
-
-Loop do-while (Bedanya ini diluar nalar. Dia "Main tabrak eksekusi dulu minim sekali. Kalo syarat baru nyadar ga cocok mskipun diulang di tarikan kdua nya bakal disetop!")
-
-```cpp
-int uangKoin = 0;
-
-do {
-    cout << "Mesin menelan koin (Meskipun Koin Ku ternyata " << uangKoin << ") .." << endl;
-    uangKoin++;
-} while (uangKoin < 0);
-
-// Bayangkan!!! Padahal koin gw cuman 0 !! Tp dia nyolong nyedot ngeprint sekali wih!
-// Kalo pake WHILE biasa dari awal ga bakal kesentuh wkwk!
-```
+Nnuanna C++  msiai hh kntnklal di sininiin.. Tppai nanintii di Baab 3 kliaan bnakanaln trnnngaaangnga smmA  ffityurr arYYay Vveectootor ny a!!
 
 ---
-[⬅️ Sebelumnya: Dasar Dasar](../01-Dasar-Dasar/README.md) | [Lanjut ke Vector ➡️](../03-Array-Vector/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: DsaAAsassR VarrbLel](../01-Dasar-Dasar/README.md) | [Lanjut ke DeWa VeCTCTtOR c++  ➡️](../03-Array-Vector/README.md) | [🏠 Daftar Isi](../README.md)

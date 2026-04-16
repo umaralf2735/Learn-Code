@@ -1,37 +1,52 @@
-# 04 - Fungsi di Python (Def)
+# 04 - Fungsi di Python (Pekerja Mesin Pabrik)
 
-Untuk mencegah spaghetti kodingan panjang panjang.
+Kita bikin gerbang supaya gausah ngoding berulang ulang. Cukup pakai kata pengantar *Definition* (`def`).
 
-## Rumus Asli Keyword Limit
-
-Python cukup pakai keyword 3 huruf nama `def` (Definition).
+## 1. Rumus Merakit Mesin Kecilnya
 
 ```python
-def panggil_tukang_pijit(nama_bos):
-    print(f"Halo tukang urut, dapet pesanan buat kerumah Bos {nama_bos} sekarang!")
-
-panggil_tukang_pijit("Yanto")
-```
-
-## Return yang Tak Tahu Diri (Positif)
-
-Python bisa mereturn 2 atau 3 angka berbeda di fungsi tanpa di deklarasi macem-macem didepan fungsinya kaya Golang, bebas sebebas bebasnya!! Pucuknya dipisah Koma.
-
-```python
-def pertukaran_matematika(a, b):
-    tambah_semua = a + b
-    kurang_semua = a - b
+# Fungsi nerima 2 isian bahan mentah: nama dan nominal sumbangan
+def alatPengerasSumbangan(namaPenyumbang, nominal):
+    # Mesin Memproses...
+    pajak = nominal * 0.1
+    bersihUang = nominal - pajak
     
-    return tambah_semua, kurang_semua
+    # Kalo lu lupa ngetik TAB buat baris dibawah ini.. mesin gagal kebongkar!
+    print(f"Bpk {namaPenyumbang} dermawan memberikan kotor {nominal}. Trmksh.")
+    
+    # Return ngembaliin data yg di olah dr dlm mesin (Uang Bersi) ktangan penangkap!
+    return bersihUang
 
-# nyimpennya otomatis dipisah ke dua keranjang yang tergeletakan
-hasil1, hasil2 = pertukaran_matematika(10, 3)
 
-print("Kalau ditambah nilainya", hasil1) # 13
-print("Kalau dikurang nilainya", hasil2) # 7 
+# Manggil / Neken Tombol Msinnya Trus nadangin hasil Return nya!
+hasilGereja1 = alatPengerasSumbangan("Coki", 50000)
+hasilMesjid = alatPengerasSumbangan("Rizky", 1000000)
+
+print(f"Uang brsi bersih trkumpul {hasilGereja1 + hasilMesjid}")
 ```
 
-Singkat padat merayap dan tak ribet!
+## 2. The Power of `*Args` & `**Kwargs` (Karung Ghaib Bebas Isi)
+
+Sering kesal bikin fungsi tp gak tau brapa banyak input angkanya?
+Gunakan sihir Bintang 1 (*Tuple*) atau Bintang 2 (**Dictionary**) buat melempar sampah parameter berapapun yg lu mau gajelas panjangnya lgsung terisep dan jadi array Karung!!
+
+```python
+# Tulis bintang di depan! Brti fungsi ngisep bberpapun org ngisi diblkng k koma!
+func totalinBelanjaGw(*semuaBarangGw):
+    rajaHasil = 0
+    
+    # Muterin isi Karungnya pakai in !
+    for harga in semuaBarangGw:
+        rajaHasil += harga
+        
+    return rajaHasil
+
+# Tembak ngasal aja jumlahnya BEBEBASS, ga ditolak!! 
+print("Total struk ke-1: ", totalinBelanjaGw(100, 50, 10))        # isi 3 buah 
+print("Total struk ke-2: ", totalinBelanjaGw(2000, 500, 7000, 1)) # isi 4 buah jg MSUK!!
+```
+
+Ini adalah senjata rahasia Framework Python (seperti Django atau Flask), karena mereka nerima lemparan opsi form Web yang jumlah *Input formnya* bisa sangat bervariatif dari pengguna tanpa nge-crash fungsi backend nya.
 
 ---
-[⬅️ Sebelumnya: Koleksi Data](../03-Koleksi-Data/README.md) | [Lanjut ke Algoritma ➡️](../05-Algoritma-Dasar/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Koleksi Data List](../03-Koleksi-Data/README.md) | [Lanjut ke Algoritma Ghaib ➡️](../05-Algoritma-Dasar/README.md) | [🏠 Daftar Isi](../README.md)

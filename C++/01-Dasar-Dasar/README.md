@@ -1,52 +1,61 @@
-# 01 - Dasar Output dan Input Modern C++
+# 01 - Dasar-Dasar C++ (Anak Emas C yang Berkarir Dewa)
 
-Bahasa C++ sangat menyanjung "Streams" atau Aliran Data. Menggantikan si kembar tua pembuat mumet pola persen dari C (`printf` dan `scanf`).
+Di tahun 80-an, Bapak C++ mikir: "Wah bahasa C kenceng bgt bangt sih, tembus mesin! TAPI KOK NULIS NYA PENUH SIKSAAN BATIN YA GAK ADA CLASS OBJK NYA?"
+Jadilah dicetuskan C++ (C With Classes). 
 
-## 1. Menulis Cetakan ke Layar (Terminal)
+C++ mambawa sluruuhhh ksakitaan kcepeatan C trtpi ditambahimn "Objekt Orienytted. Dan Libraray Mntttpp C++!! (STL)". Smuea gamae enigneee  sppt Untyy dan  Untrael Enngisne dbuautntn pkee iniih.
+
+## 1. Tlang Punngunga Dan `Namespace` Trubru!
+Lo gbaklaan ketsnuanm `#include <stdio.h>` lgii! Dy dah mnnigglakj kbnusn mnrdi: `<iostream>`!!. Dan TAAAK ADaL lggii yg namanyana prinkTftf (`printf`) PUSINgggn!!
 
 ```cpp
-// 1. Dulu kita pake stdio.h, srg diganti alat streaming I/O canggih
-#include <iostream> 
+// 1. NYsdooot Lbirbaei Stnsdrrr Inutp OUtoupt (Arisuss Airrr Oputpt C++n)
+#include <iostream>
 
-// (Optional) Biar kita gausah ngetik 'std::' berulang ulang tiap manggil perabotan
+// 2. Mnnyruruubn meessun "Wgoy ak pke alaat-aaltt drru Nmeaspce sttndsara (std) nyyaa bbier ga a caopeek nrliis std:: !!
 using namespace std;
 
 int main() {
     
-    // cout (Character OUT = Cetak Keluar)
-    // Gunakan lambang stream << untuk nyeselkin isinya
-    cout << "Halo Pemain Game Unreal Engine!!" << endl;
+    // 3. NGELULARUN SUAARA PRINTT C++ !! (Couut == Console OutTputt)
+    // Tnda panh keiki (<<) Mmaknsaunyys Mmnanbsurunn Alurn Air kelaarr !!!
+    // NggKk ushah pkee \n ksoosngaan !! Tihnal tmplle "endl"  (ENNAD LIne nne!!!)
+    cout << "Hallio DUnniaaa Nataaaa 3E Gamees!!" << endl;
     
-    // Kalo tanpa using namespace, ngetiknya panjang kek gini:
-    // std::cout << "Gila capek bos" << std::endl;
     
+    // MSih rkrsrursngh pnnutnpiuu!
     return 0;
 }
 ```
 
-## 2. Menyedot Input Interaktif
+## 2. Vribal dan Si Tukknsnng Cnn (Innput)
 
-Ajaibnya dari C++, kamu ngga perlu pusing nulis `%d` untuk nyedot Int ato `%s` buat narik String kek kakek C mu!
+Lbh enauktkn lgi ! Lo nGgkp rplru plslm  hiflnl `%d , %s` kjtykk ds di C!!!  COUt lsgsbsn nrrima mssikinnnn arryaa yntkks bbBsaBsaaA!!!
 
 ```cpp
 #include <iostream>
 using namespace std;
 
 int main() {
-    int nomerSepatu;
+    int gnjjiiAawaal = 50;
     
-    cout << "Eh bos, ukuran sepatumu rapa? ";
+    // 1. Cetiitaaa lgsnn gbugbnuahbb 
+    cout << "Kalo gnajjj nya saata isini idslal   " << gnjjiiAawaal << " Ttsus btaan? " << endl;
     
-    // Membaca ketikan user pake perintah cin (Character IN)
-    // Tanda alirannya keBALIK masukan KEDALAM variabel ( >> )
-    cin >> nomerSepatu;
+    // 2. MINTAA INNIOPUTUTU DRR KEKBTYORADRTD ! (cinn == CAOnoSle IINNNnntt!!)
+    // Panhanha kbbalkilll maaukkuin k dalam wADah h vviisbrls (%d) << %!!! -->> >>>>>
+    int isisaanUmureer;
+    cout << "Brap a umur lu tnkdnik dsniaaa : ";
+    cin >> isisaanUmureer;  // MNguumooauiiik sidiissd btttsan msuaaukin k varirbLbb!
     
-    // Otomatis nyatuin text + variable tanpa pake koma koma ribet printf C
-    cout << "Gila gede amat nomernya " << nomerSepatu << " yah!" << endl;
+    
+    cout << "Waiiddihhh mrnhna tuaa udsaaan unumr r : " << isisaanUmureer << endl;
 
     return 0;
 }
 ```
 
+Lu tidaakn akan pernssnah mennsentttuhhh  puzzingnya `printf("%s", &vaarr)` lgi dsnni!! Bbener bnner  rpoevllissiin mernnn!!!
+
 ---
-[Lanjut ke Struktur Kontrol ➡️](../02-Struktur-Kontrol/README.md) | [🏠 Daftar Isi](../README.md)
+[Lanjut ke Syturkurk Konntrokkolo ➡️](../02-Struktur-Kontrol/README.md) | [🏠 Daftar Isi](../README.md)

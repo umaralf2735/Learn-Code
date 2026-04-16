@@ -1,75 +1,58 @@
-# 01 - Dasar-Dasar Golang
+# 01 - Dasar-Dasar Golang (Sang Kecepatan Cahaya)
 
-Selamat datang di langkah pertama belajar bahasa pemrograman Go (Golang)! Pada bagian ini, kita akan belajar membuat program sederhana dan mengenal sintaks dasarnya.
+Selamat datang di dunia Google Go (Atau sering dipanggil **Golang**). Bahasa ini diracik oleh ilmuwan raksasa Google dengan misi tunggal: *"Membunuh kelambatan bahasa OOP Tua dengan kecepatan roket rakitan ala Bahasa C, tapi tetap seenak Python diketiknya"*.
 
-## 1. Program Hello World
+## 1. Tulang Punggung Utama (Pabrik Package & Import)
 
-Setiap belajar bahasa pemrograman, biasanya kita memulainya dengan menampilkan teks di layar komputer. Di Golang, kita menggunakan *package* bawaan bernama `fmt`.
-
-```go
-package main // Deklarasi package utama
-
-import "fmt" // Mengimpor package fmt untuk melakukan input/output
-
-func main() {
-    // Fungsi utama yang akan dijalankan pertama kali
-    fmt.Println("Hello, World!")
-}
-```
-
-### Cara Menjalankan Program:
-Jika kode di atas disimpan di dalam file `main.go`, jalankan di terminal menggunakan perintah:
-`go run main.go`
-
-## 2. Variabel dan Konstanta
-
-### Variabel
-Variabel adalah tempat untuk menyimpan data. Di Golang, ada beberapa cara mendeklarasikan variabel:
+Sama kek bahasa kompilasi lainnya (C/Java). Golang itu ngga jalan sekedar script selembar. Dia di jalankan utuh sebagai *Paket App*.
 
 ```go
+// 1. DIATAS SENDIRI WAJIB PAKETNYA (Karena ini file jalannya, dipanggil 'main')
 package main
 
+// 2. Kita manggil Gudang Alat Bawaan dari dalem komputernya ("fmt" = Format / Print)
 import "fmt"
 
+// 3. PINTU GERBANG UTAMA DI EKSEKUSI !! HARUS function main(){}
 func main() {
-    // 1. Deklarasi dengan keyword 'var' dan menyebutkan tipe datanya
-    var nama string = "Budi"
     
-    // 2. Deklarasi dengan 'var' tanpa menyebutkan tipe datanya (Type Inference)
-    var umur = 20
+    // Perhatikan, P dan L Nya Huruf gede!! (PrintLine). 
+    fmt.Println("Halo Dunia Golang! Mesin V8 Melesat..")
     
-    // 3. Deklarasi singkat menggunakan ':=' (Hanya bisa di dalam function)
-    pekerjaan := "Programmer"
-
-    fmt.Println("Nama saya:", nama)
-    fmt.Println("Umur:", umur)
-    fmt.Println("Pekerjaan:", pekerjaan)
 }
 ```
+**Analogi**: Ibarat kamu merakit robot. Baris `package` itu badan robotnya, `import` itu kamu masangin baut sama tangan mekaniknya, dan `func main` adalah **Batrai Utama tempat aliran listrik nylala pertama kali**!
 
-### Konstanta
-Konstanta adalah nilai yang **tidak bisa diubah** setelah dideklarasikan. Cocok untuk data pasti seperti nilai Pi, dll.
+## 2. Inisiasi Variabel (Perang `= vs :=`)
+
+Golang itu tipenya mutlak gak suka dikibulin! Kalau string ya string selamanya! JS mah masi suka ngeletoy.
+
+### A. Cara Kolot (Penuh Syariat Tipe Bawaan)
+```go
+// Namanya sapa, terus Tipenya Apa jelas. Trz di isi sama dengan = .
+var namaJagoan string = "Satria Garuda"
+var levelDewa int = 99
+var udahMati bool = false
+```
+
+### B. CARA SAKTI MODERN GOLANG `:=` (Si Penebak Sakti Walrus Operator)
+Orang google paling males ngetik banyak. Mereka bikin operator *Assignment Babi Ngepet* `:=` (Walrus/Titik-Tanya-Sama-Dengan).
 
 ```go
-package main
-
-import "fmt"
-
 func main() {
-    const phi = 3.14
-    // phi = 3.15 // ERROR: nilai konstanta tidak dapat diubah
+    // Ga perlu pake tulisan VAR.. Ga perlu pakai tulisan INT !!!
+    // Golang lgsg deteksi secara ghaib dan ngeborgol mutlak kalau duitPundi ini otomatis INT!!
+    duitPundi := 5000 
+    
+    // duitPundi = "Ribuan" // ❌ KALO LU TIMPA STRING. TETAP ERROR MERAH DIKICK COMPILER! 
 
-    fmt.Println("Nilai Phi:", phi)
+    // Output Interpolasi (Cetak)
+    fmt.Printf("Bentar, si jagoan masi punya receh rp %d\n", duitPundi)
+    // Tanda %d / %v itu adalah "Sediakan Slot Kosong Disini" yg diisi variabel ujung koma..
 }
 ```
 
-## 3. Tipe Data Dasar
-
-Beberapa tipe data yang wajib diketahui di Golang:
-- **String**: Teks (contoh: `"Halo"`)
-- **Integer**: Angka bulat (contoh: `10`, `-5`) -> Tipe data `int`.
-- **Float**: Angka desimal (contoh: `3.14`) -> Tipe data `float32` / `float64`.
-- **Boolean**: Bernilai benar (`true`) atau salah (`false`) -> Tipe data `bool`.
+> ⚠️ **HUKUMAN MUTLAK DEWA GOLANG**: Kalau kamu bikin Variabel misal `baju := "Merah"` TAPI KAGA ELU PAKE SAMA SEKALI DIBAWAHNYA (Nganggur gadi-Print dlsb)... Program **ERROR GA MAU JALAN!!** Menghindari sampah RAM! Mantap ketat!!
 
 ---
-[⬅️ Kembali ke Daftar Isi Utama](../README.md) | [Lanjut ke Materi Array dan Slice ➡️](../02-Array-dan-Slice/README.md)
+[Lanjut ke Slice Memory ➡️](../02-Array-dan-Slice/README.md) | [🏠 Daftar Isi](../README.md)

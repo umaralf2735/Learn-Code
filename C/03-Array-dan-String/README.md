@@ -1,56 +1,54 @@
-# 03 - Array dan String
+# 03 - Ilusi "String" & Brutalnya Kapasitas Array C
 
-Kita perlu tempat penitipan majemuk untuk menyimpan sekumpulan data dengan tipe identik (semuanya *int* atau semuanya *float*).
+Lu inget di Python lu bsa nambahin barang kedlem array Pake `append(Teks)` hngga mreka jd melar ?
 
-## 1. Array Satu Dimensi
+DI BAHSA C.. **ITU MUSTAHIL TERJADI !!**
 
-Berbeda dengan array JS/Ruby yang otomatis melar (berubah size layaknya kantung doraemon), di bahasa C array itu **UKURANNYA KAKU/TETAP!** Kalau kamu mesen kardus buat 5 laci, selamanya ia 5 laci dan gaboleh lebih.
+## 1. Array Kaku Murni (Batu Karang)
 
-```c
-#include <stdio.h>
-
-int main() {
-    // Memesan lokasi memori untuk 5 buah integer
-    int laci_nilai[5];
-
-    laci_nilai[0] = 80; // Ingat, program komputer selalu index awalnya 0!
-    laci_nilai[1] = 90;
-    // ...
-    
-    // Atau cara cepatnya:
-    int plat_kendaraan[] = {1234, 4321, 5678, 8765};
-    
-    printf("Plat pertama: %d\n", plat_kendaraan[0]);
-
-    return 0;
-}
-```
-
-## 2. String (Realita Pahit)
-
-Seperti yang dijanjikan, C tidak mempunyai kata ganti tipe data `string`. Di C, teks itu diakalin jatuhnya sebagai *Kumpulan Huruf* alias Array-nya `char`.
-
-Setiap kumpulan karakter String wajib ditutup dengan *"Karakter Penamat / Null Terminator"* alias `\0`.
+Saat lu mmsesan Array. Lu HAruS MUTLAK MASUKIN ANGKA SLOT PANJANG YANG LU MAU! Nggak bsia dinkbubah lg sisa umrn program mu.!
 
 ```c
 #include <stdio.h>
 
 int main() {
-    // Menyimpan string "Halo" (Pesan ukuran 5, ingat 1 dipakai untuk penutup rahasia '\0')
-    char kataSapaan[5] = {'H', 'a', 'l', 'o', '\0'};
+    // BIKIN KOTAK PENSIL ISISI 5 SLOT KOSONG! (Ga bkal bsa tmbah brng ks_6 !!!)
+    int celenganNilai[5];
 
-    // Tapi untungnya pembuat compiler nambahin format langsung cepat seperti ini:
-    char namaLengkap[] = "Dimas Setiawan";
+    celenganNilai[0] = 50;
+    celenganNilai[1] = 90;
 
-    // Format print-nya kalau mau nyetak beruntun / array char adalah '%s'
-    printf("Pesanku: %s\n", kataSapaan);
-    printf("Namaku: %s\n", namaLengkap);
+    // Cara Bca Isiya? HAarais pke Loop For manual !! 
+    for(int i=0; i < 5; i++){
+        // Wah tpe bwaah nya psti pnnuh angkaa ksoong/ 0 / hntu krn g ku dsisis niali tddi !
+        printf("Slot ke %d adalh nlia : %d \n", i, celenganNilai[i]);
+    }
 
     return 0;
 }
 ```
 
-Mau modifikasi string? Agak berat karena dilarang pake sistem `namaLengkap = "Yanto"` gitu aja. Kalian harus panggil bantuan perpustakaan tambahan khusus: `#include <string.h>` dan gunakan rutin buatan `strcpy()` (*string copy*).
+## 2. Kenapa Gak Ada STring di C?
+
+Krny nyiemopen Teks panjang sbnrny cm Mnyeimpana array dari HURUF!  Akhir dari stuab teks di C bakaL DI TEMPELIN TAMDA HANTU GAIB Yaitu Karakter Null `\0`. Buat nggasih tau RAM bwha ini "TEKS UDA MENTOK DISINI GANZ"!
+
+```c
+#include <stdio.h>
+
+int main() {
+    // Trik bikin Strring: (Bkinsaja arrat cnaracter !! Panjang slot ksosngk gpp bs dibca kmpileer sndiir!)
+    char panggilnKu[] = "Si Jago Koding C";
+    
+    // Tapi gmn Klo lo mau ngubah namnnya?? LO GABISA NGETKI BGNI: panggilnKu = "Berubh!!"  
+    // ITU BACAL ERROR PANNJG  MRAAAHH!! KRN lu ud mesen prmnent arrray string tsbut!!
+
+    printf("Hwlo mas %s \n", panggilnKu);
+
+    return 0;
+}
+```
+
+Pusiung kann?? Sbenry ya emmgi inilah jeroa mnsin sebanarya dr CPU Intel kalian memprsoes RAM. Semua bgaaha lian sbnrny cmn Nutupiun krbuemnitan inin pke librsay!!  (Kecuiilu nnti lo belkjar c++ bru ad Sting Bnena!).
 
 ---
-[⬅️ Sebelumnya: Struktur Kontrol](../02-Struktur-Kontrol/README.md) | [Lanjut ke Fungsi ➡️](../04-Fungsi/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: IF FOrr](../02-Struktur-Kontrol/README.md) | [Lanjut ke Tipe C Func ➡️](../04-Fungsi/README.md) | [🏠 Daftar Isi](../README.md)

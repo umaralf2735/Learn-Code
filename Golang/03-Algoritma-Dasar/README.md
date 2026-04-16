@@ -1,93 +1,74 @@
-# 03 - Algoritma Dasar (Sorting & Searching)
+# 03 - Algoritma Sort Bawaan (Mengalahkan C)
 
-Agar dapat memecahkan masalah nyata, kita perlu belajar Algoritma. Algoritma adalah urutan langkah logis untuk memecahkan suatu masalah. Dua contoh algoritma klasik adalah algoritma untuk **mengurutkan (Sorting)** dan **mencari (Searching)**.
+Memang di bahasa C kita harus mengasah logika bikin Bubble Sort *of O(N^2)* manual muterin i dan j... itu keren buat di kuliahan sih...
 
-## 1. Algoritma Pencarian (Linear Search)
+**TAPI DI DUNIA KERJA**, ngetik begituan itu buang waktu (menghabiskan gaji developer). Golang sudah berterima kasih karena memberikan satu paket Pustaka (Package) sakti khusus meratakan Array: yaitu Package `sort`.
 
-Linear search (Pencarian Linier) adalah metode mencari nilai di dalam kumpulan data dengan mengecek satu per satu elemen dari awal sampai akhir.
-
-```go
-package main
-
-import "fmt"
-
-// Fungsi untuk mencari sebuah nilai 'target' di dalam slice 'data'
-func linearSearch(data []int, target int) int {
-    for i, nilai := range data {
-        if nilai == target {
-            return i // Kembalikan index tempat target ditemukan
-        }
-    }
-    return -1 // Target tidak ditemukan
-}
-
-func main() {
-    angkaKita := []int{50, 30, 20, 90, 70}
-    angkaYangDicari := 90
-
-    indexDitemukan := linearSearch(angkaKita, angkaYangDicari)
-
-    if indexDitemukan != -1 {
-        fmt.Printf("Angka %d ditemukan pada index %d\n", angkaYangDicari, indexDitemukan)
-    } else {
-        fmt.Println("Angka tidak ditemukan.")
-    }
-}
-```
-
-## 2. Algoritma Sorting (Pengurutan)
-
-Pernahkah kalian memiliki data acak dan ingin diurutkan dari yang terkecil ke terbesar? Ada banyak teknik Sorting, dan mari kita mulai dengan **Bubble Sort** (salah satu algoritma paling sederhana, namun sangat logis untuk pemula).
-
-### Bubble Sort
-
-Algoritma ini dinamakan *bubble* karena elemen yang nilainya paling besar akan diletakkan di akhir perlahan-lahan (seperti gelembung yang mengapung ke atas).
-
-Prinsip kerja:
-Bandingkan elemen saat ini dengan elemen di sebelahnya. Jika elemen saat ini lebih besar dari sebelahnya, tukar (*swap*) posisinya. Ulangi terus menerus sampai tidak ada elemen yang ditukar lagi.
+## Nyusun Data Primitif Dalam 1 Baris!
 
 ```go
 package main
 
-import "fmt"
-
-// Fungsi untuk melakukan bubble sort
-func bubbleSort(arr []int) {
-    n := len(arr)
-    
-    // Looping sebanyak jumlah elemen didalam array/slice
-    for i := 0; i < n-1; i++ {
-        
-        // Looping untuk mencari jika ada yang berjejer tidak tersusun
-        for j := 0; j < n-i-1; j++ {
-            
-            // Apakah elemen saat ini lebih besar dari elemen setelahnya?
-            if arr[j] > arr[j+1] {
-                // Tukar (Swap) jika ya
-                temp := arr[j]
-                arr[j] = arr[j+1]
-                arr[j+1] = temp
-                
-                /*
-                Cara swap yang lebih ringkas di Golang:
-                arr[j], arr[j+1] = arr[j+1], arr[j]
-                */
-            }
-        }
-    }
-}
+import (
+    "fmt"
+    "sort" // WAJIB DI IMPORT PISAU SAKTINYA!!
+)
 
 func main() {
-    daftarAngka := []int{64, 34, 25, 12, 22, 11, 90}
-    fmt.Println("Sebelum diurutkan:", daftarAngka)
+    kardusAngka := []int{100, 5, 2, 9999, 10}
+
+    // 1. Sort menaik secara elegan kilat kilauan :
+    sort.Ints(kardusAngka) 
+
+    fmt.Println("Nah Rapi kan tuh Bos naik: ", kardusAngka) 
+    // Jawab: [2, 5, 10, 100, 9999]
+
+
+    // 2. KALO MAU GA SENGUE NGURUT TERBALIK KAYA HARGA TERMAHAL BAGAIMANA??
+    // Bungkus dlu array pake jubah (Reverse) lalu suapi ke mangkuk Sort td!
+    sort.Sort(sort.Reverse(sort.IntSlice(kardusAngka)))
     
-    bubbleSort(daftarAngka)
-    
-    fmt.Println("Setelah diurutkan: ", daftarAngka)
+    // TARA! JAWABAN JADI: [9999, 100, 10, 5, 2]
+    fmt.Println("Dari yg paling gila angkanya:", kardusAngka)
 }
 ```
 
-Bagaimana? Perlahan-lahan algoritma akan menukar angka paling besar ke kanan sampai semuanya terurut dengan rapi!
+## Memecah Kode Data Object Berat Majemuk
+
+Pasti lo bertanya-tanya, kalau datanya berupa Struktur (`struct`/Dictionary JSON) yang bentuknya kotak-kotak misal Sort Murid berdasarkan Gaji... Gimana cara ngasih tau Golang bahwa "Woi, sort ini pake atribut umur ya! bukan namanya!" ??
+
+Golang pny kekuatan sakti Sorting buatan Kustom (*Slice Stable Sort!*).
+```go
+import (
+    "fmt"
+    "sort"
+)
+
+// Bayangin ini Struct Cetakan Mahasiswa (Ntr di pelajri belakangan tenang aja)
+type Pekerja struct {
+    Nama string
+    Gaji int
+}
+
+func main() {
+    listUmat := []Pekerja{
+        {"Jaelani", 500},
+        {"Wawan", 9000},
+        {"Anas", 20},
+    }
+
+    // NYUSUN BERDASARKAN OBJEK (Pake Jurus Sort.Slice)
+    // Ngasi Logika Lemparan Ke Mesinnya: Wahai mesin sort.. Aku anggap data ke (i) menang klo gjinya lbh kcil dr(j)..
+    sort.Slice(listUmat, func(i, j int) bool {
+        return listUmat[i].Gaji < listUmat[j].Gaji
+    })
+
+    fmt.Println("Di urut dr yg termiskin:", listUmat)
+    // Bkl terurut jd -> Anas, Jaelani, Wawan lho!
+}
+```
+
+Bagi yg paham ini, seluk beluk Database Sorting API akan lumer dimakan logic backend mu dengan gampang.
 
 ---
-[⬅️ Sebelumnya: Array dan Slice](../02-Array-dan-Slice/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Slice vs Array](../02-Array-dan-Slice/README.md) | [Lanjut ke Loop Kontrol Ekstrem ➡️](../04-Struktur-Kontrol/README.md) | [🏠 Daftar Isi](../README.md)

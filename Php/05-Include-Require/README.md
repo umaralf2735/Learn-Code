@@ -1,50 +1,58 @@
-# 05 - Menyatukan Potongan File (Include & Require)
+# 05 - Include & Require (Sihir Lego Membelah File)
 
-Tidak mungkin kamu membuat Website Toko Online yang Header-nya, Sidebar-nya, Footer-nya dan isi kontentnya dicampur dalam 1 file `index.php` sampai 10 ribu baris.
+Kalian pasti pusing kalau nyari file di `index.php` yang kodenya sampai 2,500 baris campur aduk isinya Logic DB, Footer Copyrtighyt Html, Sidebar CSS Menu Kiri, Menu Atas Navabr HTML dll?! Scrollnya aja udah bikin mati jari.
 
-PHP punya kemampuan instan menarik isi file PHP lain buat dijahit ke layarnya secara sakti!
+Pecah Dong!!! File Navigasi Atas taruh di file terpisah. CSS Sidebar pisah beda kamar!! Trus gmn biar mreka nyambung jadi 1 layar Web utuh di mata User internet sana?? PHP jagonya jahitan komponen!
 
-## `include` vs `require`
+## Aturan Jahitan: `include` vs `require`
 
-Kedua komando ini gunanya kembar, bedanya cuma di "Sifat Mengamuk-nya PHP".
+Keduanya sama sama berfungsi "Narrik jaroan file seblah dan dicopasin plek ketiplek kesini" Tapi sifat galaknya berbeda :
 
-### `include` (Boleh Copas)
-Kalau filenya gak nemu (gak ada), dia cuman ngeluarin peringatan (*Warning*), tapi kode dibawahnya **TETEUP DIJALANKAN LANJUT TERUS**.
+### 1. `include` (Sifatnya Kendor Copasnya)
+Kalau file yang mau disedot ternyata HILANG / LUPA DISAVE / NAMA TYPO.. PHP bakal teriak merah *[Warning]*. TAPI program halaman web kalian **MASIH HIDUP LANJUT JALAN NGE RENDER SAMPE KE FOOTER BAWAHNYA!!**
+
+Sangat aman baut dipake naro Header atau Widget cuaca ga pnting yang hilang gpp.
 
 ```php
-<!-- ISI DARI FILE (atas.php) -->
+// File PUSAT: index.php !!!!
 <html>
-<head><title>Websiteku</title></head>
 <body>
-    <h1>NAVIGASI ATAS</h1>
-```
 
-```php
-<!-- ISI DARI FILE (index.php) -->
 <?php
-    // MENYEDOT ATAS PHP!!
-    include("atas.php"); 
+// NYEDOT POTONGAN HTML DARI FILE SABLH!! (navbar atas item menu Home/About)
+include("menu_navbar_atas.php");
+
+// Kalo ternyata nama_file ini gw typoin/ilang.. Dia ngeluarin wARNING tp brs d bwh msi kepnnngil.
 ?>
 
-<!-- SISA KONTEN BAWAHNYA -->
-<p>Selamat datang di Website Udin..</p>
+<!-- SISA KONTEN BADAN WEB -->
+<h1>Isian Berita Utama Harian Koruptor Ditangkap....</h1>
+
 </body>
 </html>
 ```
 
-### `require` (Syarat Mutlak Keras)
-Dilarang ngeles! Kalau si file `fungsi_berat.php` nya dihapus orang/hilang. Maka Layarmu **FATAL ERROR DAN PUTIH BLANK**. Tidak memaafkan.
+### 2. `require` (Sifat Mutlak Kematian Mati Blank)
+Dilarang ngeles! Kalau si file incaran dihapus orang. Maka Layarmu **FATAL ERROR DAN PUTIH BLANK MATEEE SEGALA SISANYA GA JALAN!**. Tidak ada kata maaf.
 
-Ini sangat cocok dipakai buat menaruh file konektor rahasia Database! Ya kali database ga nyangkut program jalan terus!
+Berarti INI SANGAT WAJIB DIPAKAI UNTUK: Menyedot Logika PHP Database!! (Yakali Databsenya Typo Ilang, terus Web nya mau jalan pake data hantu darimana?? wkwk mending matein paksa!).
 
 ```php
+
+// FILE UTAMA LUAR
 <?php
-    require("koneksi_database.php"); 
-    // ^-- Klo error, baris bawah gabakal diproses.
+    require("inti_rahasi_core/koneksi_database.php"); 
+    // ^-- Klo error, baris bawah gabakal diproses lgi dijamin gbs msk
     
-    echo "Lanjut menarik data SQL...";
+    echo "Lanjut menarik data SQL dr tbel user....";
+
+    // Jaman modern pada pake imbuhan '_once' lbih bgus lg!
+    require_once("tools_hitung_pajak.php") 
+    // ^-- Sama aja tpi dia ngecek: Kalo udh ketarik ga ush ditarik copyan smpe double di memory ya klo gue lp mangggi lg.
 ?>
 ```
 
+Kalian anak Frontend atau Fullstack yang sering bkin tema WordPress / Toko Baju onlie, Ilmu Include membelah belah Partikel ini sangat membatu rapi nya Struktur Folder File Web yang berlembar-lembar tsb (Moduler!).
+
 ---
-[⬅️ Sebelumnya: Fungsi](../04-Fungsi/README.md) | [Lanjut ke OOP PHP ➡️](../06-OOP-Dsr/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Fungsi](../04-Fungsi/README.md) | [Lanjut ke OOP Cetakan Framework Bintang ➡️](../06-OOP-Dsr/README.md) | [🏠 Daftar Isi](../README.md)

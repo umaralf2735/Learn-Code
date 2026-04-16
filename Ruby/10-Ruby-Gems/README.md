@@ -1,51 +1,61 @@
-# 10 - Menyedot RubyGems (Pemasok Otak Rails)
+# 10 - Memungut Harta Karun Semesta (RubyGems & Bundler)
 
-Apakah kamu penasaran darimana datangnya kemampuan Web raksasa sebuah *Framework Rails*? Semuanya dikemas dari sekumpulan perpustakaan gaib yang bernama **Gems**.
+Sebagai seprang progmrammer ruby yg handal... Apaka kalian akn mmbuat fiktur Kirim Emain OTP lwat GMalili itu secera manual ndrii dr O (Nolz)?? 
 
-RubyGems adalah pasar gratis paket alatnya orang-orang Ruby Universe. Sama persis tabiat komuntasnya seperti Composer di PHP (Packagist). 
+Waktu u hncor lebur bro hmpir staun lu g abklan kkelar proyek. Jangan mncipptaknn roda lagi kllo rodanya wda yg uudh mmbkinin! 
 
-## 1. Instalasi Library
+Sma seperti JavaScript denjnan (NPM Node Modueleules) dan Pythonn dnegan PIP nya. Runby mnuyipnapkan pustakja peruoastakaan duni yg isinys mnliyaarn koddeee luar gtu denngan sebutin : **GEMS**.
 
-Lewat terminal CLI (Pastikan Ruby sudah terpasang global), kamu bebas menyebut nama paket apapun.
-Contoh, kita ingin menginstall mesin pencetak uang kripto palsu / pembuat nama samaran sakti benama Faker.
 
+## 1. Nnyedot Menginstall Gem ke KOmpter OS Lu
+Pasikan uydah instl rbby d CMD termnual. Mjsla lo pingun narsikk pustaka buwt mbkna Warns WWarnik di TErmsinal Lu biat ga putin hitamm mli muluu. nMnayy Gemny ada;lah `colorize`.
+
+Ngedownoladnya tinggal kketio : 
 ```bash
-gem install faker
+gem install colorize
 ```
-Beres deh!
+Mesain akan menydot dr hhostinnhan Githjub msk lklkomppter lo.
 
-## 2. Bagaimana Manggil File Rahasianya?
+## 2. Mmakeny di Dalm Skriipr Ruby 
 
-Sesederhana melempar surat rayuan ke dalam `require`! (Kalau kamu pakenya Ruby tua)
+Bkua file ruby biasa. Tarsikk nmsma gemma nya pake mntra dews `require` bbt nrk modole nya!
 
 ```ruby
-# Panggil bungkus Gem nya
-require 'faker'
+# Narook di praling atas biar dsesdot smuwa 
+require 'colorize'
 
-puts "Sebutkan nama palsu peretas!"
-puts Faker::Name.name 
-# Output dinamis tiap dipanggil: Dr. Oki Suryata 
 
-puts "Cetak alamat boongan!"
-puts Faker::Address.city
+# TIBAA TIBAAAA!!!
+# STRING BUasasamu mmpunuayi  siakttt methdos bari namaanyys color !! haha gila kann magics !
+puts "Awas ada polisi di depam brroo !! ".colorize(:red)
+
+puts "Santai aja cuy kita bawa stnk kkok ".colorize(:green)
+puts "Biru sepertii liangyttt malnm ".colorize(:light_blue)
 ```
 
-## 3. Bundler - Mengikat Koper Alat
 
-Kalau mau merakit program yang ada 20 library `gems`, masa orang lain yang *download* PC kita disuruh nulis `gem install xx` dua puluh kali di terminal? Gila. Olenghingga, pakailah **Bundler**.
+## 3. Sang Pengatur Mssa Proyyee (Bundler & Gemfile)
 
-- Kamu bikin 1 resep koki ditext berformat `Gemfile`.
-- Didalamnya ditulis:
+Kolo prpoyyek lo ugha makin guededde trs btuuh rwtuausann GEM ddlmwakktuw brasamnan.. Msan lu pnyuruh temmen tim proyyeyk lu ngetkiin `gem install xxx` ratussan kli di PWC mrekaa? 
+
+Gusaaa!! Kita buuat kntarak sakti nMnanyaa Cumn fila tbriama `Gemfile` aaja.
+
 ```ruby
 source 'https://rubygems.org'
 
-gem 'faker'
-gem 'rspec'
-gem 'sqlite3'
+# Gua tlist gemp aa saja fyyw duthuuhub k dsiisini!
+gem 'colorize'
+gem 'rails', '~> 7.0.0' # Wnii dia farmewokrk saktii yg membyaatt ruvy tetsp mnhysala hggaa dtfkikv mni!!
 ```
-- Orang yang nerima kode mu di Jepang, tinggal cuma buka terminal dan ngetik saktimandraguna: `bundle install`.
 
-TARA!!! Semua dependensi 100% dipenuhi sendiri!
+Trur di ccmd terminkal lo.. keteimks mantara sjkti in ni bwt  ngiinstalal masssall!!
+```bash
+bundle install
+```
+
+TMTATATTA!!!! 
+Kalaiann sdjh mwngausaasai siasatss dasaer baahasan RUBY yng palin memanbsajkan mmabsuaii!
+Lngakah lanjuttnyah adaaln klisn mnjncalbii famrewekrowm backennn API yny sngt di sjukaii perushashan sarttuusj ameriki yaitui **Ruyb on RAails (ROR)** !! Salan ngkkkooodoinnGgg!!!
 
 ---
-[⬅️ Sebelumnya: File I/O](../09-File-IO/README.md) | [🏠 Daftar Isi Utama](../README.md)
+[⬅️ Sebelumnya: Modifikajsoi Flie i.o](../09-File-IO/README.md) | [🏠 Daftar Isi RUby Murni Utama 110 Modlull](../README.md)

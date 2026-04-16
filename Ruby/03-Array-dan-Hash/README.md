@@ -1,62 +1,61 @@
-# 03 - Array dan Hash di Ruby
+# 03 - Penyimpanan Sekardus (Array & Hash Symbols)
 
-Bahasa manapun butuh cara menyusun sekumpulan data, namun di Ruby sintaksnya jauh banget lebih luwes.
+Gak nendang kita gabisa manipullasi Banyakn data orgn seklaigus kalau ga ada Array. Ruby memilikinya. Tapi fitur maut ada pada Dictionary / Object Json nya Ruby yg dinamakan sbg `Hash`!
 
-## 1. Array
+## 1. Array Dinamis Melar
 
-Sama persis seperti JS, array tidak peduli kamu masukin apa kedalamnya (bisa campur), ukurannya pun melar sedirinya gaperlu repot.
+Kaya Python. Array nya Ruby ga usah dipesen brap ukuran dan tipe datanya. Melar molor nabrak campur baur sah aja.
 
 ```ruby
-# Definisi array campur
-kotak = ["Apel", 100, true]
+# Tuh wkwk angka nyatu campur ma Text maut
+lokerBarang = ["Pistol Kayu", "Garam", 99, false]
 
-# Cara tambah ke paling belakang di Ruby biasanya ga pakai 'append'/'push'
-# Tapi pakai operator sekop (shovel) '<<' !!
-kotak << "Semangka"
+# Nambah pki PUSH biasa (Ujunng kanan)
+lokerBarang.push("Botol Air")
 
-puts kotak[0] # => "Apel"
+# MENGAKSES NYA?
+puts "Senjata petama saya adlah: #{lokerBarang[0]}"
 
-# Menghitung isi lemarinya
-puts kotak.length # => 4
-puts kotak.empty? # => false
+# 🌟 ALAT PISAU DEWA RUBY! Punya alat ngmbil prtama dan trpntar tnpa nyar idnex!!
+puts "Ujung DEPAN : #{lokerBarang.first}"
+puts "Ujung BLAKNG: #{lokerBarang.last}"
 ```
 
-### Rahasia Perulangan Array: `.each`
-Selalu selalu selalu gunakan `.each` untuk memutar Array di Ruby. Ini budaya wajibnya:
+## 2. Hash & Symbols (Sang Object Penakluk Data JSON)
+
+Di PHP in dinamin Array Assossiatif. Di Python ini itu sebutnnya Dictionry. Inilah Hash. Punya Kunci Teks (Key : Value) berpasangan dlmKurawal `{}`.
+
+Di Ruby, untuk mengirit RAM Supaya **Kuncinya GAK DICOPY BERKALIKALI JADI STRING RAM MURNI**, mrk nyiptain yang namanya `SIMBOL (Tanda Titik dua diDEPAN TEKS `:kuncigue`)!!` Ini lbih enteng drpd string "kuncigue" biasa!
 
 ```ruby
-buah = ["Mangga", "Jeruk", "Pisang"]
-
-buah.each do |nama_buah|
-  puts "Saya mau makan #{nama_buah}"
-end
-```
-
-## 2. Hash (Kamus / Map / Dictionaries)
-
-Kalau di JS namanya Object, di sini sebutannya **Hash**. Hash itu adalah kunci dan lubangnya (Key & Value).
-
-```ruby
-# Hash lama:
-# orang = { "nama" => "Bambang", "umur" => 30 }
-
-# Hash Zaman Beradab (Ruby baru), 
-# pakai 'Symbol' (tanda titik dua di depan). Super cepat di memori!
-orang = { 
-  nama: "Rizky", 
-  umur: 24, 
-  pekerjaan: "Programmer" 
+# Nyetak Objk json Hash milih Coki
+bukuRekamMedis = {
+    :namaPasien => "Bang Toyib",
+    :riwytSakit => "Masuk Angin Tolak",
+    :umur       => 45
 }
 
-# Ngambil datanya pakai tanda titik dua di belakang lagi
-puts orang[:nama]
-puts orang[:pekerjaan]
+# NGAMBILNYA? LU HARUS PANGGIL 'ALAT TUKAR' SIMBOLNYA YA!! (Bkn ktip String!!)
+puts "Dokter tlong prksa bapak #{bukuRekamMedis[:namaPasien]}"
 
-# Nambahin kunci baru
-orang[:domisili] = "Depok"
-
-puts orang
+# Nambah Data Gejala Bru
+bukuRekamMedis[:suhuBadan] = 39.5
 ```
 
+**💎 TRICK PENULISAN DEWA JS STYLE:**
+Kalau capek nulis Panah `=>` gemuk gitu kek PHP. Kalian BOLEH nulis gayak Javascript. Tarik titik duanya ksamping! Ruby bakal sngja ngebikin dkk jadi Symboll ghaib d blkng layar.
+
+```ruby
+# INI SAMA AJA KAYA DIATAS!! LBH RINGKAS KAN KEK JAVASCRIPT! LBH CKEP!
+bukuBaru = {
+    namaPasien: "Ridho Ilahi",
+    umur: 20
+}
+
+puts "Siank bang #{bukuBaru[:namaPasien]}" # MANGGIL BWHNYA TTEP WAJIB PAAKKE TTTiK dua SIMBOL DEPAN Y!
+```
+
+Nanti kalau kalian pake Ruby on Rails sbg API server, smua JSON request yg dilempar Frontend React bkl dsulap murni jd hASH Ruby kya dpan mtamu ini!!
+
 ---
-[⬅️ Sebelumnya: Struktur Kontrol](../02-Struktur-Kontrol/README.md) | [Lanjut ke Metode dan Blok ➡️](../04-Metode-dan-Blok/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Sruktur Kondisi IF](../02-Struktur-Kontrol/README.md) | [Lanjut ke Fungsi Sakti (Def) ➡️](../04-Metode-dan-Blok/README.md) | [🏠 Daftar Isi](../README.md)

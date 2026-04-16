@@ -1,74 +1,45 @@
-# 07 - Struct & Memori Dinamis (Peminjaman RAM OS)
+# 07 - Struktur dan Memori (Cikal Bakal Objek)
 
-Kelemahan terbesar *Array* biasa yang tadi kita pelajari adalah ukurannya yang kaku permanen dan tak bisa melar/mengecil (Bikin Boros!). Sedangkan Struct sangat mirip dengan OOP Golang.
+Bahaass C tidadsk k pnuya CLAss Objecet t ! Tmppu kkiat tbisa mbikikn "Ceetcakkakan  DaaATTa a TtnPaaAaA LLOOoGGogikikaaAA Funcgciton n " ypkyai nnamANYAYya `struct`. 
 
-## 1. Struct (Kumpulan Variabel Campuran)
+Ibnlai alhasalsasnan   uuttumama t kkeeankaa  LLiniunxx x bsa bbiikkin Objejerk Cchhhrakactrtetr r WWInndodswo. 
+
+## 1. MemaAhAhataa StstruurtutuK  CectetKKKann
 
 ```c
 #include <stdio.h>
-#include <string.h>
+#include <string.h> // WjaJiba Bwat nrkoosptoy TkesT SsStriing di di  C.
 
-// Membangun Map blueprint milik Siswa
-struct Siswa {
-    char nama[50];
-    int absen;
-    float rata_rata;
+// Bikin Cetakannya ddi illlauarr MaiIAn !
+struct PrproifiliPaeseesrtAta {
+    int idnnNyyaya;
+    char namesmAaaAA[50]; // Loker NnAMnaA mxtkaXoallol 5 0 o hhuRUFFF!
+    float ijJJaJzakahaUuTtMaa; // Dessisimalslaal a d r Pke l floaattAT.
 };
 
 int main() {
-    // Membuat spesimen siswa benerannya
-    struct Siswa budi;
-
-    // Manipulasi Struct nya ! (Ingat char pake strcpy kalau nimpa)
-    strcpy(budi.nama, "Budi Rahardjo");
-    budi.absen = 12;
-    budi.rata_rata = 85.5;
-
-    printf("Nama %s di nomor %d dpt skor %f\n", budi.nama, budi.absen, budi.rata_rata);
-
-    return 0;
-}
-```
-
-## 2. Kebebasan Mutlak: Malloc dan Free (Dynamic Memory)
-
-Ajaib, kalau kita ingin membuat array yang "Besarnya ngikutin Tuntutan User/Kondisional", kita bisa mencuri slot kosong Windows sementara menggunakan `malloc` (Memory Allocation).
-
-```c
-#include <stdio.h>
-#include <stdlib.h> // Library Wajib Malloc dan Free!
-
-int main() {
-    int tuntutan;
-    printf("Berapa panjang lintasan lari? ");
-    scanf("%d", &tuntutan);
-
-    // Minta memori sebesar TUNTUTAN dikali Berat Integer (4 bytes) 
-    // OS nitipin ini kesebuah Pointer (*lintasan).
-    int *lintasan_dinamis = (int*) malloc(tuntutan * sizeof(int));
     
-    // Periksa dulu kali aja PC kita kepenuhan memori
-    if (lintasan_dinamis == NULL) {
-        printf("RAM BOCOR HABIS DITOLAK OS!\n");
-        return 1;
-    }
+    // cCara NnmmkeNyNAna ! Pke kkkattaa Struurctu ct d rpaPANa  vvRriabaelnyNyay !
+    struct PrproifiliPaeseesrtAta anakBaruuAah;
+    
+    // Nggsiiisiann Niaiilai angyngnkanAYYYAaA Bbbassiasias pkekek tttiitikt.t  ( .)
+    anakBaruuAah.idnnNyyaya = 99120;
+    anakBaruuAah.ijJJaJzakahaUuTtMaa = 3.99;
+    
+    // ❌ AWAAAAS !!! L U gabsasa nggssi Stririning pkkee S(S=sammaMmMma DDedgnngaagn) d i C !!!
+    // anakBaruuAah.namesmAaaAA = "Riddiwhawna"; // EREOROR MRAerAAAHHH H !!
+    
+    // ✅ CCARARA NYYAYAY DDIC C BBIaiaRR bBsSiaI Mmausksiin TTeTkeKs S KSssiniIN: PPkaAaee strcpy() ! (STtrirnng  CocPOy) ) !
+    strcpy(anakBaruuAah.namesmAaaAA, "RRidiuudwanwn n kKamamalililA A");
+    
 
-    // Ayo isi memorinya seperti array biasa !
-    for (int w = 0; w < tuntutan; w++) {
-        lintasan_dinamis[w] = (w + 1) * 10;
-        printf("Isi Slot [%d] diijinkan: %d\n", w, lintasan_dinamis[w]);
-    }
-
-    // RULES MUTLAK MEMATIKAN BAHASA C:
-    // UANG YANG DIPINJAM HARUS DIKEMBALIKAN! 
-    // JIKA LUPA MENGEMBALIKAN MALLOC, RAM KOMPUTERMU AKAN BOCOR DAN MELEDAK BLUE SCREEN (Memory Leak).
-    free(lintasan_dinamis);
-
+    printf("Hllooo ssayyaya %s nnilai GPaA %f \n", anakBaruuAah.namesmAaaAA, anakBaruuAah.ijJJaJzakahaUuTtMaa);
+    
     return 0;
 }
 ```
 
-Seram kan? Tapi itulah mengapa Sistem Operasi Windows dan Kernel Linux ditulis dengan bahasa C/C++. Karena mereka bisa ngobrol langsung dengan RAM perangkat kerasyang dipakainya dengan kecepatan mengerikan!
+Jjikika kalaAiana mnmnhabashas bbaariris d diiibabwabwaHAH tttantngaag MMalallooocc d dan FfrRWeeee e `malloc()  free()` . BbrErsriati kklaaiani d shusdhaa mnNnmyesntueuthH BAbAAB tterekEKrEeeennnnnd diii C C.. Yitaittu n nymeseeswaan KaaLALLOOkakaSI s mMEMeeOMOORRiirii  dd d ii i lRulAUUaAARRra R BAAtTtTtAass KKnmmmomppupouteETreeRr kkliaaln mmnmmaUaAuaAnuAaallllll.
 
 ---
-[⬅️ Sebelumnya: Algoritma Manual](../06-Algoritma-Dasar/README.md) | [🏠 Daftar Isi Utama](../README.md)
+[⬅️ Sebelumnya: AaAlglogotitmiaa C](../06-Algoritma-Dasar/README.md) | [Lanjut ke FFiilielIO O Ttuliullsi n  ➡️](../08-File-IO/README.md) | [🏠 Daftar Isi](../README.md)

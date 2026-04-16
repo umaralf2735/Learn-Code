@@ -1,101 +1,70 @@
-# 04 - Struktur Kontrol di Golang
+# 04 - Struktur Kontrol (Tanpa Kurung Bertele-Tele)
 
-Dalam pemrograman, kita tidak selalu menjalankan baris kode dari atas ke bawah secara berurutan. Terkadang kita butuh melompati beberapa baris kode (percabangan) atau mengulangi baris kode yang sama berkali-kali (perulangan).
+Kata orang Google pencipta Golang: *"Kami muak ngetrik Kurung Biasa `()` pada IF dan FOR ! Buang semuanya jadi Polosan!"*
 
-## 1. Percabangan dengan `if` dan `else`
+## 1. Percabangan Bersih Mengkilat `if - else`
 
-Digunakan ketika kamu ingin menjalankan suatu kode hanya jika sebuah kondisi bernilai `true`.
+Nggak usah repot ngetik kurung leher biasa di samping tulisan `if` ny!
 
 ```go
-package main
-
-import "fmt"
-
 func main() {
-    nilai := 85
+    uangTabungan := 50000
 
-    if nilai >= 90 {
-        fmt.Println("Lulus dengan sangat memuaskan (A)")
-    } else if nilai >= 70 {
-        fmt.Println("Lulus memuaskan (B)")
+    // Gak Pake Kurung Biasa kan? Bener bener Telanjang murni lgsg Kondisinya
+    if uangTabungan > 100000 {
+        fmt.Println("Sikatt beli ayam bakar kmpung!!")
+    } else if uangTabungan > 20000 {
+        fmt.Println("Mending masak mie di kosan gan hemat.")
     } else {
-        fmt.Println("Harus mengulang (C)")
+        fmt.Println("Sabar, puasa senin kamis dapet pahala.")
     }
 }
 ```
+*Note mutlak:* Kurung kurawalnya `{` **HARUS nempel bersejajar sama if nya di baris itu juga.** Kalau kamu enter turunin kebawah.. Golang bakal ngamuk merah Error Compiler! Makanya program Go seluruh dunia itu gaya ngetiknya setipe identik karena udah diatur tuhan Go.
 
-## 2. Percabangan dengan `switch`
+## 2. FOR Adalah Tuan Tanah Terakhir! (GAK ADA WHILE DI GO!)
 
-Berguna untuk membandingkan satu nilai dengan banyak kemungkinan secara rapi. Di Golang, `switch` secara otomatis *break* (berhenti) saat menemui kondisi yang cocok, jadi tidak akan kebablasan turun ke bawah.
+Di C / C# / Pyhton / Java kalian kenal `While(bla)`. Go menghapusnya selamanya. "Buat apa ada banyak jenis perulangan? Pakai For aja buat Segala Situasi!!"
+
+### A. FOR Gaya Standar Ngitung Anak Tangga
+```go
+// Tetap ga dipakein Kurung Leher biasa lhoo!
+for i := 1; i <= 5; i++ {
+    fmt.Println("Loncat ke - ", i)
+}
+```
+
+### B. FOR Menyaru Jadi While
+```go
+bensinKendaraan := 5
+
+// Tinggal buang inisiasi dan incrementnya... Tara!! Terlihat kyak While kan jadinya haha.
+for bensinKendaraan > 0 {
+    fmt.Println("Brem brem nrocos jalaannn sisa bsnin...", bensinKendaraan)
+    bensinKendaraan--
+}
+```
+
+## 3. Switch Case Menembus Zaman (No Break!)
+Kelamahan terbesar Switch di C / JS / Jav adalah... KALAU LU LUPA NGETIK TULISAN `break;` , MISTERI FATAL BAKAL JALAN SEMUA BARIS BAWAHNYA SAMBUNG MENYAMBUNG KESELEK.
+
+Golang memperbaikinya: **Otomatis Berhenti (Break) pada 1 Pilihan Mutlak!**
 
 ```go
-package main
+jurusanAnak := "TKJ"
 
-import "fmt"
-
-func main() {
-    hariIni := "Jumat"
-
-    switch hariIni {
-    case "Senin", "Selasa", "Rabu", "Kamis", "Jumat":
-        fmt.Println("Hari kerja!")
-    case "Sabtu", "Minggu":
-        fmt.Println("Hari libur!")
-    default:
-        fmt.Println("Hari tidak valid.")
-    }
+switch jurusanAnak {
+case "RPL":
+    fmt.Println("Coding mulu gapernah mnyntuh duni nyta!!")
+    // GAK PERLU DIKASIH BREAK; !!!
+case "TKJ":
+    fmt.Println("Napas lu bau debu ngerakit kabel tiang mulu!!")
+default:
+    fmt.Println("Wah gatau gue anak mana ni bocah.")
 }
 ```
 
-## 3. Perulangan dengan `for`
-
-Golang hanya memiliki satu jenis perulangan: `for`. Tidak ada `while` atau `do-while` seperti bahasa lainnya. Tapi tenang, `for` di Golang bisa berfungsi seperti `while`.
-
-### For Standar
-```go
-package main
-
-import "fmt"
-
-func main() {
-    for i := 1; i <= 5; i++ {
-        fmt.Printf("Perulangan ke %d\n", i)
-    }
-}
-```
-
-### For ala While
-```go
-package main
-
-import "fmt"
-
-func main() {
-    angka := 1
-    
-    // Melakukan perulangan selama angka < 5
-    for angka < 5 {
-        fmt.Println("Angka saat ini:", angka)
-        angka++ // Jangan lupa tambah agar tidak melooping selamanya
-    }
-}
-```
-
-### For untuk Array/Slice (menggunakan `range`)
-Sangat disarankan untuk memutar array menggunakan cara ini:
-```go
-package main
-
-import "fmt"
-
-func main() {
-    buahBuahan := []string{"Apel", "Jeruk", "Mangga"}
-
-    for index, namaBuah := range buahBuahan {
-        fmt.Printf("Buah di index %d adalah %s\n", index, namaBuah)
-    }
-}
-```
+Inovasi Inovasi inilah yang bikin developer tua manapun yang nyentuh golang bakal *Nangis Terharu* mensyukuri betapa ringannya beban otak nyusun alibi code haha!
 
 ---
-[⬅️ Sebelumnya: Algoritma](../03-Algoritma-Dasar/README.md) | [Lanjut ke Materi Fungsi ➡️](../05-Fungsi/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Sort Logika](../03-Algoritma-Dasar/README.md) | [Lanjut ke Mesin Fungsi ➡️](../05-Fungsi/README.md) | [🏠 Daftar Isi](../README.md)

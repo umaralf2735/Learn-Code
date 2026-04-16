@@ -1,89 +1,88 @@
-# 05 - Fungsi (Function)
+# 05 - Mesin Fungsi (Dewa "Pecah Telur" *Multiple Return*)
 
-Fungsi sangat berguna untuk memisahkan kode yang panjang menjadi blok-blok kecil yang bisa dipakai berulang kali. Jadi kalau ada proses yang sama, tidak perlu dibikin ulang, panggil saja fungsinya!
+Memecah belah operasi besar di fungsi (*func*) adalah rahasia Microservice level AWS berjalan stabil. Kalau fungsi C / JavaScript biasa cuman memulangkan (return) SEBUAH 1 barang data tunggal... Di Go kamu bisa return berlusin-lusin balikan sekaligus dari 1 Fungsi!!
 
-## 1. Fungsi Sederhana
+## 1. Syntax Fungsi Halus dan Default Parameter Belakang
 
-```go
-package main
-
-import "fmt"
-
-// Fungsi bernama sapaan
-func sapaan() {
-    fmt.Println("Halo, selamat datang di program ini!")
-}
-
-func main() {
-    // Memanggil fungsi sapaan
-    sapaan()
-    sapaan() // Bisa dipanggil berkali-kali!
-}
-```
-
-## 2. Fungsi dengan Parameter
-
-Kita bisa memberikan data ke dalam fungsi agar bisa dimanipulasi di dalam fungsi tersebut. Data ini disebut argumen atau parameter.
+Penempatan Label Type nya itu Unik, Bukan didepan, tapi DI BELAKANG nama parameternya wkwk. Ciri khas tulen Go.
 
 ```go
 package main
-
 import "fmt"
 
-// Fungsi yang meminta 2 parameter tipe int: a dan b
-func hitungJumlah(a int, b int) {
-    hasil := a + b
-    fmt.Println("Hasil penjumlahan:", hasil)
+// Liat!  nama dulu -> baru Tipenya (string)
+// Diluar Kurung param -> Tipe Kembalian nya sbg hasil (string)
+func pesenGoFood(makanan string, harga int) string {
+    notaGhoib := fmt.Sprintf("Pesanan %s sedang dimasak dengan uang tip %d yah", makanan, harga)
+    return notaGhoib
 }
 
 func main() {
-    hitungJumlah(10, 20) // a bernilai 10, b bernilai 20
-    hitungJumlah(5, 5)   // a bernilai 5, b bernilai 5
+    bonTukang := pesenGoFood("Seblak Setan", 15000)
+    fmt.Println(bonTukang)
 }
 ```
 
-## 3. Fungsi yang Mengembalikan Nilai (Return)
+## 2. Ilusi Pecah Belah Nilai Kembar (*Multiple Return Value*)
 
-Bukannya langsung *print* ke layar, terkadang kita ingin fungsi itu bekerja memproses data, lalu "mengoper" hasil hitungnya ke kita untuk disimpan. Kita dapat menggunakan fungsi *return value*. Jangan lupa harus mencantumkan tipe data kembaliannya.
+Trik inilah yang dipakai ribuan Driver Gojek pas koneksinya error balikan api. Kenapa? Karena di Go, setiap fungsi ngambil API Luar... dia ME-RETURN "HAHILNYA" BERSAMAAN DEGAN TIKET "STATUS ERRORNYA"!!
 
 ```go
-package main
-
-import "fmt"
-
-// Fungsi ini akan minta a dan b, lalu MENGEMBALIKAN tipe data 'int'
-func perkalian(a int, b int) int {
-    hasil := a * b
-    return hasil // Wajib mengembalikan kembalian bernilai int
+// Tuh liat kembaliannya ada DUA DIKURUNG! = (int, int)
+func aduPenaltiMatematika(a int, b int) (int, int) {
+    hasilTambah := a + b
+    hasilKali := a * b
+    
+    // Ngereturn Dua Barang disekat Koma 
+    return hasilTambah, hasilKali
 }
 
 func main() {
-    // Hasilnya kita simpan kedalam variabel
-    hasilSimpan := perkalian(4, 5)
-    fmt.Println("Tolong ambilkan ini:", hasilSimpan)
+    // NAHHHH... Waktu manggil, lu siapin DUA KERANJANG lgsg barengan nampung leparan dr sana!
+    jwbPlus, jwbSilang := aduPenaltiMatematika(5, 10)
+    
+    fmt.Printf("Kalo ditambah jd %d. Oh.. tp kalau dkkali brarti %d", jwbPlus, jwbSilang)
+    
+    /* 
+    CATATAN FATAL:
+    Gimana kalau dari lemparan dua barang tsb, lu CUMAN BUTUH (hasilKali nya) dan ga peduli sm hasilTambah?
+    Lu HARUS NGEBUANG BARANG SI hasilTambah KEDALAM TONG SAMPAH '_' (Blank Identifier). 
+    
+    Contoh:
+    _, jwbSilangTok := aduPenaltiMatematika(9, 2)
+    */
 }
 ```
 
-### Multiple Return Values
+## 3. Fungsi Pukul Rata Variadic (Pake Titik-Titik Tiga `...`)
 
-Paling mantap, Golang bisa mengembalikan lebih dari 1 hasil dalam 1 fungsi!
+Suka kesel kalau pengen bikin fungsi "Hitung Total Pengeluaran", tapi parameternya gatau ada berapa jumlah tagihannya dlm 1 bulan?
+Pakai Titik tiga diblakang (Variadic)! Pintu depan fungsimu melonggarkan batas terima argumen jadi BEBAS BRP PUN LU MAU KASIH!
 
 ```go
-package main
-
-import "fmt"
-
-func luasDanKeliling(sisi int) (int, int) {
-    luas := sisi * sisi
-    keliling := 4 * sisi
-    return luas, keliling
+// "Hayo sini woi, setorin parameter berapapun, entar jd array integer (int) dalem perut gw!"
+func hajarKalkulatorHitungTotal(tagihan ...int) int {
+    
+    totalDompet := 0
+    // Mutar isi perutnya! (Tinggal pake for-range Array)
+    for _, itemDuit := range tagihan {
+        totalDompet += itemDuit
+    }
+    
+    return totalDompet
 }
+
 
 func main() {
-    L, K := luasDanKeliling(5)
-    fmt.Println("Luas:", L, "Keliling:", K)
-}
+    // Wah gila, bisa manggil fungsi yg sama tapi diisi 3 Biji angka dan 5 biji Angka sekaligus njir!
+    nota1 := hajarKalkulatorHitungTotal( 50, 10, 5) 
+    nota2 := hajarKalkulatorHitungTotal( 100, 2, 80, 50, 999)
+    
+    fmt.Println(nota1) // 65
+    fmt.Println(nota2) // 1231
+}    
 ```
+Sang dewa fleksibilitas! Dari sinilah framework backend besar dibangun kuat menopang request User yg jumlah key JSON nya random ga ketara!.
 
 ---
-[⬅️ Sebelumnya: Struktur Kontrol](../04-Struktur-Kontrol/README.md) | [Lanjut ke Materi Pointer ➡️](../06-Pointer/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Struktur Kontrol](../04-Struktur-Kontrol/README.md) | [Lanjut ke Memory Pointer Sakti ➡️](../06-Pointer/README.md) | [🏠 Daftar Isi](../README.md)

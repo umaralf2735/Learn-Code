@@ -1,63 +1,43 @@
-# 06 - Pemrograman Berorientasi Objek (Class)
+# 06 - Pemrograman Berbasis Konsep Objek Klasik (Ruby Class)
 
-Class itu ibarat cetakan / blueprint. Objek itu hasil kuenya! Karena di Ruby semuanya terbuat dari Objek, maka menguasai desain Class adalah harga terpenting di bahasa ini.
+Meskipun segala nomor angka di Ruby itu sebenarnya murni *Object*. Lu gakkan bisa membangun *Arsitektur Server Aplikasi Web Raksasa* kalau gajbisa mendirikan blueprint `class` buatanu sendiori. Mari Kita Buat Cetakan Manusia!
 
-## 1. Membuat Blueprint dan InisialisasiAwal
+## 1. Merakit Cetakan Baru & Jeroan `initialize` (Constructor)
 
-Ketika kita mencetak kue dari sebuah cetakan (membuat Object class baru berdasar `.new`), maka metode bernama spesial `initialize` akan dipanggil otomatis pertama kali.
+Kalau JS pake `constructor`. Ruby Make embel emebl inisiasi yaitu: **`initialize`**.
 
 ```ruby
-class Mobil
-  # Initialize: yang langsung dijalankan waktu dipanggil .new
-  def initialize(merek, warna)
+class MonsterRaksasa
+    # Gerbang Yg pertama kali kepmanggil saaat dia kelar lahir  di cetak didunia! 
+    def initialize(namaBocah, lvlDarahMulai)
+        # 🌟 ILMU MAGIC @ (At Variabel Instance) 🌟
+        # Biar namanya gak ilang begitu aja, kita Tancapin/Suntikin namanya tempel ke DALEM TUBUH ORGAN PRIBADINYA DIA SENDIRI pakai Huruf @ !!! (Ini Sm perss ky 'this.namaBocah' JS!!)
+        @namaPanggilanBdnPribd = namaBocah
+        @darahFullBadan = lvlDarahMulai
+    end
     
-    # '@' (Instance Variable): Artinya dia variabel khusus milik cetakannya,
-    # Ngga gampang ilang sekalinya metode ini selesai.
-    @brand = merek  
-    @color = warna
-  end
-
-  def cek_info
-    puts "Saya bosan tapi saya punya mobil #{@brand} berwarna #{@color}"
-  end
+    
+    # Method Aktif Yg bsa di panggul
+    def jurusNafasApiBau()
+        puts "Wraaaaaaargghhhhh!!! Bakarr.. by #{@namaPanggilanBdnPribd}"
+    end
 end
-
-# Mari cetak objeknya!
-mobil_saya = Mobil.new("Toyota", "Merah")
-mobil_saya.cek_info 
 ```
 
-## 2. Membaca dan Menulis Variabel dari Luar (`attr_accessor`)
 
-Gawat! Di Ruby, kita sangat dijaga ketat. Kamu **TIDAK BISA MENGAMBIL @brand di luar method!**
-```ruby
-# puts mobil_saya.brand -> BAKAL ERROR BERDARAH!
-```
+## 2. Mencetak Objeknya Pake Sifat Gaib `.new`
 
-Terus cara ngambilnya gimana? Kamu bisa tulis manual getter dan setternya, ATAU gunakan jurus rahasia Ruby: `attr_accessor` (Attribute Accessor).
+Jangan ketik tulisan *new* kek dibahasa luarn ya di depam! Ruby itu memanggil New itu selayaknya elo Manghgil method method biasa wkwkwk! Gini loj carnyA:
 
 ```ruby
-class Pemain
-  # Memberikan akses baca dan edit dari luar!
-  attr_accessor :nama, :nyawa
+# LOH NEW NYA DITARUH DIBELKANG NMA CLASS?? IYAAAA!!! Bnerbener kaya method kan wkwkwk!!
+bosTrukMaut = MonsterRaksasa.new("Optmius Hancr", 500000)
 
-  def initialize(nama_hero)
-    @nama = nama_hero
-    @nyawa = 100 # Standar nyawa defaultnya 100
-  end
-end
-
-hero1 = Pemain.new("Gatotkaca")
-
-# Sekarang dari luar bisa di akses!!
-puts "Darah si #{hero1.nama} sisa: #{hero1.nyawa}"
-
-# Bisa di ubah pula!
-hero1.nyawa -= 10
-puts "Darah si #{hero1.nama} sekarat sisa: #{hero1.nyawa}"
+# Nah si Truk udh iddup brnafas!! Tnggal pgginl kkuatam ya! 
+bosTrukMaut.jurusNafasApiBau()
 ```
 
-Sangat rapi dan aman bukan desain OOP Ruby ini?
+Kalo kalian udah jago bikin ginian. Entar di RubyOnRails (RoR). Kalian tinggal narik data Model  kek gni : `User.new(:nama=> "Budi")` di simpen lalu di tmbak `User.save!`. Nanti Rails bkal otomatis Nulis Query `INSET INTO user` DB SQL dr belakang layar. Canggih bnget kn !
 
 ---
-[⬅️ Sebelumnya: Algoritma Dasar](../05-Algoritma-Dasar/README.md) | [Lanjut ke Modul dan Mixin ➡️](../07-Modul-dan-Mixin/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Enumbersble Array Modif](../05-Algoritma-Dasar/README.md) | [Lanjut ke Membajak Turunan (Mixin Modules) ➡️](../07-Modul-dan-Mixin/README.md) | [🏠 Daftar Isi](../README.md)

@@ -1,34 +1,39 @@
-# 09 - Generics (Cawan Suci Typescript)
+# 09 - Generics (Type Sebagai Parameter Gaib!) 
 
-Bagaimana kalau kamu punya 1 fungsi kembalian, tapi kadang yang di proses itu adalah Angka Int, dan suatu hari ada yang naruh String, dan suatu hari Array? 
-Masa buat `function tarikAngka`, `function tarikString` misah-misah padahal bentuk jeroannya sama?
+Materi `Generics` ini adalah Puncak ilmu ketatnya TS. Jika kalian dpt tes Intervirew Perushaaan ngliat kodingan pny tanda Kurung Lancip `<T>`.. brrta itu lg manggil ilmu ini!
 
-Ini kekuatan asli TS, **Tipe Data yang Fleksibel tapi Terjaga (Generics - pakai `<T>`)**.
+## Memecahkan Masalah Kebuntuan Tipe
+Ceritanya lu bikin Fungsi KARDU yang bisa nerima barang String apa Aja untuk nampung. Trs Tiba2 Boss lo mnta "Bro Bkinin fungsi itu juga donk buat NRIMA Angka!" Masa elo mo Kopi-Paste fungsi yg sma 2 kali dan cmn ganti ganti Tipe paramterny doag jd `: number` ?! Konyol!
 
-## Jembatan Parameter Tipe `<T>`
-
-Kita lempar TIPENYA di depan fungsi pake kurung silang `<  >`.
+**Ilmu Generics `<T>` Datang!! (Tipe Yang Dilembar Bebas Kaya Paramter Variable)**
 
 ```typescript
-// <T> adalah wakilan "Type Apapun" yang nanti kamu pilih saat dipanggil. Kasih T aja biar singkat.
-function bungkusBenda<T>(isian: T): T[] {
-    // Fungsi ini akan membungkus isian mentah jadi list array!
-    return [isian]; 
+// -- BACA ATURAN MAINNYA--
+// 1. Gua Punya Fungsi KardusKeren. Pny Lobang Type <TipeBebasAppn>. 
+// 2. Isian parameter (BendaMasuk) bakal diborgol mnGIKUTI <TipeBebas> DiatASS!
+// 3. RETRUN NYa JUGA MENBUGTITIKU <TipeBbasAppnn> diatas tsbb!
+
+function masukkinKeKardusKeren<T>(bendaUjainnya: T): T {
+    console.log("Aku bru naruh benda ni bro..");
+    // Balikkin lagi kkuar stkh dproses
+    return bendaUjainnya;
 }
 
-// SAAT AKU MANGGIL FUNGSI INI, AKU NGE-SET  <T> NYA SEBAGAI NUMBER:
-let kadoAngka = bungkusBenda<number>(500); 
-// otomatis returnya number[] -> [500]
 
-// SAAT MANGGIL DISINI AKU MAKSA DIA TEXT:
-let kadoTeks = bungkusBenda<string>("Halo Bos"); 
-// otomatis returnya string[] -> ["Halo Bos"]
+// SAAT PANGGILAN TERJADI!!!! KITA TANCAPIN KURUNG LANCIP MINTA TIPE APA!!!
+// 1. Minta Bkinin yg Verrsi String!!
+let hasilBuah = masukkinKeKardusKeren<string>("Pisang Goreng");
 
-console.log(kadoAngka);
-console.log(kadoTeks);
+// 2. Minta Bikinin Verrsi Angka doang ahh!! 
+let gajigan = masukkinKeKardusKeren<number>(9000000000);
+
+
+// ❌ TS BAKAL NGAMUK KERAS KALO ELO SLH MASUNKON TIPE YG UDH DPILH:
+// let mcamAn = masukkinKeKardusKeren<boolean>( "KATA TEXT" ); // ERROOOOOR!! Minta boolean di lobangan lancip tp u nymbngn STRING!!
+
 ```
 
-Bagi yg awam, liat syntax tipe pakai kurung panah `< >` pasti pusing. Tapi inilah pondasi Framework React dimana semua propnya dilempar secara `Generics` dibelakang layar.
+Inlah Trik paling gila di React ngerujuk Redux dan Axios `axios.get<InterfaceTamuDB>('url')`. TibeTibe hsil kemnbalian Axiosnya LGSUNG Nngitil auto complkete denga properti `Tamu DB` murnii tnpa capek2 ngecek! The Magivc Of TS Generics. 
 
 ---
-[⬅️ Sebelumnya: Enum](../08-Enum/README.md) | [Lanjut ke Sihir Utility ➡️](../10-Utility-Types/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Emnummberable](../08-Enum/README.md) | [Lanjut ke Konfigurrasi JS Tscnfig ➡️](../10-Konfigurasi-TS/README.md) | [🏠 Daftar Isi](../README.md)

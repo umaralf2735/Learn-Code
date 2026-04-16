@@ -1,40 +1,43 @@
-# 02 - Struktur Kontrol Klasik
+# 02 - Seleksi & Looping C#
 
-Mengingat akar usul C# adalah klan bahasa C. Semuanya sama 100% identik dengan bapak moyangnya Java maupun C++. Terkurung Kurawal `{ }`.
+Sangat identik dengan pola Javascript / TypeScript, menggunakan kurung kurawal.
 
-## 1. Percabangan Bawaan
+## 1. IF Biasa
 
 ```csharp
-int umur_klien = 21;
+using System;
 
-if (umur_klien >= 18) {
-    Console.WriteLine("Minuman Dewasa Dibuka!");
-} else if (umur_klien >= 15) {
-    Console.WriteLine("Remaja boleh di luar aja.");
-} else {
-    Console.WriteLine("Bocil Hus Hus!");
+class Program {
+    static void Main() {
+        int skor = 90;
+        
+        if (skor >= 80) {
+            Console.WriteLine("Lolos Masuk UI!");
+        } else {
+            Console.WriteLine("Belajar lagi ya dek!");
+        }
+    }
 }
 ```
 
-## 2. Looping For dan Foreach
+## 2. Looping (Harta Karun `foreach`)
 
-Bisa dengan For hitungan angka:
+C# punya cara gampang memutar array layaknya JS `for..of` atau PHP `foreach`.
+
 ```csharp
-for(int x = 1; x <= 5; x++) {
-    Console.WriteLine("Iterasi mesin ke-" + x);
+using System;
+
+class Program {
+    static void Main() {
+        string[] kota = {"Jakarta", "Bandung", "Bali"};
+        
+        // Bacanya: Untuk setiap k didalam list Kota
+        foreach (string k in kota) {
+            Console.WriteLine($"Jalan-jalan ke: {k}");
+        }
+    }
 }
 ```
-
-Atau cara cantik untuk ngeluarin isi Laci Array, yakni `foreach`!
-```csharp
-string[] senjataku = { "Pistol", "Pedang", "Pisau" };
-
-foreach(string barang in senjataku) {
-    Console.WriteLine("Dikeluarkan: " + barang);
-}
-```
-
-Itu saja! Sangat natural bagi kalian yang lahir dari kodingan Universitas awal!
-
+Pendekatang `foreach` ini nanti super sering dipakai di Unity memutar array Musuh.
 ---
-[⬅️ Sebelumnya: Dasar-Dasar](../01-Dasar-Dasar/README.md) | [Lanjut ke Array Koleksi ➡️](../03-Array-List/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya](../01-Dasar-Dasar/README.md) | [Lanjut ➡️](../03-Array-dan-Koleksi/README.md) | [🏠 Daftar Isi](../README.md)

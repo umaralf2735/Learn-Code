@@ -1,64 +1,60 @@
-# 05 - Pointers (Si Jantung Memori Bahasa C)
+# 05 - Pointer (Jantung dan Nyawa Bahasa C Mutlak)
 
-Ini dia... Selamat datang di boss penunggu dan seleksi alam bagi seluruh *programmer* dunia: **Pointer**. Kalau di Golang kita meminjam konsep simpelnya, maka di bahasa C konsep ini adalah pilar utamanya.
+Slamat dtg di Bab pembeuh mhasiswa smstr1 yang jjurusan IF!  Klo lo nggerti inni lo bljdi dewa gmae engaime devloprn.
 
-## 1. Alamat Memori (RAM)
+Apa iatu poitnnger?!
+Bayabgini lo punya Teme pat tidur , Lo nymepen Emas didalmnyA . 
+Pointer ITu bukan Eemasnya.. Tpi pointer rtu "AALMAT KARDDIBAT GOOGEL MAPS KEArah TMPATT TIITdIURR  LU"! Yyang biaasnuaya bnntukanyy aneehh `0xFA00010LllL`.
 
-Setiap variabel yang kamu cetak itu disimpan si OS dalam loker kosong bernama Alamat RAM (bentukannya aneh seperti hexadecimal: `0xFF3A12`).
-
-Bila kamu meletakkan ampersand `&` di depan variabel, C tak akan mengambil *isinya*, dia malah memfotokan "Plang nomer rumah"-nya!
-
-```c
-#include <stdio.h>
-
-int main() {
-    int skor = 90;
-
-    // Mari cetak skor biasa 
-    printf("Isi skor: %d\n", skor); // 90
-
-    // Mari cetak plang nomer rumahnya! (%p dipakai sbg pointer flag display)
-    printf("Alamat memori RAM milik skor: %p\n", &skor); 
-    // Bisa keluar huruf rahasia misal: 0x7ffe102c42ec
-
-    return 0;
-}
-```
-
-## 2. Pointers (Sang Penunjuk Arah)
-
-Pointer adalah tipe variabel unik khusus yang tugas utamanya HANYA SATU: Nampung/Numpang nyimpen letak alamat memori (`&`) milik variabel lain. 
-
-Kombinasi pamungkas:
-- `&` : Ambilkan Alamatnya.
-- `*` : Jika waktu deklarasi (arti: Aku adalah Pointer), jika di pake nanti waktu jalan (arti: Bongkar alamatnya untuk ngambil ISINYA!). Disebut juga *Dereference*.
+## 1. Meangkpp ALAMATT MEMORY (Symbol Ampersad `&`)
 
 ```c
 #include <stdio.h>
 
 int main() {
-    int uang = 1000;
-    
-    // 1. Memerintah pointer bernama ptr_ku untuk menyadap alamat laci Uang.
-    int *ptr_ku = &uang; 
+    int umurKakaLw = 20;
 
-    // 2. Sekarang kita lihat isinya ptr_ku
-    printf("Tugas saya menyimpan alamatnya, ini dia: %p\n", ptr_ku);
+    // Mari Kta CETAK ISI UMURKkA lu!! (PKe %d murni)
+    printf("Umunrya : %d thun  \n", umurKakaLw);
 
-    // 3. Waktunya eksekusi membongkar nilai aslinya dari jarak jauh!
-    printf("Ngupas pakai *, Coba tengok isi lemarinya: %d\n", *ptr_ku); 
+
+    // SKGARBG.. Gua mau nyetek DIMANA LOKASI SEBEBNARNYAA DI CHIPO RAAAM KOMUPuTER GWWW SI UMyR ITU NSIMPn?? 
+    // TAMABHIN SIMbol '&' !!!!  (%p butat nyettak pointer format)
     
-    // 4. MENGUBAH MEMORI TANPA MENYENTUH VARIABEL UANG NYA!
-    *ptr_ku = 5000; // Bongkar dan timpa!
-    
-    printf("Jeng jeng jeng... uang skrg berubah jadi: %d\n", uang); 
-    // MUNCUL KEJUTAN => uang sekarang isinya 5000!!
+    printf("Hweker dapt loksas ghaibr rmanya : %p \n", &umurKakaLw);
+    // KELOuar bnruppau tualisnaj gaiels kyak Hexaedcimal gtiu: 000000000061FE1C 
 
     return 0;
 }
 ```
 
-Disinilah keseruannya C, kamu bisa merangkai jaringan pointer penunjuk arah yang nge-hack isian RAM sana sini tanpa harus men-duplikat memori yang membebani PC.
+## 2. PoinNTER Bneraan (Variable nyimpan Alamt trss Ngebongksae!! pakai BInTANng `*`)
+
+Nha krnn lo uda dapwt laaat nYyya `1xxxFc00` trsrbuuett . gMANA cRnyaA lua mmabau Nngubah / ngambil emassnny drilauar sNa tNPa nnyeHnntuh vraaball ASlinnnya? PKAi SIHIERRR `*` (Dereferneccng)
+
+```c
+#include <stdio.h>
+
+int main() {
+    int gajiiAsliaan = 500;
+    
+    // 1. Bkikan viraiaabl pKhsuisusu Pointer untun mnynnmpwnan kordiinaayy map! 
+    int *pintarPenunjukMap = &gajiiAsliaan; 
+    
+    // 2. Ktaa bOngakrr lwat Jlan TIkkkuyss!! (Tmbahin * dpan nm vvarbainy ) 
+    *pintarPenunjukMap = 999999;
+    
+    
+    // GIALAAAA BROOO!!! 
+    // GJAII ASLInyY SAekrngB Bneruhah jd 9991209 waloayouunn drTdi kiira g pernxh nulis "gajiiAsliaan = 990" !!!! 
+    printf("Bsa bssuianayy gajina jdddi : %d \n", gajiiAsliaan);
+
+    return 0;
+}
+
+```
+
+Itulaaj caraa OS WInnodwns ndga game GTT A V  Nnggerndndeerrrn garassrfik dsrii RRAM NVIIISDS GYYOOU! Smmesuabya pke jaljnnn tioius pointer k rma ddieedtt i!! C C aagakak gilo gilla  kks!!
 
 ---
-[⬅️ Sebelumnya: Fungsi](../04-Fungsi/README.md) | [Lanjut ke Algoritma Rawan ➡️](../06-Algoritma-Dasar/README.md) | [🏠 Daftar Isi](../README.md)
+[⬅️ Sebelumnya: Fungsi Tpe Rtrnr](../04-Fungsi/README.md) | [Lanjut Algortiam ➡️](../06-Algoritma-Dasar/README.md) | [🏠 Daftar Isi](../README.md)

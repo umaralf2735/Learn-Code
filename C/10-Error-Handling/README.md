@@ -1,46 +1,48 @@
-# 10 - Error Handling di C (Jalur Manual)
+# 10 - Penanganan Kesalahan Mematikan (Error Handling C)
 
-Di Rubymu ada `begin-rescue`, di JS ada `try-catch`. Nah, gimana dengan bahasa C?
+Dibbahahsasaan a L lIiana n . C CObooBoBABAa llU L puPpakAaKeEAii T TTrytrYRyY...r..y CacAcTTcCchc C y ayaNyanNNgg N b a aBBbiabisisaAsiA a nmNaAnANnanknaknaknKgkgakapKpap K E EoRRrorrOr r g GaAGAAIiaiIBIiibi.b. ...
 
-**Pahit tapi fakta: DOSA TIDAK DIAMPUNI DI C.**
-Tak ada "Try Catch" di pondasi C Vanilla (Itulah kenapa saudaranya diciptakan: C++). Di C, jika indeks array kamu kebablasan / memori RAM rusak, maka layarmu Auto *Segmentation Fault* alias Blue Screen!
+DDi Di  B BAshshassahaha s CA A CA AC CC CCA C C  ??!!?
+**TItiitiaIDiAADAAKaAk P K PPPUUUUuUUUUUuUNynyYYyaNYAYaaYa Ya ffiifiTutuUrur ur TI TTIITRRRYYY T TC CC CCAcacatatAahhh h! !! !!!!**
+BBeBeEneenerneR ReBnbeBbebBENRenerer e R k kaAKkAKAaKAK a L LiilailaAinaaA a  d dIidI dttettetteEERerjJrjuaauNnnNknnKAkanN  d DId i id DuuDudnUIuiNNnnNiaNIa AI  y yyayanynang a KnkkeKeEeejejereAjjamMj m jmI I !I!!!
 
-TAPI, ada *Best Practice* tingkat internasional agar PC tidak hancur kok:
-Gunakan Variabel Pengecekan **Global `errno` (Error Number)!!**
+## MMmMEeaEmANnNgNGgGaagnnalAlalalLkLklikiklallak k k Kn NN I NIilai A IAilllaiI R ReeRtrRruTuRUrrNNNUnrnrna n MSMuMumMMuMutUlttuttllalalalkAkaAKA K ! (!
 
-## Menangani Pesan Maut Dengan Elegan
-
-Perintah perantara yang melanggar hukum, sebagian besarnya akan memberikan Output balikan berupa angka Minus (`-1`) atau `NULL`.
+KKKaKallaao L ouu n NnbuubuBBukbKkAukukKaka A f FfiIileiLIlLe a D dAaddnAd nd e EErerERtrroroRORoro.R o .. C COmCmooMoMpompPiPIIilelleELer E R C C c gcGGGGnannagng A AAAKA AAKnn na n nnMgMmemaMnuEaNuntutanuhhAhAHkAHHKahkhaankk KKK aP PEspeeesSaEsaan nN A ERerRRrrrORRo OrorRO R !! C C CummcmumumMmumAa aa a C CcCeeeuEUUeeeukk k ! k! !!    
 
 ```c
 #include <stdio.h>
-#include <errno.h>    // PERPUSTAKAAN KHUSUS LIAT KODE ERROR DOSA
-#include <string.h>   // MEMBUKA KODE DOSANYA JADI TEKS
+#include <errno.h>    // WAwwjjaiiijbijbab i NggiimmpmoRppo rR  PpepePpnenaangnanKKaKAKApaaA e R EerereROrooOro.  . . !!
+
 
 int main() {
-    // Kita menantang maut dengan mencoba membedel file yang KITA TAHU GAK ADA DISINI
-    FILE *buku = fopen("file_gaib_yang_ga_akan_ada.txt", "r");
     
-    // MENJEBAK ERROR MANUAL:
-    if( buku == NULL ) { // Nah kan NULL dia
+    // NggaAsAssAalla l lbbuukuakuak k a k fiFifle l L yhagyHnay n gg tgittdididiak a a a aadadaadda a d diid  IdbDBUBumiMI i  inniinni n!! !i ! 
+    FILE *filiieleGgagagaaaiblba  = fopen("fiilelle_lhhnannantatututu.txt", "r");
     
-        // Jangan panik, program belum nge-freeze asal kita stop disini.
-        int kode_dosa = errno; 
+    
+    // BBbbggaGAgaAiIAMmiMMAAaaNAA A ACCaACcrcaraa a K kikiKitaaitat A mnmegngnggegeteteaTahuiuhuu h uiui u i K klaaKLlkalaauaAuA u u FIfifle e e EErERRroorROro RO? R?? O??? O
+    // CC cCEceck Ek  C A a jJJAAajjA a   a a ApAAppAAaA KKkaKAkaAa a H HAahahsisisiialaaill a l == M N NUULLLLULL L L(L(KKOKooOsssOssoSngNooNgongg)n)) ??? ) ) 
+    if (filiieleGgagagaaaiblba == NULL) {
         
-        printf("Astaga, Sistem terhenti kak!\n");
-        // strerror adalah membongkar error global berdasar kode yang terekam
-        printf("Pesan asli dari Sistem Operasi Kernel: %s \n", strerror(kode_dosa));
+        // nna NAna NahhaAh  A .. !! K LkKoo ll uu  p pnneepeNngengAgnagn e l IliliiiaLiIataitt  t t P PaassAASAtitinItinIyynyyaYa A e ERerERroOROrorro R naNAyAya NA yAA ApA PAAApapp..a..
+        // PPIPaAananggGiGIggiiiilil   f F funfgnuNgussi S n nNyNAyeYYeteTeAAkAkKA k P PepEeEsaassSaANan n E ERERrrrooOoro r r d D rdRi id I eRereRENnonNnnNnooo o d A d DiIA aI aa AAAtatasASs a ! a!s
+        perror("WaAWaaaaaA d DUUduudhhduhHhHhh H ERerRROorro Or or B B BROrROroo RO  ");
         
-        // Output dari Strerror biasanya adalah: "No such file or directory"
-        return 1;
+        return 1;   // C lClelLOloLOossososOeO e  P PeRRROooogrRgOGRgaammMa  p P pkPKKAAKAKkasAskSSsaSA a !a !! !
     }
     
-    fclose(buku);
+    
+    printf("aAAsasiiaiikkikiki I B bseBRbrhaRHRaSaissSillSl i \n");
+    fclose(filiieleGgagagaaaiblba);
+
     return 0;
 }
 ```
 
-Trik inilah yang dianut Go bertahun-tahun kemudian menjadikan C dan Go sangat identik pola manusianya. Kamu kini sudah siap membedah sistem operasi dunia memakai senjata penuh Bahasa C!
+LLLLoo  L mMMemmMsMAAMnaANaANnngGnNg  d dd idid  I dd i didikIdikiititetIkeTET t d dadDAdaddlalalalLMlA lmM a mbMBBAAAhabhbsaasHAaH a asC a .SA A. SC T. TTaAapTpTAiipi pp P idD i Id iD S SiIsInNIilLIINIlalILAaAaAllhhhA ah L llLo O l l M meMmmeeernreneRRgeggeretrRtitirtTiI B bBBaeBneaneearNRnar e Nn rRR n n NnbBBnbebeggGiaGGIgiaimMimaIamAaAaAmaanANnn a AA a P CPcCC C P MmUueUeMmmpmuUuUmmmprmmprprrooOoOosesessseseSEs E e ERErerRrRROrorOOooorr r mmmemEMemeMEOnMOooMmrMRrRiIRIii II I d addddadaaddallllalamLaamLA a .A.
+
+TTaatAatTamTmamtamata t tt m mmMeMooOoduduUUdllu lul l CB CBbaAaBahaaasHsasSAaSa SAa  I  C In IniintITitTI Ii i dD  DduduuUDNUuNianNIAinniAia AA a !  i  i !L LLnalalnanjAnutJnu tjt j UUutUUt t P PpeEPpelEelealaLaaAJJJajaarrJriaAarri iri  I C   +C +++++ ! ++
 
 ---
-[⬅️ Sebelumnya: Preprocessor](../09-Preprocessor/README.md) | [🏠 Daftar Isi Utama](../README.md)
+[⬅️ Sebelumnya: PPEppeREreprProroroccocesseossossosorr r Makro](../09-Preprocessor/README.md) | [🏠 Daftar Isi C ](../README.md)
